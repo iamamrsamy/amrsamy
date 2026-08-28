@@ -1,44 +1,44 @@
-/* =========================================
+/* =====================================================
+   DIGITAL CARD URL
+===================================================== */
+
+const currentURL = window.location.href;
+
+
+
+/* =====================================================
    QR CODE
-========================================= */
+===================================================== */
 
-const qrCanvas =
-    document.getElementById("qrcode");
-
-
-const pageURL =
-    window.location.href;
+const qrCanvas = document.getElementById("qr");
 
 
 QRCode.toCanvas(
 
     qrCanvas,
 
-    pageURL,
+    currentURL,
 
     {
-
         width: 205,
-
         margin: 1,
 
         errorCorrectionLevel: "H",
 
         color: {
-
             dark: "#050505",
-
             light: "#ffffff"
-
         }
-
     },
 
     function(error) {
 
         if (error) {
 
-            console.error(error);
+            console.error(
+                "QR Code Error:",
+                error
+            );
 
         }
 
@@ -48,12 +48,11 @@ QRCode.toCanvas(
 
 
 
-/* =========================================
+/* =====================================================
    SAVE CONTACT
-========================================= */
+===================================================== */
 
 function saveContact() {
-
 
     const vcard = `BEGIN:VCARD
 VERSION:3.0
@@ -61,24 +60,23 @@ FN:Amr Samy
 N:Samy;Amr;;;
 TITLE:The Magician
 TEL;TYPE=CELL:+201115552621
-EMAIL:amrsamydxb@gmail.com
-URL:${pageURL}
-NOTE:Magician - Entertainer - Illusionist
+EMAIL;TYPE=INTERNET:amrsamydxb@gmail.com
+URL:${currentURL}
 ADR;TYPE=WORK:;;Dubai;;;United Arab Emirates
+NOTE:Magician | Entertainer | Illusionist
 END:VCARD`;
 
 
-    const blob =
-        new Blob(
+    const blob = new Blob(
 
-            [vcard],
+        [vcard],
 
-            {
-                type:
-                    "text/vcard;charset=utf-8"
-            }
+        {
+            type:
+                "text/vcard;charset=utf-8"
+        }
 
-        );
+    );
 
 
     const url =
@@ -92,7 +90,7 @@ END:VCARD`;
     link.href = url;
 
     link.download =
-        "Amr-Samy.vcf";
+        "Amr-Samy-Contact.vcf";
 
 
     document.body.appendChild(link);
@@ -111,12 +109,11 @@ END:VCARD`;
 
 
 
-/* =========================================
+/* =====================================================
    TOAST
-========================================= */
+===================================================== */
 
 function showToast() {
-
 
     const toast =
         document.getElementById("toast");
@@ -127,13 +124,13 @@ function showToast() {
 
     setTimeout(
 
-        function() {
+        () => {
 
             toast.classList.remove("show");
 
         },
 
-        2200
+        2500
 
     );
 
