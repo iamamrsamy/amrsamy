@@ -1,978 +1,729 @@
-/* ================= RESET ================= */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --gold: #b88632;
+    --gold-light: #d8b36a;
+    --gold-dark: #76501b;
+    --black: #11100e;
+    --cream: #f7f2e8;
 }
 
 body {
-    background: #080807;
-    color: #f5f1e8;
-    font-family: "Montserrat", sans-serif;
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button,
-input,
-textarea {
-    font-family: inherit;
-}
-
-
-/* ================= VARIABLES ================= */
-
-:root {
-    --black: #080807;
-    --black-2: #11110f;
-    --gold: #c9a45c;
-    --gold-light: #e6c985;
-    --white: #f5f1e8;
-    --gray: #aaa59a;
-}
-
-
-/* ================= NAVBAR ================= */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 80px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 7%;
-
-    background: rgba(8, 8, 7, 0.85);
-    backdrop-filter: blur(12px);
-
-    border-bottom: 1px solid rgba(201, 164, 92, 0.15);
-
-    z-index: 1000;
-}
-
-.nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    color: var(--gold);
-}
-
-.nav-logo span {
-    font-family: "Cinzel", serif;
-    font-size: 32px;
-}
-
-.nav-logo small {
-    font-size: 10px;
-    letter-spacing: 4px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-}
-
-.nav-links a {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-
-    color: #ddd;
-
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--gold);
-}
-
-.menu-btn {
-    display: none;
-
-    background: none;
-    border: none;
-
-    color: var(--gold);
-    font-size: 24px;
-
-    cursor: pointer;
-}
-
-
-/* ================= HERO ================= */
-
-.hero {
     min-height: 100vh;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    position: relative;
+    padding: 30px 15px;
+
+    font-family: "Playfair Display", serif;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(201, 164, 92, 0.08),
-            transparent 45%
-        ),
-        #080807;
+            #29251f 0%,
+            #11100e 55%,
+            #050505 100%
+        );
 
-    overflow: hidden;
+    color: #17130e;
+
+    overflow-x: hidden;
 }
 
-.hero::before {
-    content: "";
 
-    position: absolute;
-    inset: 30px;
+/* =========================
+   BACKGROUND
+========================= */
 
-    border: 1px solid rgba(201, 164, 92, 0.12);
+.background {
+    position: fixed;
+
+    inset: 0;
 
     pointer-events: none;
+
+    opacity: 0.15;
+
+    background-image:
+        radial-gradient(
+            circle,
+            transparent 0 40%,
+            rgba(190, 145, 60, 0.3) 41%,
+            transparent 42%
+        );
+
+    background-size: 170px 170px;
+
+    animation: backgroundMove 30s linear infinite;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
+@keyframes backgroundMove {
+
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+
+    to {
+        transform: rotate(360deg) scale(1.1);
+    }
+
 }
 
-.hero-card {
-    width: 390px;
-    min-height: 570px;
 
-    padding: 70px 45px;
+/* =========================
+   BUSINESS CARD
+========================= */
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.business-card {
 
-    text-align: center;
+    width: min(100%, 430px);
+
+    min-height: 760px;
 
     position: relative;
+
+    padding: 45px 35px 40px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(30, 29, 25, 0.95),
-            rgba(8, 8, 7, 0.98)
+            #fffdf8,
+            #f5eee1
         );
 
-    border: 1px solid rgba(201, 164, 92, 0.5);
+    border-radius: 28px;
 
-    border-radius: 18px;
+    border: 1px solid rgba(184, 134, 50, 0.8);
 
     box-shadow:
-        0 0 80px rgba(0, 0, 0, 0.8),
-        inset 0 0 40px rgba(201, 164, 92, 0.03);
+        0 30px 80px rgba(0, 0, 0, 0.65),
+        inset 0 0 0 7px rgba(184, 134, 50, 0.08),
+        inset 0 0 0 9px rgba(184, 134, 50, 0.18);
 
-    transform: perspective(1000px) rotateY(0deg);
+    overflow: hidden;
 
-    transition: 0.5s;
+    text-align: center;
+
+    animation: cardAppear 1s ease;
 }
 
-.hero-card:hover {
-    transform: perspective(1000px) rotateY(-2deg) translateY(-5px);
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
 }
 
 
-/* Card decorative border */
+/* =========================
+   INNER FRAME
+========================= */
 
-.hero-card::before {
+.business-card::before {
+
     content: "";
 
     position: absolute;
 
-    inset: 12px;
+    inset: 18px;
 
-    border: 1px solid rgba(201, 164, 92, 0.25);
+    border: 1px solid var(--gold);
 
-    border-radius: 10px;
+    border-radius: 18px;
 
     pointer-events: none;
+
 }
 
+.business-card::after {
 
-/* ================= CARD CORNERS ================= */
+    content: "";
 
-.card-corner {
     position: absolute;
 
-    display: flex;
-    flex-direction: column;
+    inset: 25px;
 
-    align-items: center;
+    border: 1px solid rgba(184, 134, 50, 0.35);
 
-    font-family: Georgia, serif;
+    border-radius: 14px;
 
-    color: var(--gold);
+    pointer-events: none;
+
 }
 
-.card-corner strong {
-    font-size: 35px;
+
+/* =========================
+   ORNAMENTS
+========================= */
+
+.ornament {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: var(--gold-dark);
+
+    font-size: 42px;
+
+    line-height: 1;
+
 }
 
-.card-corner span {
-    font-size: 30px;
+.top-ornament {
+    margin-bottom: 5px;
 }
 
-.card-corner.top {
-    top: 30px;
-    left: 35px;
-}
-
-.card-corner.bottom {
-    bottom: 30px;
-    right: 35px;
-
+.bottom-ornament {
+    margin-top: 25px;
     transform: rotate(180deg);
 }
 
 
-/* ================= LOGO ================= */
+/* =========================
+   PLAYING CARD A ♠
+========================= */
 
-.hero-logo {
-    position: relative;
+.card-symbol {
 
-    width: 145px;
-    height: 145px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 20px;
-}
-
-.spade {
     position: absolute;
 
-    font-size: 145px;
-
-    color: transparent;
-
-    -webkit-text-stroke: 1px var(--gold);
-
-    opacity: 0.9;
-}
-
-.logo-letter {
-    position: relative;
-    z-index: 2;
-
-    font-family: "Cinzel", serif;
-
-    font-size: 70px;
-
-    color: var(--gold-light);
-}
-
-.hero-small {
-    font-size: 10px;
-    letter-spacing: 6px;
-
-    color: var(--gray);
-
-    margin-bottom: 8px;
-}
-
-.hero h1 {
-    font-family: "Cinzel", serif;
-
-    font-size: 42px;
-    font-weight: 500;
-
-    letter-spacing: 5px;
-}
-
-.gold-line {
-    width: 100px;
-    height: 1px;
-
-    margin: 16px 0;
-
-    background: var(--gold);
-}
-
-.hero h2 {
-    font-size: 13px;
-
-    font-weight: 500;
-
-    letter-spacing: 7px;
-
-    color: var(--gold);
-}
-
-.hero-text {
-    max-width: 260px;
-
-    margin: 25px 0;
-
-    color: #aaa;
-
-    font-size: 13px;
-    line-height: 1.8;
-}
-
-
-/* ================= BUTTON ================= */
-
-.gold-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 12px;
-
-    padding: 14px 25px;
-
-    background: var(--gold);
-
-    color: #111;
-
-    border: none;
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    transition: 0.3s;
-}
-
-.gold-btn:hover {
-    background: var(--gold-light);
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 10px 30px rgba(201, 164, 92, 0.2);
-}
-
-
-/* ================= FLOATING SYMBOLS ================= */
-
-.magic-symbol {
-    position: absolute;
-
-    color: rgba(201, 164, 92, 0.12);
+    top: 38px;
+    left: 38px;
 
     font-family: Georgia, serif;
 
-    animation: float 7s ease-in-out infinite;
+    font-size: 54px;
+
+    line-height: 0.8;
+
+    color: #090909;
+
+    text-align: left;
+
+    z-index: 3;
+
 }
 
-.symbol-1 {
-    left: 8%;
-    top: 25%;
-    font-size: 100px;
-}
+.card-symbol span {
 
-.symbol-2 {
-    right: 10%;
-    top: 20%;
-    font-size: 70px;
-    animation-delay: 1s;
-}
+    display: block;
 
-.symbol-3 {
-    left: 13%;
-    bottom: 20%;
-    font-size: 60px;
-    animation-delay: 2s;
-}
+    font-size: 38px;
 
-.symbol-4 {
-    right: 14%;
-    bottom: 15%;
-    font-size: 90px;
-    animation-delay: 3s;
-}
+    margin-top: 8px;
 
-@keyframes float {
-
-    0%,
-    100% {
-        transform: translateY(0) rotate(0);
-    }
-
-    50% {
-        transform: translateY(-25px) rotate(8deg);
-    }
 }
 
 
-/* ================= SCROLL ================= */
+/* =========================
+   LOGO
+========================= */
 
-.scroll-down {
-    position: absolute;
+.logo-area {
 
-    bottom: 30px;
+    width: 230px;
+    height: 230px;
+
+    margin: 10px auto 5px;
 
     display: flex;
-    flex-direction: column;
+
+    justify-content: center;
     align-items: center;
 
-    gap: 10px;
+    position: relative;
 
-    color: var(--gold);
+    z-index: 2;
 
-    font-size: 9px;
-    letter-spacing: 3px;
+}
+
+.logo-area img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 5px 5px rgba(0,0,0,0.12));
+
 }
 
 
-/* ================= SECTION ================= */
+/* =========================
+   NAME
+========================= */
 
-.section {
-    padding: 120px 7%;
+.identity {
+
+    position: relative;
+
+    z-index: 3;
+
 }
 
-.section-title {
-    text-align: center;
-
-    margin-bottom: 70px;
-}
-
-.section-title span {
-    color: var(--gold);
-
-    font-size: 10px;
-
-    letter-spacing: 5px;
-}
-
-.section-title h2 {
-    margin-top: 12px;
+.identity h1 {
 
     font-family: "Cinzel", serif;
 
-    font-size: 40px;
+    font-size: 34px;
 
-    font-weight: 400;
+    letter-spacing: 5px;
+
+    font-weight: 600;
+
+    color: #14110d;
+
+    margin-top: 5px;
+
 }
 
-.section-title strong {
-    color: var(--gold);
-    font-weight: 500;
+
+.title {
+
+    margin-top: 7px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    color: #76501b;
+
 }
 
-.title-line {
-    width: 60px;
+.title span {
+
+    width: 45px;
+
     height: 1px;
 
     background: var(--gold);
 
-    margin: 20px auto 0;
 }
 
 
-/* ================= ABOUT ================= */
+/* =========================
+   DESCRIPTION
+========================= */
 
-.about {
-    background: #0d0d0b;
-}
+.description {
 
-.about-container {
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.about-card {
     position: relative;
 
-    padding: 70px;
+    z-index: 3;
 
-    text-align: center;
+    max-width: 300px;
 
-    background: #11110f;
-
-    border: 1px solid rgba(201, 164, 92, 0.25);
-}
-
-.about-spade {
-    font-size: 70px;
-
-    color: var(--gold);
-
-    margin-bottom: 15px;
-}
-
-.about-card h3 {
-    font-family: "Cinzel", serif;
-
-    font-size: 30px;
-
-    letter-spacing: 5px;
-}
-
-.about-card .subtitle {
-    color: var(--gold);
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-
-    margin: 10px 0 30px;
-}
-
-.about-card p {
-    max-width: 600px;
-
-    margin: 15px auto;
-
-    color: #aaa;
-
-    line-height: 1.9;
+    margin: 20px auto;
 
     font-size: 14px;
-}
 
-.signature {
-    margin-top: 35px;
+    line-height: 1.7;
 
-    font-family: cursive;
+    color: #655b4d;
 
-    color: var(--gold);
-
-    font-size: 30px;
 }
 
 
-/* ================= SHOWS ================= */
+/* =========================
+   PHONE
+========================= */
 
-.shows {
-    background: #080807;
+.phone {
+
+    position: relative;
+
+    z-index: 3;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    color: #15120f;
+
+    text-decoration: none;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+
+    padding: 10px 18px;
+
+    border-top: 1px solid rgba(184, 134, 50, 0.45);
+
+    border-bottom: 1px solid rgba(184, 134, 50, 0.45);
+
+    transition: 0.3s ease;
+
 }
 
-.shows-grid {
-    max-width: 1100px;
+.phone i {
 
-    margin: auto;
+    color: var(--gold-dark);
 
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 20px;
 }
 
-.show-card {
-    padding: 45px 25px;
+.phone:hover {
 
-    text-align: center;
+    color: var(--gold-dark);
 
-    background: #11110f;
+    transform: scale(1.04);
 
-    border: 1px solid rgba(201, 164, 92, 0.15);
-
-    transition: 0.4s;
 }
 
-.show-card:hover {
-    transform: translateY(-8px);
 
-    border-color: rgba(201, 164, 92, 0.5);
+/* =========================
+   SOCIAL
+========================= */
+
+.social-section {
+
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: 22px;
+
 }
 
-.show-icon {
-    width: 65px;
-    height: 65px;
+.social-icons {
 
     display: flex;
-    align-items: center;
+
     justify-content: center;
 
-    margin: 0 auto 25px;
+    gap: 14px;
+
+}
+
+.social-icons a {
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
 
     border: 1px solid var(--gold);
 
     border-radius: 50%;
 
-    color: var(--gold);
+    color: #15120f;
 
-    font-size: 20px;
+    text-decoration: none;
+
+    background: rgba(255,255,255,0.4);
+
+    transition: 0.3s ease;
+
 }
 
-.show-card h3 {
-    font-family: "Cinzel", serif;
+.social-icons a:hover {
 
-    font-size: 17px;
-
-    font-weight: 500;
-
-    margin-bottom: 15px;
-}
-
-.show-card p {
-    color: #888;
-
-    font-size: 12px;
-
-    line-height: 1.8;
-}
-
-
-/* ================= QUOTE ================= */
-
-.quote-section {
-    min-height: 400px;
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 70px 20px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(201, 164, 92, 0.08),
-            transparent 60%
-        );
-}
-
-.quote-symbol {
-    font-size: 80px;
-
-    color: var(--gold);
-
-    margin-bottom: 20px;
-}
-
-.quote-section p {
-    max-width: 700px;
-
-    font-family: "Cinzel", serif;
-
-    font-size: 28px;
-
-    line-height: 1.6;
-}
-
-.quote-section span {
-    margin-top: 25px;
-
-    color: var(--gold);
-
-    font-size: 10px;
-
-    letter-spacing: 4px;
-}
-
-
-/* ================= CONTACT ================= */
-
-.contact {
-    background: #0d0d0b;
-}
-
-.contact-container {
-    max-width: 1000px;
-
-    margin: auto;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 80px;
-}
-
-.contact-info {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 35px;
-
-    justify-content: center;
-}
-
-.contact-item {
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
-}
-
-.contact-icon {
-    width: 50px;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(201, 164, 92, 0.5);
-
-    color: var(--gold);
-
-    font-size: 17px;
-}
-
-.contact-item small {
-    display: block;
-
-    color: #777;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 5px;
-}
-
-.contact-item a,
-.contact-item span {
-    color: #eee;
-
-    font-size: 14px;
-}
-
-.contact-form {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 18px;
-}
-
-.input-group input,
-.input-group textarea {
-    width: 100%;
-
-    padding: 17px;
-
-    background: #11110f;
-
-    border: 1px solid rgba(201, 164, 92, 0.2);
-
-    outline: none;
+    background: var(--gold);
 
     color: white;
 
-    resize: vertical;
+    transform: translateY(-5px) rotate(5deg);
 
-    transition: 0.3s;
-}
+    box-shadow: 0 8px 18px rgba(120, 80, 25, 0.3);
 
-.input-group input:focus,
-.input-group textarea:focus {
-    border-color: var(--gold);
-}
-
-.input-group input::placeholder,
-.input-group textarea::placeholder {
-    color: #666;
 }
 
 
-/* ================= FOOTER ================= */
+.username {
 
-footer {
-    padding: 60px 20px;
-
-    text-align: center;
-
-    background: #060605;
-
-    border-top: 1px solid rgba(201, 164, 92, 0.15);
-}
-
-.footer-spade {
-    font-size: 45px;
-
-    color: var(--gold);
-}
-
-.footer-logo h3 {
-    margin-top: 5px;
+    margin-top: 13px;
 
     font-family: "Cinzel", serif;
 
-    letter-spacing: 5px;
+    font-size: 15px;
+
+    letter-spacing: 3px;
+
+    color: #57452d;
+
 }
 
-.footer-logo span {
-    display: block;
 
-    margin-top: 5px;
+/* =========================
+   BUTTONS
+========================= */
 
-    color: var(--gold);
+.buttons {
 
-    font-size: 9px;
+    position: relative;
 
-    letter-spacing: 4px;
-}
+    z-index: 3;
 
-.social-links {
+    margin-top: 25px;
+
     display: flex;
 
-    justify-content: center;
+    flex-direction: column;
 
-    gap: 15px;
+    gap: 10px;
 
-    margin: 30px 0;
 }
 
-.social-links a {
-    width: 42px;
-    height: 42px;
+.main-button,
+.secondary-button {
+
+    width: 100%;
+
+    min-height: 48px;
+
+    border-radius: 30px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    border: 1px solid rgba(201, 164, 92, 0.3);
+    gap: 10px;
 
-    color: #aaa;
+    font-family: "Cinzel", serif;
 
-    transition: 0.3s;
+    font-size: 13px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+
 }
 
-.social-links a:hover {
-    color: var(--gold);
+.main-button {
 
-    border-color: var(--gold);
+    background: #17130f;
 
-    transform: translateY(-4px);
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid #17130f;
+
 }
 
-footer p {
-    color: #555;
+.main-button:hover {
 
-    font-size: 10px;
+    background: var(--gold-dark);
 
-    letter-spacing: 1px;
-}
+    border-color: var(--gold-dark);
 
+    transform: translateY(-2px);
 
-/* ================= MOBILE ================= */
-
-@media (max-width: 900px) {
-
-    .shows-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .contact-container {
-        grid-template-columns: 1fr;
-
-        gap: 50px;
-    }
 }
 
 
-@media (max-width: 650px) {
+.secondary-button {
 
-    .navbar {
-        height: 70px;
+    background: transparent;
+
+    color: #3b3021;
+
+    border: 1px solid var(--gold);
+
+}
+
+.secondary-button:hover {
+
+    background: rgba(184, 134, 50, 0.1);
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================
+   BOTTOM SYMBOL
+========================= */
+
+.bottom-symbol {
+
+    position: absolute;
+
+    right: 37px;
+
+    bottom: 36px;
+
+    z-index: 3;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    font-family: Georgia, serif;
+
+    color: #111;
+
+}
+
+.bottom-symbol span {
+
+    font-size: 35px;
+
+    line-height: 30px;
+
+}
+
+.bottom-symbol strong {
+
+    font-size: 40px;
+
+    font-weight: normal;
+
+    line-height: 40px;
+
+    transform: rotate(180deg);
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px 10px;
     }
 
-    .nav-links {
-        position: absolute;
+    .business-card {
 
-        top: 70px;
-        left: 0;
+        min-height: 700px;
 
-        width: 100%;
+        padding: 40px 25px 30px;
 
-        display: none;
+        border-radius: 22px;
 
-        flex-direction: column;
-
-        gap: 0;
-
-        background: #090908;
-
-        border-bottom: 1px solid rgba(201, 164, 92, 0.2);
     }
 
-    .nav-links.active {
-        display: flex;
+    .business-card::before {
+        inset: 13px;
     }
 
-    .nav-links a {
-        padding: 18px;
-
-        text-align: center;
-
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+    .business-card::after {
+        inset: 19px;
     }
 
-    .menu-btn {
-        display: block;
+    .logo-area {
+
+        width: 190px;
+        height: 190px;
+
     }
 
-    .hero-card {
-        width: calc(100vw - 45px);
+    .identity h1 {
 
-        min-height: 540px;
+        font-size: 28px;
 
-        padding: 60px 30px;
+        letter-spacing: 4px;
+
     }
 
-    .hero h1 {
-        font-size: 32px;
+    .description {
 
-        letter-spacing: 3px;
+        font-size: 13px;
+
     }
 
-    .hero-logo {
-        transform: scale(0.85);
+    .phone {
+
+        font-size: 16px;
+
     }
 
-    .magic-symbol {
-        display: none;
+    .card-symbol {
+
+        top: 32px;
+        left: 30px;
+
+        font-size: 43px;
+
     }
 
-    .section {
-        padding: 90px 20px;
-    }
+    .card-symbol span {
 
-    .section-title h2 {
         font-size: 30px;
+
     }
 
-    .shows-grid {
-        grid-template-columns: 1fr;
+    .bottom-symbol {
+
+        right: 28px;
+
     }
 
-    .about-card {
-        padding: 50px 25px;
+}
+
+
+/* =========================
+   VERY SMALL SCREENS
+========================= */
+
+@media (max-width: 360px) {
+
+    .business-card {
+
+        padding-left: 20px;
+        padding-right: 20px;
+
     }
 
-    .quote-section p {
-        font-size: 21px;
+    .logo-area {
+
+        width: 165px;
+        height: 165px;
+
     }
 
-    .contact-container {
-        gap: 45px;
+    .identity h1 {
+
+        font-size: 24px;
+
     }
+
+    .social-icons {
+
+        gap: 8px;
+
+    }
+
 }
