@@ -1637,3 +1637,26 @@ footer small {
     }
 
 }
+/* =========================================
+   LOGO INSIDE THE MAGIC CIRCLE
+========================================= */
+
+.circle-logo {
+    position: absolute;
+
+    z-index: 6;
+
+    top: 25px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 95px;
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 8px rgba(199,149,50,0.7))
+        drop-shadow(0 0 20px rgba(199,149,50,0.3));
+}
