@@ -2,258 +2,227 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>AMR SAMY | The Happiness Maker</title>
 
-    <meta name="theme-color" content="#050505">
-
-    <title>Amr Samy | The Magician</title>
+    <meta name="description" content="Amr Samy — The Happiness Maker">
 
     <link rel="stylesheet" href="style.css">
-
-    <!-- QR Code Library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
 </head>
 
 <body>
 
 <div class="page">
 
-    <div class="card">
+    <main class="card">
 
-        <!-- LOGO -->
-        <div class="logo">
-            A
-            <span>MAGIC</span>
+        <!-- Playing Card Corners -->
+        <div class="corner top-left">
+            <strong>A</strong>
+            <span>♠</span>
+        </div>
+
+        <div class="corner top-right">
+            <strong>K</strong>
+            <span>♦</span>
+        </div>
+
+        <div class="corner bottom-left">
+            <strong>Q</strong>
+            <span>♥</span>
+        </div>
+
+        <div class="corner bottom-right">
+            <strong>J</strong>
+            <span>♣</span>
         </div>
 
 
-        <!-- PROFILE -->
-        <div class="profile">
+        <!-- Top Ornament -->
+        <div class="ornament">
+            ♠ ◆ ♣
+        </div>
 
-            <div class="photo-frame">
-                <img src="amr-samy.jpg" alt="Amr Samy">
+
+        <!-- Profile -->
+        <section class="profile">
+
+            <div class="logo-frame">
+                <div class="logo-inner">
+                    <img src="logo.png" alt="Amr Samy Logo">
+                </div>
+            </div>
+
+            <div class="small-title">
+                THE MAGICIAN
             </div>
 
             <h1>AMR SAMY</h1>
 
-            <h2>THE MAGICIAN</h2>
+            <div class="gold-line">
+                <span>♠</span>
+                <i></i>
+                <span>♦</span>
+                <i></i>
+                <span>♣</span>
+            </div>
 
-            <p class="description">
-                Magician • Entertainer • Illusionist
+            <p class="subtitle">
+                THE HAPPINESS MAKER
             </p>
 
-        </div>
+        </section>
 
 
-        <!-- MAIN BUTTONS -->
-        <div class="main-buttons">
+        <!-- Links -->
+        <section class="links">
 
-            <a
-                class="main-button gold"
-                href="tel:+201115552621"
-            >
-                ☎
-                <span>Call Me</span>
+            <!-- Phone -->
+            <a href="tel:+201115552621" class="link">
+                <span class="link-icon">☎</span>
+                <span class="link-name">Phone</span>
+                <span class="arrow">→</span>
             </a>
 
 
-            <a
-                class="main-button"
-                href="https://wa.me/201115552621"
-                target="_blank"
-            >
-                💬
-                <span>WhatsApp</span>
+            <!-- WhatsApp -->
+            <a href="https://wa.me/201115552621"
+               class="link"
+               target="_blank"
+               rel="noopener">
+
+                <span class="link-icon">◉</span>
+                <span class="link-name">WhatsApp</span>
+                <span class="arrow">→</span>
+
             </a>
 
 
-            <button
-                class="main-button"
-                onclick="saveContact()"
-            >
-                👤
-                <span>Save Contact</span>
+            <!-- Instagram -->
+            <a href="https://instagram.com/Iamamrsamy"
+               class="link"
+               target="_blank"
+               rel="noopener">
+
+                <span class="link-icon">◎</span>
+                <span class="link-name">Instagram</span>
+                <span class="arrow">→</span>
+
+            </a>
+
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@Iamamrsamy"
+               class="link"
+               target="_blank"
+               rel="noopener">
+
+                <span class="link-icon">♪</span>
+                <span class="link-name">TikTok</span>
+                <span class="arrow">→</span>
+
+            </a>
+
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@Iamamrsamy"
+               class="link"
+               target="_blank"
+               rel="noopener">
+
+                <span class="link-icon">▶</span>
+                <span class="link-name">YouTube</span>
+                <span class="arrow">→</span>
+
+            </a>
+
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/Iamamrsamy"
+               class="link"
+               target="_blank"
+               rel="noopener">
+
+                <span class="link-icon">in</span>
+                <span class="link-name">LinkedIn</span>
+                <span class="arrow">→</span>
+
+            </a>
+
+
+            <!-- X -->
+            <a href="https://x.com/Iamamrsamy"
+               class="link"
+               target="_blank"
+               rel="noopener">
+
+                <span class="link-icon">𝕏</span>
+                <span class="link-name">Twitter / X</span>
+                <span class="arrow">→</span>
+
+            </a>
+
+
+            <!-- Email -->
+            <a href="mailto:amrsamydxb@gmail.com"
+               class="link">
+
+                <span class="link-icon">✉</span>
+                <span class="link-name">Email</span>
+                <span class="arrow">→</span>
+
+            </a>
+
+
+            <!-- Save Contact -->
+            <button class="save-contact" onclick="saveContact()">
+
+                <span class="save-icon">♣</span>
+
+                <span>SAVE MY CONTACT</span>
+
             </button>
 
 
-            <a
-                class="main-button"
-                href="mailto:amrsamydxb@gmail.com"
-            >
-                ✉
-                <span>Email</span>
-            </a>
+            <!-- QR CODE -->
+            <div class="qr-section">
 
-        </div>
-
-
-        <!-- CONTACT -->
-        <section>
-
-            <div class="section-title">
-                CONTACT
-            </div>
-
-
-            <a
-                class="contact"
-                href="tel:+201115552621"
-            >
-
-                <div class="icon">☎</div>
-
-                <div>
-                    <strong>Phone</strong>
-                    <small>01115552621</small>
+                <div class="qr-title">
+                    SCAN TO CONNECT
                 </div>
-
-            </a>
-
-
-            <a
-                class="contact"
-                href="https://wa.me/201115552621"
-                target="_blank"
-            >
-
-                <div class="icon">💬</div>
-
-                <div>
-                    <strong>WhatsApp</strong>
-                    <small>01115552621</small>
-                </div>
-
-            </a>
-
-
-            <a
-                class="contact"
-                href="mailto:amrsamydxb@gmail.com"
-            >
-
-                <div class="icon">✉</div>
-
-                <div>
-                    <strong>Email</strong>
-                    <small>amrsamydxb@gmail.com</small>
-                </div>
-
-            </a>
-
-        </section>
-
-
-        <!-- QR CODE -->
-        <section>
-
-            <div class="section-title">
-                SCAN MY CARD
-            </div>
-
-            <div class="qr-container">
 
                 <div class="qr-box">
-                    <canvas id="qrcode"></canvas>
+
+                    <img
+                        src="qr-code.png"
+                        alt="Scan to open Amr Samy Digital Card"
+                    >
+
                 </div>
 
-                <p>
-                    Scan to open my digital business card
-                </p>
+                <div class="qr-url">
+                    iamamrsamy.github.io/amrsamy
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- SOCIAL MEDIA -->
-        <section>
+        <!-- Footer -->
+        <footer>
 
-            <div class="section-title">
-                FOLLOW ME
-            </div>
+            <span>♠</span>
 
+            AMR SAMY
 
-            <div class="social-grid">
+            <span>♠</span>
 
-                <a
-                    href="https://instagram.com/iamamrsamy"
-                    target="_blank"
-                >
-                    <b>◎</b>
-                    Instagram
-                </a>
+        </footer>
 
+    </main>
 
-                <a
-                    href="https://facebook.com/iamamrsamy"
-                    target="_blank"
-                >
-                    <b>f</b>
-                    Facebook
-                </a>
-
-
-                <a
-                    href="https://www.tiktok.com/@iamamrsamy"
-                    target="_blank"
-                >
-                    <b>♪</b>
-                    TikTok
-                </a>
-
-
-                <a
-                    href="https://www.youtube.com/@iamamrsamy"
-                    target="_blank"
-                >
-                    <b>▶</b>
-                    YouTube
-                </a>
-
-
-                <a
-                    href="https://www.linkedin.com/in/iamamrsamy"
-                    target="_blank"
-                >
-                    <b>in</b>
-                    LinkedIn
-                </a>
-
-
-                <a
-                    href="https://x.com/iamamrsamy"
-                    target="_blank"
-                >
-                    <b>𝕏</b>
-                    X
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- FOOTER -->
-
-        <div class="footer">
-
-            Let's Make Magic Happen ✨
-
-            <br>
-
-            <strong>AMR SAMY</strong>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<div id="message">
-    Contact saved ✓
 </div>
 
 
