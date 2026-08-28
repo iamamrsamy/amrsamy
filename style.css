@@ -1,688 +1,1224 @@
-:root {
-  --black: #050505;
-  --dark: #0a0a0a;
-  --gold: #c9a74a;
-  --gold-light: #f1d88a;
-  --gold-dark: #765d20;
-  --red: #8c1728;
-  --cream: #eee7d5;
-  --gray: #777;
-}
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html {
-  scroll-behavior: smooth;
+
+:root {
+
+    --black: #050504;
+    --black-2: #0c0b09;
+
+    --gold: #c59a4a;
+    --gold-light: #f0d28b;
+    --gold-dark: #76521d;
+
+    --cream: #eee6d2;
+
 }
+
+
+/* ==============================
+   BODY
+============================== */
+
 body {
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(201,167,74,.11),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 10% 80%,
-      rgba(140,23,40,.07),
-      transparent 30%
-    ),
-    #050505;
-  color: var(--cream);
-  font-family: "Inter", sans-serif;
-  overflow-x: hidden;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            #211b11 0%,
+            #0c0b09 35%,
+            #030303 80%
+        );
+
+    color: var(--cream);
+
+    font-family: "Cormorant Garamond", serif;
+
+    overflow-x: hidden;
+
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .025;
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  z-index: 100;
+
+
+/* ==============================
+   BACKGROUND
+============================== */
+
+.magic-bg {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(197,154,74,.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(197,154,74,.07),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(197,154,74,.06),
+            transparent 25%
+        );
+
+    pointer-events: none;
+
 }
-button,
-a {
-  -webkit-tap-highlight-color:
-    transparent;
+
+
+/* ==============================
+   STARS
+============================== */
+
+.stars {
+
+    position: fixed;
+
+    inset: 0;
+
+    opacity: .5;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(240,210,139,.8) 1px,
+            transparent 1.5px
+        );
+
+    background-size: 100px 100px;
+
+    animation: starsMove 35s linear infinite;
+
+    pointer-events: none;
+
 }
-a {
-  color: inherit;
-  text-decoration: none;
+
+
+@keyframes starsMove {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100px);
+    }
+
 }
-/* ==================================
-   FLOATING CARDS
-================================== */
-.playing-card {
-  position: fixed;
-  z-index: 0;
-  font-family: Georgia, serif;
-  font-size: 120px;
-  opacity: .025;
-  pointer-events: none;
-  animation:
-    floatCard 12s ease-in-out infinite;
+
+
+/* ==============================
+   PARTICLES
+============================== */
+
+#particles {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 5;
+
 }
-.card-one {
-  left: -35px;
-  top: 12%;
+
+
+.particle {
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: var(--gold-light);
+
+    box-shadow:
+        0 0 8px var(--gold-light),
+        0 0 15px var(--gold);
+
+    animation: floatParticle linear infinite;
+
 }
-.card-two {
-  right: -30px;
-  top: 30%;
-  color: var(--red);
-  animation-delay: 2s;
+
+
+@keyframes floatParticle {
+
+    from {
+
+        transform:
+            translateY(110vh)
+            translateX(0)
+            scale(.3);
+
+        opacity: 0;
+
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: .8;
+    }
+
+    to {
+
+        transform:
+            translateY(-10vh)
+            translateX(80px)
+            scale(1);
+
+        opacity: 0;
+
+    }
+
 }
-.card-three {
-  left: 3%;
-  bottom: 15%;
-  color: var(--red);
-  animation-delay: 4s;
+
+
+/* ==============================
+   SCENE
+============================== */
+
+.scene {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 50px 15px;
+
+    position: relative;
+
+    z-index: 10;
+
 }
-.card-four {
-  right: 3%;
-  bottom: 5%;
-  animation-delay: 6s;
+
+
+/* ==============================
+   CARD
+============================== */
+
+.magic-card {
+
+    width: min(430px, 100%);
+
+    min-height: 780px;
+
+    position: relative;
+
+    padding: 55px 38px 42px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(24,21,16,.98),
+            rgba(8,8,7,.99)
+        );
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow:
+
+        0 40px 100px rgba(0,0,0,.85),
+
+        0 0 60px rgba(197,154,74,.08),
+
+        inset 0 0 50px rgba(197,154,74,.025);
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform .2s ease,
+        box-shadow .4s ease;
+
+    animation: cardEntrance 1.4s ease forwards;
+
 }
-@keyframes floatCard {
-  50% {
-    transform:
-      translateY(-40px)
-      rotate(8deg);
-  }
+
+
+@keyframes cardEntrance {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            perspective(1000px)
+            rotateX(12deg)
+            translateY(60px)
+            scale(.94);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            perspective(1000px)
+            rotateX(0)
+            translateY(0)
+            scale(1);
+
+    }
+
 }
-/* ==================================
-   MAGIC PAGE
-================================== */
-.magic-page {
-  position: relative;
-  z-index: 2;
-  width: min(100%, 560px);
-  margin: auto;
+
+
+/* ==============================
+   GOLD FRAME
+============================== */
+
+.gold-frame {
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid var(--gold-dark);
+
+    border-radius: 18px;
+
+    pointer-events: none;
+
 }
-/* ==================================
-   HERO
-================================== */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  padding:
-    45px 22px 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+
+
+.gold-frame::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(197,154,74,.35);
+
+    border-radius: 13px;
+
 }
-/* ==================================
-   MAGIC RINGS
-================================== */
-.magic-ring {
-  position: absolute;
-  border:
-    1px solid
-    rgba(201,167,74,.12);
-  border-radius: 50%;
-  pointer-events: none;
+
+
+.gold-frame::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 18px;
+
+    border: 1px solid rgba(197,154,74,.12);
+
+    border-radius: 9px;
+
 }
-.ring-one {
-  width: 310px;
-  height: 310px;
-  animation:
-    spin 25s linear infinite;
+
+
+/* ==============================
+   TOP A ♠
+============================== */
+
+.top-symbol {
+
+    position: absolute;
+
+    left: 40px;
+
+    top: 37px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    font-family: Georgia, serif;
+
+    color: var(--gold-light);
+
+    z-index: 4;
+
 }
-.ring-two {
-  width: 270px;
-  height: 270px;
-  border-style: dashed;
-  animation:
-    spinReverse 18s linear infinite;
+
+
+.top-symbol span {
+
+    font-size: 40px;
+
+    line-height: 30px;
+
 }
-.ring-three {
-  width: 350px;
-  height: 350px;
-  border-color:
-    rgba(201,167,74,.045);
+
+
+.top-symbol small {
+
+    font-size: 28px;
+
 }
-@keyframes spin {
-  to {
-    transform:
-      rotate(360deg);
-  }
+
+
+/* ==============================
+   CORNERS
+============================== */
+
+.corner {
+
+    position: absolute;
+
+    color: var(--gold);
+
+    font-size: 24px;
+
+    z-index: 3;
+
+    opacity: .75;
+
 }
-@keyframes spinReverse {
-  to {
-    transform:
-      rotate(-360deg);
-  }
+
+
+.corner-tl {
+    top: 23px;
+    left: 23px;
 }
-/* ==================================
-   RUNES
-================================== */
-.rune {
-  position: absolute;
-  color: var(--gold);
-  font-family: Georgia, serif;
-  opacity: .35;
-  font-size: 15px;
-  animation:
-    runePulse 3s ease-in-out infinite;
+
+.corner-tr {
+    top: 23px;
+    right: 23px;
 }
-.rune-one {
-  top: 28%;
-  left: 20%;
+
+.corner-bl {
+    bottom: 23px;
+    left: 23px;
 }
-.rune-two {
-  top: 35%;
-  right: 19%;
-  animation-delay: 1s;
+
+.corner-br {
+    bottom: 23px;
+    right: 23px;
 }
-.rune-three {
-  bottom: 30%;
-  left: 25%;
-  animation-delay: 2s;
-}
-.rune-four {
-  bottom: 25%;
-  right: 24%;
-  animation-delay: .5s;
-}
-@keyframes runePulse {
-  50% {
-    opacity: .9;
-    transform:
-      scale(1.5)
-      rotate(90deg);
-  }
-}
-/* ==================================
+
+
+/* ==============================
    LOGO
-================================== */
-.magic-logo {
-  position: relative;
-  width: 145px;
-  height: 145px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border:
-    1px solid
-    var(--gold);
-  border-radius: 50%;
-  box-shadow:
-    0 0 25px
-    rgba(201,167,74,.08),
-    inset 0 0 25px
-    rgba(201,167,74,.05);
-  animation:
-    logoFloat 5s ease-in-out infinite;
+============================== */
+
+.logo-container {
+
+    width: 235px;
+    height: 235px;
+
+    margin: 10px auto 8px;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 3;
+
 }
-.magic-logo::before {
-  content: "";
-  position: absolute;
-  inset: 9px;
-  border:
-    1px solid
-    rgba(201,167,74,.35);
-  border-radius: 50%;
+
+
+.logo {
+
+    width: 82%;
+
+    height: 82%;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 5;
+
+    filter:
+
+        drop-shadow(0 0 8px rgba(197,154,74,.3))
+
+        drop-shadow(0 10px 20px rgba(0,0,0,.5));
+
 }
-.magic-logo::after {
-  content: "♠  ♥  ♦  ♣";
-  position: absolute;
-  inset: -13px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--gold);
-  font-size: 7px;
-  letter-spacing: 11px;
-  transform:
-    rotate(-8deg);
+
+
+/* ==============================
+   MAGIC RINGS
+============================== */
+
+.magic-ring {
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(197,154,74,.45);
+
+    border-top-color: transparent;
+
+    border-bottom-color: transparent;
+
+    animation: spin 15s linear infinite;
+
 }
-.logo-inner {
-  width: 92px;
-  height: 92px;
-  border:
-    1px solid
-    rgba(201,167,74,.55);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2px;
-  font-family: "Cinzel", serif;
-  color: var(--gold-light);
+
+
+.ring-two {
+
+    width: 82%;
+    height: 82%;
+
+    border-style: dashed;
+
+    animation:
+        spinReverse 20s linear infinite;
+
+    opacity: .45;
+
 }
-.logo-inner strong {
-  font-size: 38px;
-  font-weight: 500;
-  letter-spacing: -5px;
+
+
+@keyframes spin {
+
+    to {
+        transform: rotate(360deg);
+    }
+
 }
-.logo-small {
-  font-size: 8px;
-  opacity: .6;
+
+
+@keyframes spinReverse {
+
+    to {
+        transform: rotate(-360deg);
+    }
+
 }
-@keyframes logoFloat {
-  50% {
-    transform:
-      translateY(-7px)
-      rotate(1deg);
-  }
+
+
+/* ==============================
+   NAME
+============================== */
+
+.name-area {
+
+    text-align: center;
+
+    position: relative;
+
+    z-index: 4;
+
 }
-/* ==================================
-   TITLE
-================================== */
-.eyebrow {
-  margin-top: 42px;
-  color: var(--gold);
-  font-size: 7px;
-  letter-spacing: 5px;
-  font-weight: 600;
+
+
+.small-title {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: var(--gold);
+
+    margin-bottom: 5px;
+
 }
-.hero h1 {
-  margin-top: 12px;
-  font-family: "Cinzel", serif;
-  font-size: clamp(42px, 13vw, 68px);
-  line-height: .9;
-  font-weight: 500;
-  letter-spacing: 6px;
+
+
+.name-area h1 {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 34px;
+
+    letter-spacing: 7px;
+
+    font-weight: 500;
+
+    color: #f3ead8;
+
+    text-shadow:
+        0 0 15px rgba(197,154,74,.15);
+
 }
-.hero h1 span {
-  display: block;
-  color: var(--gold-light);
-}
+
+
 .title-line {
-  width: min(100%, 300px);
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 8px;
+
 }
-.title-line i {
-  height: 1px;
-  flex: 1;
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      var(--gold-dark)
-    );
-}
-.title-line i:last-child {
-  background:
-    linear-gradient(
-      90deg,
-      var(--gold-dark),
-      transparent
-    );
-}
+
+
 .title-line span {
-  color: #8d836d;
-  font-size: 7px;
-  letter-spacing: 3px;
+
+    width: 45px;
+
+    height: 1px;
+
+    background: var(--gold);
+
 }
+
+
+.title-line b {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: var(--gold-light);
+
+    font-weight: 500;
+
+}
+
+
+/* ==============================
+   INTRO
+============================== */
+
 .intro {
-  max-width: 280px;
-  margin-top: 17px;
-  color: #68645b;
-  font-size: 10px;
-  line-height: 1.7;
+
+    text-align: center;
+
+    margin: 19px auto 14px;
+
+    max-width: 280px;
+
+    font-size: 16px;
+
+    font-style: italic;
+
+    letter-spacing: 1px;
+
+    color: #a99c85;
+
 }
-/* ==================================
-   ENTER BUTTON
-================================== */
-.reveal-button {
-  margin-top: 30px;
-  width: min(100%, 290px);
-  height: 52px;
-  border:
-    1px solid
-    rgba(201,167,74,.5);
-  border-radius: 2px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(201,167,74,.08),
-      rgba(201,167,74,.02)
-    );
-  color: var(--gold-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  cursor: pointer;
-  font-size: 8px;
-  letter-spacing: 3px;
-  transition: .35s;
+
+
+/* ==============================
+   DIVIDER
+============================== */
+
+.divider {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 17px 0;
+
 }
-.reveal-button:hover {
-  background:
-    rgba(201,167,74,.12);
-  box-shadow:
-    0 0 35px
-    rgba(201,167,74,.1);
-  transform:
-    translateY(-3px);
+
+
+.divider i {
+
+    width: 42px;
+
+    height: 1px;
+
+    background:
+
+        linear-gradient(
+            to right,
+            transparent,
+            var(--gold)
+        );
+
 }
-.button-icon {
-  font-size: 15px;
+
+
+.divider i:nth-of-type(2) {
+
+    background:
+
+        linear-gradient(
+            to left,
+            transparent,
+            var(--gold)
+        );
+
 }
-.button-arrow {
-  animation:
-    arrowMove 1.5s infinite;
+
+
+.divider span {
+
+    color: var(--gold);
+
+    font-size: 12px;
+
 }
-@keyframes arrowMove {
-  50% {
-    transform:
-      translateY(5px);
-  }
-}
-/* ==================================
-   CONTENT
-================================== */
-.content {
-  padding:
-    10px 18px 40px;
-  opacity: 0;
-  transform:
-    translateY(40px);
-  pointer-events: none;
-  transition:
-    opacity .8s ease,
-    transform .8s ease;
-}
-.content.active {
-  opacity: 1;
-  transform:
-    translateY(0);
-  pointer-events: auto;
-}
-/* ==================================
-   SECTION
-================================== */
-.section {
-  margin-top: 28px;
-}
-.section-heading {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-.section-heading > span {
-  color: var(--gold);
-  font-family: "Cinzel", serif;
-  font-size: 7px;
-}
-.section-heading h2 {
-  color: #8f8979;
-  font-size: 7px;
-  letter-spacing: 3px;
-  font-weight: 500;
-  white-space: nowrap;
-}
-.section-heading div {
-  flex: 1;
-  height: 1px;
-  background:
-    linear-gradient(
-      90deg,
-      rgba(201,167,74,.25),
-      transparent
-    );
-}
-/* ==================================
+
+
+/* ==============================
    CONTACT
-================================== */
-.contact-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+============================== */
+
+.contact-area {
+
+    display: flex;
+
+    justify-content: center;
+
 }
+
+
 .contact-item {
-  min-height: 67px;
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  border:
-    1px solid
-    rgba(255,255,255,.07);
-  background:
-    linear-gradient(
-      120deg,
-      rgba(255,255,255,.035),
-      rgba(255,255,255,.01)
-    );
-  transition: .3s;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    text-decoration: none;
+
+    color: var(--cream);
+
+    padding: 11px 22px;
+
+    border: 1px solid rgba(197,154,74,.35);
+
+    background: rgba(197,154,74,.035);
+
+    border-radius: 50px;
+
+    transition: .3s ease;
+
 }
+
+
 .contact-item:hover {
-  border-color:
-    rgba(201,167,74,.4);
-  transform:
-    translateX(4px);
+
+    border-color: var(--gold);
+
+    background: rgba(197,154,74,.09);
+
+    transform: translateY(-3px);
+
 }
-.contact-symbol {
-  width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border:
-    1px solid
-    rgba(201,167,74,.3);
-  color: var(--gold);
-  font-size: 16px;
+
+
+.contact-item .icon {
+
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: #080706;
+
 }
+
+
 .contact-item small {
-  display: block;
-  color: #5e5b54;
-  font-size: 6px;
-  letter-spacing: 2px;
+
+    display: block;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    color: var(--gold);
+
 }
+
+
 .contact-item strong {
-  display: block;
-  margin-top: 5px;
-  color: #bdb6a6;
-  font-size: 9px;
-  font-weight: 500;
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+
 }
-.contact-item > span {
-  margin-left: auto;
-  color: #49453d;
-}
-/* ==================================
+
+
+/* ==============================
    SOCIAL
-================================== */
-.social-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(2, 1fr);
-  gap: 7px;
+============================== */
+
+.social-area {
+
+    text-align: center;
+
+    margin-top: 24px;
+
 }
-.social {
-  min-height: 70px;
-  padding: 11px;
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  border:
-    1px solid
-    rgba(255,255,255,.07);
-  background:
-    rgba(255,255,255,.025);
-  transition: .3s;
+
+
+.social-area p {
+
+    font-family: "Cinzel", serif;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #837660;
+
+    margin-bottom: 12px;
+
 }
-.social:hover {
-  border-color:
-    rgba(201,167,74,.35);
-  transform:
-    translateY(-3px);
+
+
+.socials {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 13px;
+
 }
-.social-icon {
-  width: 33px;
-  height: 33px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border:
-    1px solid
-    rgba(201,167,74,.25);
-  color: var(--gold);
-  border-radius: 50%;
+
+
+.socials a {
+
+    width: 39px;
+    height: 39px;
+
+    border: 1px solid rgba(197,154,74,.5);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: var(--gold-light);
+
+    text-decoration: none;
+
+    background: rgba(0,0,0,.25);
+
+    transition: .35s ease;
+
 }
-.social strong {
-  display: block;
-  color: #aaa;
-  font-size: 8px;
+
+
+.socials a:hover {
+
+    background: var(--gold);
+
+    color: #050505;
+
+    transform:
+        translateY(-5px)
+        rotate(8deg);
+
+    box-shadow:
+        0 0 20px rgba(197,154,74,.3);
+
 }
-.social small {
-  display: block;
-  margin-top: 4px;
-  color: #555;
-  font-size: 6px;
+
+
+.username {
+
+    margin-top: 10px;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color: #b5a68b;
+
 }
-.social b {
-  margin-left: auto;
-  color: #444;
-  font-size: 11px;
+
+
+/* ==============================
+   MAGIC BUTTON
+============================== */
+
+.magic-button {
+
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 25px;
+
+    position: relative;
+
+    z-index: 4;
+
+    border: 1px solid var(--gold);
+
+    border-radius: 4px;
+
+    background:
+
+        linear-gradient(
+            100deg,
+            #18140d,
+            #2a2112,
+            #18140d
+        );
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition: .4s ease;
+
 }
-/* ==================================
-   MAGIC SERVICES
-================================== */
-.magic-services {
-  display: grid;
-  grid-template-columns:
-    repeat(2, 1fr);
-  gap: 7px;
+
+
+.magic-button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 60%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.15),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: .7s;
+
 }
-.service {
-  min-height: 130px;
-  padding: 15px;
-  border:
-    1px solid
-    rgba(255,255,255,.07);
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255,255,255,.035),
-      rgba(255,255,255,.01)
-    );
-  position: relative;
-  overflow: hidden;
+
+
+.magic-button:hover::before {
+
+    left: 130%;
+
 }
-.service::after {
-  content: "";
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  right: -35px;
-  bottom: -35px;
-  border-radius: 50%;
-  background:
-    rgba(201,167,74,.08);
+
+
+.magic-button:hover {
+
+    box-shadow:
+        0 0 25px rgba(197,154,74,.2);
+
+    background: #2a2112;
+
 }
-.service > span {
-  color: var(--gold);
-  font-family: Georgia, serif;
-  font-size: 25px;
+
+
+.magic-button i {
+
+    margin-left: 8px;
+
 }
-.service:nth-child(2) > span,
-.service:nth-child(4) > span {
-  color: var(--red);
+
+
+/* ==============================
+   BOTTOM A ♠
+============================== */
+
+.bottom-card-symbol {
+
+    position: absolute;
+
+    right: 40px;
+
+    bottom: 33px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    color: var(--gold-light);
+
+    font-family: Georgia, serif;
+
 }
-.service h3 {
-  margin-top: 10px;
-  font-family: "Cinzel", serif;
-  color: #bdb6a6;
-  font-size: 10px;
-  font-weight: 500;
+
+
+.bottom-card-symbol span {
+
+    font-size: 25px;
+
+    line-height: 20px;
+
 }
-.service p {
-  margin-top: 7px;
-  color: #57534b;
-  font-size: 7px;
-  line-height: 1.7;
+
+
+.bottom-card-symbol b {
+
+    font-size: 34px;
+
+    line-height: 35px;
+
+    transform: rotate(180deg);
+
+    font-weight: normal;
+
 }
-/* ==================================
-   FINAL ACTIONS
-================================== */
-.final-actions {
-  display: grid;
-  grid-template-columns:
-    1fr 1fr;
-  gap: 7px;
-  margin-top: 30px;
-}
-.final-actions button {
-  height: 48px;
-  border:
-    1px solid
-    rgba(201,167,74,.35);
-  background:
-    transparent;
-  color: var(--gold);
-  font-size: 7px;
-  letter-spacing: 2px;
-  cursor: pointer;
-  transition: .3s;
-}
-.final-actions button:hover {
-  background:
-    rgba(201,167,74,.08);
-}
-/* ==================================
+
+
+/* ==============================
    FOOTER
-================================== */
-footer {
-  margin-top: 45px;
-  padding-top: 20px;
-  border-top:
-    1px solid
-    rgba(255,255,255,.06);
-  text-align: center;
+============================== */
+
+.scene-footer {
+
+    margin-top: 22px;
+
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    font-family: "Cinzel", serif;
+
+    font-size: 7px;
+
+    letter-spacing: 3px;
+
+    color: #665b49;
+
 }
-.footer-mark {
-  color: var(--gold);
-  font-family: Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 8px;
+
+
+.scene-footer i {
+
+    width: 25px;
+
+    height: 1px;
+
+    background: #665b49;
+
 }
-footer p {
-  max-width: 250px;
-  margin: 13px auto;
-  color: #444;
-  font-family: "Cinzel", serif;
-  font-size: 7px;
-  line-height: 1.8;
-  letter-spacing: 1px;
+
+
+/* ==============================
+   MAGIC FLASH
+============================== */
+
+.magic-flash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background: white;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
 }
-footer span {
-  color: #292722;
-  font-size: 6px;
-  letter-spacing: 2px;
+
+
+.magic-flash.active {
+
+    animation: flash .5s ease;
+
 }
-/* ==================================
+
+
+@keyframes flash {
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .35;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* ==============================
    MOBILE
-================================== */
-@media(max-width:380px) {
-  .hero h1 {
-    font-size: 39px;
-  }
-  .magic-logo {
-    width: 125px;
-    height: 125px;
-  }
-  .ring-one {
-    width: 280px;
-    height: 280px;
-  }
-  .ring-two {
-    width: 245px;
-    height: 245px;
-  }
+============================== */
+
+@media(max-width: 500px) {
+
+    .scene {
+
+        padding: 20px 10px;
+
+    }
+
+    .magic-card {
+
+        min-height: 720px;
+
+        padding:
+            45px 27px 35px;
+
+        border-radius: 20px;
+
+    }
+
+    .logo-container {
+
+        width: 190px;
+        height: 190px;
+
+    }
+
+    .name-area h1 {
+
+        font-size: 27px;
+
+        letter-spacing: 5px;
+
+    }
+
+    .intro {
+
+        font-size: 14px;
+
+    }
+
+    .top-symbol {
+
+        left: 32px;
+        top: 31px;
+
+    }
+
+    .top-symbol span {
+
+        font-size: 32px;
+
+    }
+
+    .top-symbol small {
+
+        font-size: 23px;
+
+    }
+
+    .bottom-card-symbol {
+
+        right: 32px;
+        bottom: 29px;
+
+    }
+
+}
+
+
+/* ==============================
+   SMALL MOBILE
+============================== */
+
+@media(max-width: 360px) {
+
+    .magic-card {
+
+        min-height: 690px;
+
+        padding-left: 22px;
+        padding-right: 22px;
+
+    }
+
+    .logo-container {
+
+        width: 165px;
+        height: 165px;
+
+    }
+
+    .name-area h1 {
+
+        font-size: 23px;
+
+    }
+
+    .socials {
+
+        gap: 8px;
+
+    }
+
 }
