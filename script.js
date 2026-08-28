@@ -1,168 +1,108 @@
-/* ================= MOBILE MENU ================= */
-
-const menuBtn = document.getElementById("menuBtn");
-const navLinks = document.querySelector(".nav-links");
-
-menuBtn.addEventListener("click", () => {
-
-    navLinks.classList.toggle("active");
-
-    const icon = menuBtn.querySelector("i");
-
-    if (navLinks.classList.contains("active")) {
-
-        icon.classList.remove("fa-bars");
-        icon.classList.add("fa-xmark");
-
-    } else {
-
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
-
-    }
-
-});
+/* ===================================
+   AMR SAMY DIGITAL BUSINESS CARD
+=================================== */
 
 
-/* ================= CLOSE MENU AFTER CLICK ================= */
+/* =========================
+   SAVE CONTACT
+========================= */
 
-document.querySelectorAll(".nav-links a").forEach(link => {
+function saveContact() {
 
-    link.addEventListener("click", () => {
+    const contact = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Amr Samy
+N:Samy;Amr;;;
+TITLE:Magician
+TEL;TYPE=CELL:01115552621
+URL:https://instagram.com/iamamrsamy
+URL:https://facebook.com/iamamrsamy
+URL:https://www.tiktok.com/@iamamrsamy
+URL:https://youtube.com/@iamamrsamy
+NOTE:Professional Magician
+END:VCARD
+`;
 
-        navLinks.classList.remove("active");
+    const blob = new Blob(
+        [contact],
+        {
+            type: "text/vcard;charset=utf-8"
+        }
+    );
 
-        const icon = menuBtn.querySelector("i");
+    const url = URL.createObjectURL(blob);
 
-        icon.classList.remove("fa-xmark");
-        icon.classList.add("fa-bars");
+    const link = document.createElement("a");
 
-    });
+    link.href = url;
 
-});
+    link.download = "Amr-Samy.vcf";
 
+    document.body.appendChild(link);
 
-/* ================= CURRENT YEAR ================= */
+    link.click();
 
-document.getElementById("year").textContent =
-    new Date().getFullYear();
+    document.body.removeChild(link);
 
-
-/* ================= CONTACT FORM ================= */
-
-const contactForm = document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", function (e) {
-
-    e.preventDefault();
-
-    const name =
-        document.getElementById("name").value.trim();
-
-    const phone =
-        document.getElementById("phone").value.trim();
-
-    const message =
-        document.getElementById("message").value.trim();
-
-
-    if (!name || !phone || !message) {
-
-        alert("Please fill in all fields.");
-
-        return;
-
-    }
-
-
-    /*
-        WhatsApp message
-    */
-
-    const whatsappNumber = "201115552621";
-
-    const whatsappMessage =
-        `Hello Amr Samy 👋
-
-My name is: ${name}
-
-Phone: ${phone}
-
-Event details:
-${message}`;
-
-
-    const whatsappURL =
-        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
-
-
-    window.open(whatsappURL, "_blank");
-
-
-    contactForm.reset();
-
-});
-
-
-/* ================= CARD MOUSE EFFECT ================= */
-
-const card = document.querySelector(".hero-card");
-
-if (card) {
-
-    document.addEventListener("mousemove", (e) => {
-
-        if (window.innerWidth < 650) return;
-
-        const x =
-            (window.innerWidth / 2 - e.clientX) / 80;
-
-        const y =
-            (window.innerHeight / 2 - e.clientY) / 80;
-
-        card.style.transform =
-            `perspective(1000px)
-             rotateY(${x}deg)
-             rotateX(${y}deg)`;
-
-    });
+    URL.revokeObjectURL(url);
 
 }
 
 
-/* ================= REVEAL ANIMATION ================= */
+/* =========================
+   PAGE LOAD ANIMATION
+========================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".section-title, .about-card, .show-card, .contact-item, .contact-form"
-    );
+document.addEventListener("DOMContentLoaded", () => {
 
+    const card = document.querySelector(".business-card");
 
-const observer =
-    new IntersectionObserver(
-        (entries) => {
+    card.style.opacity = "0";
 
-            entries.forEach(entry => {
+    setTimeout(() => {
 
-                if (entry.isIntersecting) {
+        card.style.transition =
+            "opacity 0.8s ease, transform 0.8s ease";
 
-                    entry.target.classList.add("show");
+        card.style.opacity = "1";
 
-                }
+    }, 100);
 
-            });
-
-        },
-        {
-            threshold: 0.15
-        }
-    );
+});
 
 
-revealElements.forEach(element => {
+/* =========================
+   SMALL MAGIC EFFECT
+========================= */
 
-    element.classList.add("hidden");
+document.addEventListener("mousemove", (event) => {
 
-    observer.observe(element);
+    const card = document.querySelector(".business-card");
+
+    if (window.innerWidth < 700) return;
+
+    const x =
+        (window.innerWidth / 2 - event.clientX) / 60;
+
+    const y =
+        (window.innerHeight / 2 - event.clientY) / 60;
+
+    card.style.transform =
+        `perspective(1000px)
+         rotateY(${x}deg)
+         rotateX(${y}deg)`;
+
+});
+
+
+/* Reset card when mouse leaves */
+
+document.addEventListener("mouseleave", () => {
+
+    const card = document.querySelector(".business-card");
+
+    card.style.transform =
+        "perspective(1000px) rotateY(0deg) rotateX(0deg)";
 
 });
