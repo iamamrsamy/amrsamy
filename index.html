@@ -4,296 +4,109 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Amr Samy — The Magician</title>
-
-  <meta name="description"
-        content="Amr Samy — Magician & Entertainer">
-
-  <meta name="theme-color" content="#050505">
+  <title>Amr Samy | The Magician</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet"
-        href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       MAGIC BACKGROUND
-  ========================== -->
+  <div class="cursor-glow"></div>
 
-  <div class="noise"></div>
+  <div class="floating-suit suit1">♠</div>
+  <div class="floating-suit suit2">♥</div>
+  <div class="floating-suit suit3">♦</div>
+  <div class="floating-suit suit4">♣</div>
 
-  <div class="gold-glow glow-one"></div>
-  <div class="gold-glow glow-two"></div>
-
-  <canvas id="magicCanvas"></canvas>
-
-
-  <!-- Floating Playing Card Symbols -->
-
-  <div class="suit suit-spade">♠</div>
-  <div class="suit suit-heart">♥</div>
-  <div class="suit suit-diamond">♦</div>
-  <div class="suit suit-club">♣</div>
-
-
-  <!-- =========================
-       MAIN
-  ========================== -->
-
-  <main class="magic-page">
+  <main class="page">
 
     <!-- TOP -->
 
-    <div class="top-brand">
+    <header class="top">
 
-      <div class="monogram">
+      <div class="brand-mark">
         AS
       </div>
 
-      <div>
-        <strong>AMR SAMY</strong>
-        <span>THE MAGICIAN</span>
+      <div class="brand-text">
+        <span>AMR SAMY</span>
+        <small>THE MAGICIAN</small>
       </div>
 
-    </div>
+    </header>
 
 
-    <!-- =========================
-         HERO
-    ========================== -->
+    <!-- MAIN CARD -->
 
-    <section class="hero">
-
-      <div class="suits-line">
-        <span>♠</span>
-        <span>♥</span>
-        <span>♦</span>
-        <span>♣</span>
-      </div>
-
-      <div class="eyebrow">
-        THE ART OF IMPOSSIBLE
-      </div>
-
-      <h1>
-        AMR
-        <em>SAMY</em>
-      </h1>
-
-      <p class="hero-title">
-        THE MAGICIAN
-      </p>
-
-      <p class="hero-tagline">
-        I make impossible happen.
-      </p>
-
-    </section>
-
-
-    <!-- =========================
-         MAIN CARD
-    ========================== -->
-
-    <section class="card-area">
+    <section class="card-wrap">
 
       <div class="magic-card" id="magicCard">
 
-        <!-- CARD FRONT -->
+        <div class="card-border"></div>
 
-        <div class="card-face front">
+        <!-- TOP CORNER -->
 
-          <div class="corner top">
-            A<br>
+        <div class="card-corner top-left">
+          A
+          <span>♠</span>
+        </div>
+
+        <!-- BOTTOM CORNER -->
+
+        <div class="card-corner bottom-right">
+          A
+          <span>♠</span>
+        </div>
+
+
+        <!-- CENTER -->
+
+        <div class="card-content">
+
+          <div class="four-suits">
             <span>♠</span>
+            <span>♥</span>
+            <span>♦</span>
+            <span>♣</span>
           </div>
 
-          <div class="corner bottom">
-            A<br>
-            <span>♠</span>
-          </div>
+          <div class="logo-circle">
 
-
-          <div class="card-pattern">
-
-            <div class="pattern-symbol">
-              ♠
-            </div>
-
-            <div class="pattern-center">
-              <div class="diamond-logo">
-                AS
-              </div>
-
-              <small>
-                AMR SAMY
-              </small>
+            <div class="logo-inner">
+              AS
             </div>
 
           </div>
 
+          <p class="small-title">
+            PROFESSIONAL MAGICIAN
+          </p>
 
-          <div class="tap">
+          <h1>
+            AMR
+            <strong>SAMY</strong>
+          </h1>
 
-            <div class="tap-icon">
-              ✦
-            </div>
+          <div class="gold-line"></div>
 
-            <span>
-              TAP THE CARD
-            </span>
-
-            <small>
-              TO ENTER THE MAGIC
-            </small>
-
-          </div>
+          <p class="quote">
+            Making the impossible
+            <br>
+            feel real.
+          </p>
 
         </div>
 
 
-        <!-- CARD BACK -->
-
-        <div class="card-face back">
-
-          <div class="back-border"></div>
-
-          <div class="back-content">
-
-            <div class="mini-suits">
-              ♠ ♥ ♦ ♣
-            </div>
-
-            <h2>
-              AMR SAMY
-            </h2>
-
-            <div class="role">
-              THE MAGICIAN
-            </div>
-
-            <div class="gold-line"></div>
-
-
-            <!-- CONTACT -->
-
-            <div class="group-title">
-              <span>CONTACT</span>
-              <i></i>
-            </div>
-
-            <div class="contact-group">
-
-              <a href="tel:+201115552621"
-                 class="contact-item">
-
-                <div class="item-icon">
-                  ☎
-                </div>
-
-                <div>
-                  <small>PHONE</small>
-                  <strong>
-                    011 1555 2621
-                  </strong>
-                </div>
-
-                <b>›</b>
-
-              </a>
-
-
-              <a href="https://wa.me/201115552621"
-                 target="_blank"
-                 class="contact-item whatsapp">
-
-                <div class="item-icon">
-                  ◉
-                </div>
-
-                <div>
-                  <small>WHATSAPP</small>
-                  <strong>
-                    Chat with me
-                  </strong>
-                </div>
-
-                <b>›</b>
-
-              </a>
-
-
-              <a href="mailto:amrsamydxb@gmail.com"
-                 class="contact-item">
-
-                <div class="item-icon">
-                  ✉
-                </div>
-
-                <div>
-                  <small>EMAIL</small>
-                  <strong>
-                    amrsamydxb@gmail.com
-                  </strong>
-                </div>
-
-                <b>›</b>
-
-              </a>
-
-            </div>
-
-
-            <!-- SOCIAL -->
-
-            <div class="group-title social-title">
-              <span>FOLLOW THE MAGIC</span>
-              <i></i>
-            </div>
-
-
-            <div class="social-group">
-
-              <a href="https://instagram.com/iamamrsamy"
-                 target="_blank">
-                <span>◎</span>
-                Instagram
-              </a>
-
-              <a href="https://tiktok.com/@iamamrsamy"
-                 target="_blank">
-                <span>♪</span>
-                TikTok
-              </a>
-
-              <a href="https://youtube.com/@iamamrsamy"
-                 target="_blank">
-                <span>▶</span>
-                YouTube
-              </a>
-
-              <a href="https://facebook.com/iamamrsamy"
-                 target="_blank">
-                <span>f</span>
-                Facebook
-              </a>
-
-            </div>
-
-
-            <div class="handle">
-              @iamamrsamy
-            </div>
-
-          </div>
-
+        <div class="card-bottom">
+          <span>EST. 2008</span>
+          <span>♠ ♥ ♦ ♣</span>
+          <span>EGYPT</span>
         </div>
 
       </div>
@@ -301,88 +114,137 @@
     </section>
 
 
-    <!-- =========================
-         ACTIONS
-    ========================== -->
+    <!-- CONTACT -->
 
-    <div class="actions">
+    <section class="info">
 
-      <button id="flipButton"
-              class="primary-action">
+      <div class="section-title">
+        <span>GET IN TOUCH</span>
+        <i></i>
+      </div>
 
-        <span>♠</span>
-        REVEAL MAGIC
+      <div class="contact-row">
 
+        <a href="tel:+201115552621" class="contact">
+
+          <div class="icon">☎</div>
+
+          <div>
+            <small>PHONE</small>
+            <strong>011 1555 2621</strong>
+          </div>
+
+        </a>
+
+
+        <a href="https://wa.me/201115552621"
+           target="_blank"
+           class="contact">
+
+          <div class="icon whatsapp">◉</div>
+
+          <div>
+            <small>WHATSAPP</small>
+            <strong>Chat With Me</strong>
+          </div>
+
+        </a>
+
+
+        <a href="mailto:amrsamydxb@gmail.com"
+           class="contact">
+
+          <div class="icon">✉</div>
+
+          <div>
+            <small>EMAIL</small>
+            <strong>amrsamydxb@gmail.com</strong>
+          </div>
+
+        </a>
+
+      </div>
+
+
+      <!-- SOCIAL -->
+
+      <div class="section-title social-heading">
+        <span>FOLLOW THE MAGIC</span>
+        <i></i>
+      </div>
+
+
+      <div class="social-row">
+
+        <a href="https://instagram.com/iamamrsamy"
+           target="_blank">
+          <b>◎</b>
+          Instagram
+        </a>
+
+        <a href="https://tiktok.com/@iamamrsamy"
+           target="_blank">
+          <b>♪</b>
+          TikTok
+        </a>
+
+        <a href="https://youtube.com/@iamamrsamy"
+           target="_blank">
+          <b>▶</b>
+          YouTube
+        </a>
+
+        <a href="https://facebook.com/iamamrsamy"
+           target="_blank">
+          <b>f</b>
+          Facebook
+        </a>
+
+      </div>
+
+
+      <!-- BUTTONS -->
+
+      <div class="buttons">
+
+        <button id="saveContact">
+          <span>♧</span>
+          SAVE CONTACT
+        </button>
+
+        <button id="shareCard">
+          <span>↗</span>
+          SHARE
+        </button>
+
+      </div>
+
+
+      <button id="qrButton" class="qr-button">
+        <span>▦</span>
+        SHOW MAGIC QR
       </button>
 
 
-      <button id="saveButton"
-              class="secondary-action">
+      <div id="qrContainer"></div>
 
-        ♧ SAVE CONTACT
+    </section>
 
-      </button>
-
-
-      <button id="shareButton"
-              class="secondary-action">
-
-        ↗ SHARE
-
-      </button>
-
-    </div>
-
-
-    <!-- =========================
-         QR
-    ========================== -->
-
-    <button id="qrButton"
-            class="qr-button">
-
-      <span>▦</span>
-      SHOW MY MAGIC QR
-
-    </button>
-
-
-    <div id="qrBox"
-         class="qr-box">
-
-      <div id="qrcode"></div>
-
-      <small>
-        SCAN TO OPEN MY DIGITAL CARD
-      </small>
-
-    </div>
-
-
-    <!-- =========================
-         FOOTER
-    ========================== -->
 
     <footer>
 
-      <div>
-        ♠
-      </div>
+      <span>♠</span>
 
-      <span>
+      <p>
         THE MAGIC NEVER ENDS
-      </span>
+      </p>
 
-      <div>
-        ♣
-      </div>
+      <span>♣</span>
 
     </footer>
 
   </main>
 
-
-  <!-- QR CODE -->
 
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
