@@ -63,7 +63,7 @@ TEL;TYPE=CELL:+201115552621
 EMAIL;TYPE=INTERNET:amrsamydxb@gmail.com
 URL:${currentURL}
 ADR;TYPE=WORK:;;Cairo;;;Egypt
-NOTE:Magician | Entertainer | Illusionist
+NOTE:Kids Magic | Roaming Magic | Stage Magic
 END:VCARD`;
 
 
