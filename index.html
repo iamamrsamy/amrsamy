@@ -2,108 +2,148 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>AMR SAMY | THE MAGICIAN</title>
 
-    <meta name="theme-color"
-          content="#050505">
+    <meta name="description"
+          content="Amr Samy - Magician, Entertainer & Illusionist">
 
-    <title>Amr Samy | The Magician</title>
+    <meta name="theme-color" content="#030303">
 
-    <link rel="stylesheet"
-          href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <!-- QR CODE -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- QR Code -->
     <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
 
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
+<!-- =====================================================
+     BACKGROUND MAGIC ART
+===================================================== -->
 
-<!-- MAGIC BACKGROUND -->
+<div class="background-magic">
 
-<div class="magic-bg">
+    <div class="big-circle left-circle"></div>
+    <div class="big-circle right-circle"></div>
 
-    <div class="magic-ring ring-1"></div>
-    <div class="magic-ring ring-2"></div>
-    <div class="magic-ring ring-3"></div>
-
-    <div class="runes rune-1">
-        ✦ ARCANA ✦ MAGIC ✦ ILLUSION ✦
-    </div>
-
-    <div class="runes rune-2">
-        ✦ MYSTIC ✦ ALCHEMY ✦ ARCANA ✦
-    </div>
+    <div class="background-symbol symbol-1">✦</div>
+    <div class="background-symbol symbol-2">✧</div>
+    <div class="background-symbol symbol-3">✦</div>
+    <div class="background-symbol symbol-4">✧</div>
 
 </div>
 
 
+<!-- =====================================================
+     MAIN CARD
+===================================================== -->
 
-<main class="website">
-
-
-    <!-- =========================
-         HEADER
-    ========================== -->
-
-    <header class="hero">
+<main class="card">
 
 
-        <!-- LOGO -->
+    <!-- =================================================
+         LOGO
+    ================================================== -->
 
-        <div class="logo">
+    <div class="logo">
 
-            <div class="logo-a">
-                A
+        <div class="logo-letter">
+            A
+        </div>
+
+        <div class="logo-text">
+            MAGIC
+        </div>
+
+        <div class="logo-star">
+            ✦
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PORTRAIT
+    ================================================== -->
+
+    <section class="hero">
+
+        <div class="portrait-container">
+
+            <!-- Magic rings -->
+
+            <div class="magic-ring ring-one"></div>
+            <div class="magic-ring ring-two"></div>
+            <div class="magic-ring ring-three"></div>
+
+            <!-- Geometric lines -->
+
+            <div class="magic-geometry geometry-one"></div>
+            <div class="magic-geometry geometry-two"></div>
+
+            <!-- Portrait -->
+
+            <div class="portrait">
+
+                <img
+                    src="amr-samy.jpg"
+                    alt="Amr Samy"
+                >
+
             </div>
 
-            <div class="logo-magic">
-                MAGIC
-            </div>
+
+            <!-- Magical stars -->
+
+            <span class="magic-star star-top">
+                ✦
+            </span>
+
+            <span class="magic-star star-left">
+                ✦
+            </span>
+
+            <span class="magic-star star-right">
+                ✦
+            </span>
+
+            <span class="magic-star star-bottom">
+                ✦
+            </span>
 
         </div>
 
 
-
-        <!-- PROFILE PHOTO -->
-
-        <div class="portrait-wrapper">
-
-            <div class="portrait-ring ring-a"></div>
-
-            <div class="portrait-ring ring-b"></div>
-
-            <div class="portrait-ring ring-c"></div>
-
-            <img
-                src="amr-samy.jpg"
-                class="portrait"
-                alt="Amr Samy"
-            >
-
-            <span class="spark spark-1">✦</span>
-            <span class="spark spark-2">✦</span>
-            <span class="spark spark-3">✦</span>
-            <span class="spark spark-4">✦</span>
-
-        </div>
-
-
-
-        <!-- NAME -->
+        <!-- Name -->
 
         <h1>
             AMR SAMY
         </h1>
 
 
-        <div class="title-line">
+        <!-- Title -->
+
+        <div class="subtitle">
 
             <span></span>
 
@@ -116,12 +156,12 @@
         </div>
 
 
-        <p class="tagline">
+        <p class="description">
             Bringing wonder to life with every performance.
         </p>
 
 
-        <p class="profession">
+        <p class="roles">
             Magician
             <b>|</b>
             Entertainer
@@ -129,33 +169,34 @@
             Illusionist
         </p>
 
-
-    </header>
-
+    </section>
 
 
-    <!-- =========================
-         CONTACT + QR
-    ========================== -->
+
+    <!-- =================================================
+         CONTACT SECTION
+    ================================================== -->
 
     <section class="contact-section">
 
 
-        <div class="contact-list">
+        <!-- LEFT -->
+
+        <div class="contacts">
 
 
             <!-- PHONE -->
 
             <a
                 href="tel:+201115552621"
-                class="contact-card"
+                class="contact"
             >
 
                 <div class="contact-icon">
-                    ☎
+                    <i class="fa-solid fa-phone"></i>
                 </div>
 
-                <div class="contact-text">
+                <div class="contact-info">
 
                     <strong>
                         Call Me
@@ -167,8 +208,8 @@
 
                 </div>
 
-                <div class="contact-arrow">
-                    →
+                <div class="contact-icon right">
+                    <i class="fa-solid fa-phone"></i>
                 </div>
 
             </a>
@@ -180,14 +221,14 @@
             <a
                 href="https://wa.me/201115552621"
                 target="_blank"
-                class="contact-card"
+                class="contact"
             >
 
                 <div class="contact-icon">
-                    ◉
+                    <i class="fa-brands fa-whatsapp"></i>
                 </div>
 
-                <div class="contact-text">
+                <div class="contact-info">
 
                     <strong>
                         WhatsApp
@@ -199,8 +240,8 @@
 
                 </div>
 
-                <div class="contact-arrow">
-                    →
+                <div class="contact-icon right">
+                    <i class="fa-brands fa-whatsapp"></i>
                 </div>
 
             </a>
@@ -211,14 +252,14 @@
 
             <a
                 href="mailto:amrsamydxb@gmail.com"
-                class="contact-card"
+                class="contact"
             >
 
                 <div class="contact-icon">
-                    ✉
+                    <i class="fa-solid fa-envelope"></i>
                 </div>
 
-                <div class="contact-text">
+                <div class="contact-info">
 
                     <strong>
                         Email
@@ -230,8 +271,8 @@
 
                 </div>
 
-                <div class="contact-arrow">
-                    →
+                <div class="contact-icon right">
+                    <i class="fa-solid fa-envelope"></i>
                 </div>
 
             </a>
@@ -240,13 +281,13 @@
 
             <!-- LOCATION -->
 
-            <div class="contact-card">
+            <div class="contact">
 
                 <div class="contact-icon">
-                    ⌖
+                    <i class="fa-solid fa-location-dot"></i>
                 </div>
 
-                <div class="contact-text">
+                <div class="contact-info">
 
                     <strong>
                         Location
@@ -258,6 +299,10 @@
 
                 </div>
 
+                <div class="contact-icon right">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
             </div>
 
 
@@ -265,29 +310,39 @@
 
 
 
-        <!-- QR -->
+        <!-- =================================================
+             QR
+        ================================================== -->
 
-        <div class="qr-section">
+        <div class="qr-area">
 
+            <div class="qr-box">
 
-            <div class="qr-frame">
+                <canvas id="qr"></canvas>
 
-                <canvas id="qrcode"></canvas>
+                <div class="qr-logo">
+                    A
+                    <small>MAGIC</small>
+                </div>
 
             </div>
 
 
-            <div class="scan-title">
+            <div class="scan-me">
                 Scan Me
             </div>
 
 
-            <p>
-                Scan to save my contact
-                <br>
-                or view my digital card
-            </p>
+            <div class="arrow">
+                ↗
+            </div>
 
+
+            <p>
+                Scan to save my<br>
+                contact or view my<br>
+                digital card
+            </p>
 
         </div>
 
@@ -296,14 +351,14 @@
 
 
 
-    <!-- =========================
-         FOLLOW ME
-    ========================== -->
+    <!-- =================================================
+         SOCIAL MEDIA
+    ================================================== -->
 
     <section class="social-section">
 
 
-        <div class="section-heading">
+        <div class="section-title">
 
             <span></span>
 
@@ -331,22 +386,22 @@
                 <div class="social-circle">
 
                     <div class="social-runes">
-                        ✦ MAGIC ✦
+                        ✦ ARCANA ✦
                     </div>
 
-                    <div class="geometry"></div>
+                    <div class="inner-geometry"></div>
 
-                    <div class="social-icon">
-                        ◎
-                    </div>
+                    <i class="fa-brands fa-instagram"></i>
 
-                    <i>✦</i>
+                    <span class="social-spark">
+                        ✦
+                    </span>
 
                 </div>
 
-                <span>
+                <small>
                     iamamrsamy
-                </span>
+                </small>
 
             </a>
 
@@ -363,22 +418,22 @@
                 <div class="social-circle">
 
                     <div class="social-runes">
-                        ✦ ARCANA ✦
+                        ✦ MAGIC ✦
                     </div>
 
-                    <div class="geometry"></div>
+                    <div class="inner-geometry"></div>
 
-                    <div class="social-icon">
-                        f
-                    </div>
+                    <i class="fa-brands fa-facebook-f"></i>
 
-                    <i>✦</i>
+                    <span class="social-spark">
+                        ✦
+                    </span>
 
                 </div>
 
-                <span>
+                <small>
                     iamamrsamy
-                </span>
+                </small>
 
             </a>
 
@@ -398,19 +453,19 @@
                         ✦ MYSTIC ✦
                     </div>
 
-                    <div class="geometry"></div>
+                    <div class="inner-geometry"></div>
 
-                    <div class="social-icon">
-                        ♪
-                    </div>
+                    <i class="fa-brands fa-tiktok"></i>
 
-                    <i>✦</i>
+                    <span class="social-spark">
+                        ✦
+                    </span>
 
                 </div>
 
-                <span>
+                <small>
                     iamamrsamy
-                </span>
+                </small>
 
             </a>
 
@@ -419,7 +474,7 @@
             <!-- YOUTUBE -->
 
             <a
-                href="https://www.youtube.com/@iamamrsamy"
+                href="https://youtube.com/@iamamrsamy"
                 target="_blank"
                 class="social"
             >
@@ -427,22 +482,22 @@
                 <div class="social-circle">
 
                     <div class="social-runes">
-                        ✦ MAGIC ✦
+                        ✦ ILLUSION ✦
                     </div>
 
-                    <div class="geometry"></div>
+                    <div class="inner-geometry"></div>
 
-                    <div class="social-icon">
-                        ▶
-                    </div>
+                    <i class="fa-brands fa-youtube"></i>
 
-                    <i>✦</i>
+                    <span class="social-spark">
+                        ✦
+                    </span>
 
                 </div>
 
-                <span>
+                <small>
                     iamamrsamy
-                </span>
+                </small>
 
             </a>
 
@@ -451,7 +506,7 @@
             <!-- LINKEDIN -->
 
             <a
-                href="https://www.linkedin.com/in/iamamrsamy"
+                href="https://linkedin.com/in/iamamrsamy"
                 target="_blank"
                 class="social"
             >
@@ -462,19 +517,19 @@
                         ✦ ARCANA ✦
                     </div>
 
-                    <div class="geometry"></div>
+                    <div class="inner-geometry"></div>
 
-                    <div class="social-icon linkedin">
-                        in
-                    </div>
+                    <i class="fa-brands fa-linkedin-in"></i>
 
-                    <i>✦</i>
+                    <span class="social-spark">
+                        ✦
+                    </span>
 
                 </div>
 
-                <span>
+                <small>
                     iamamrsamy
-                </span>
+                </small>
 
             </a>
 
@@ -491,22 +546,22 @@
                 <div class="social-circle">
 
                     <div class="social-runes">
-                        ✦ ILLUSION ✦
+                        ✦ MAGIC ✦
                     </div>
 
-                    <div class="geometry"></div>
+                    <div class="inner-geometry"></div>
 
-                    <div class="social-icon">
-                        𝕏
-                    </div>
+                    <i class="fa-brands fa-x-twitter"></i>
 
-                    <i>✦</i>
+                    <span class="social-spark">
+                        ✦
+                    </span>
 
                 </div>
 
-                <span>
+                <small>
                     iamamrsamy
-                </span>
+                </small>
 
             </a>
 
@@ -517,52 +572,56 @@
 
 
 
-    <!-- =========================
+    <!-- =================================================
          SAVE CONTACT
-    ========================== -->
+    ================================================== -->
 
     <section class="save-section">
 
-
         <button
-            class="save-button"
+            class="save-contact"
             onclick="saveContact()"
         >
 
             <div class="save-icon">
-                👤
+
+                <i class="fa-solid fa-address-card"></i>
+
             </div>
 
-            <div>
+
+            <div class="save-text">
 
                 <strong>
                     SAVE CONTACT
                 </strong>
 
-                <small>
+                <span>
                     Add me to your contacts
-                </small>
+                </span>
 
             </div>
 
+
             <div class="download-icon">
-                ↓
+
+                <i class="fa-solid fa-download"></i>
+
             </div>
 
         </button>
-
 
     </section>
 
 
 
-    <!-- =========================
+    <!-- =================================================
          FOOTER
-    ========================== -->
+    ================================================== -->
 
     <footer>
 
-        <div class="footer-line">
+        <div class="footer-decoration">
 
             <span></span>
 
@@ -578,9 +637,9 @@
         </p>
 
 
-        <strong>
+        <small>
             AMR SAMY
-        </strong>
+        </small>
 
     </footer>
 
@@ -588,9 +647,8 @@
 </main>
 
 
-
 <div id="toast">
-    Contact saved ✓
+    Contact saved successfully ✓
 </div>
 
 
