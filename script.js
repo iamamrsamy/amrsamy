@@ -1,288 +1,251 @@
-/* =====================================
-   AMR SAMY MAGIC
-   DIGITAL BUSINESS CARD
-===================================== */
+/* =========================================
+   MAGICAL CARD INTERACTIONS
+========================================= */
 
 
-/* =====================================
-   CREATE MAGICAL PARTICLES
-===================================== */
+/* -----------------------------------------
+   SAVE CONTACT
+----------------------------------------- */
 
-const particleContainer =
-    document.getElementById("particles");
+const saveContact = document.getElementById("saveContact");
+const toast = document.getElementById("toast");
 
-const particleCount = 45;
 
-for (let i = 0; i < particleCount; i++) {
+saveContact.addEventListener("click", async () => {
 
-    const particle =
-        document.createElement("div");
+    const contact = {
 
-    particle.classList.add("particle");
+        name: "Amr Samy",
 
-    particle.style.left =
-        Math.random() * 100 + "%";
+        phone: "+201115552621",
 
-    particle.style.animationDuration =
-        (7 + Math.random() * 13) + "s";
-
-    particle.style.animationDelay =
-        Math.random() * 10 + "s";
-
-    particle.style.width =
-        (1 + Math.random() * 3) + "px";
-
-    particle.style.height =
-        particle.style.width;
-
-    particleContainer.appendChild(particle);
-
-}
-
-
-/* =====================================
-   3D CARD MOVEMENT
-===================================== */
-
-const card =
-    document.getElementById("magicCard");
-
-
-document.addEventListener("mousemove", (event) => {
-
-    if (window.innerWidth < 700) return;
-
-    const x =
-        (window.innerWidth / 2 - event.clientX) / 35;
-
-    const y =
-        (window.innerHeight / 2 - event.clientY) / 35;
-
-    card.style.transform =
-        `
-        perspective(1200px)
-        rotateY(${x}deg)
-        rotateX(${y}deg)
-        translateZ(5px)
-        `;
-
-});
-
-
-document.addEventListener("mouseleave", () => {
-
-    card.style.transform =
-        `
-        perspective(1200px)
-        rotateY(0deg)
-        rotateX(0deg)
-        translateZ(0)
-        `;
-
-});
-
-
-/* =====================================
-   MAGIC BUTTON
-===================================== */
-
-const magicButton =
-    document.getElementById("magicButton");
-
-const flash =
-    document.getElementById("magicFlash");
-
-
-magicButton.addEventListener("click", () => {
-
-    flash.classList.remove("active");
-
-    void flash.offsetWidth;
-
-    flash.classList.add("active");
-
-    createBurst();
-
-});
-
-
-/* =====================================
-   MAGIC BURST
-===================================== */
-
-function createBurst() {
-
-    const rect =
-        magicButton.getBoundingClientRect();
-
-    const centerX =
-        rect.left + rect.width / 2;
-
-    const centerY =
-        rect.top + rect.height / 2;
-
-
-    for (let i = 0; i < 35; i++) {
-
-        const spark =
-            document.createElement("div");
-
-        spark.className = "particle";
-
-        spark.style.position = "fixed";
-
-        spark.style.left =
-            centerX + "px";
-
-        spark.style.top =
-            centerY + "px";
-
-        spark.style.width = "4px";
-
-        spark.style.height = "4px";
-
-        spark.style.animation = "none";
-
-        spark.style.zIndex = "200";
-
-        document.body.appendChild(spark);
-
-
-        const angle =
-            Math.random() * Math.PI * 2;
-
-        const distance =
-            60 + Math.random() * 180;
-
-        const x =
-            Math.cos(angle) * distance;
-
-        const y =
-            Math.sin(angle) * distance;
-
-
-        spark.animate(
-
-            [
-                {
-                    transform:
-                        "translate(0,0) scale(1)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        `translate(${x}px,${y}px) scale(0)`,
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration:
-                    700 + Math.random() * 500,
-
-                easing: "cubic-bezier(.2,.8,.3,1)"
-            }
-
-        ).onfinish = () => {
-
-            spark.remove();
-
-        };
-
-    }
-
-}
-
-
-/* =====================================
-   TOUCH EFFECT FOR MOBILE
-===================================== */
-
-card.addEventListener("touchstart", () => {
-
-    card.style.boxShadow =
-        `
-        0 30px 80px rgba(0,0,0,.9),
-        0 0 50px rgba(197,154,74,.18)
-        `;
-
-});
-
-
-card.addEventListener("touchend", () => {
-
-    setTimeout(() => {
-
-        card.style.boxShadow =
-            `
-            0 40px 100px rgba(0,0,0,.85),
-            0 0 60px rgba(197,154,74,.08)
-            `;
-
-    }, 300);
-
-});
-
-
-/* =====================================
-   RANDOM MAGICAL GLINT
-===================================== */
-
-setInterval(() => {
-
-    const glint =
-        document.createElement("div");
-
-    glint.className = "particle";
-
-    glint.style.position = "fixed";
-
-    glint.style.left =
-        (20 + Math.random() * 60) + "%";
-
-    glint.style.top =
-        (20 + Math.random() * 60) + "%";
-
-    glint.style.width = "5px";
-
-    glint.style.height = "5px";
-
-    glint.style.animation =
-        "none";
-
-    glint.style.opacity = "0";
-
-    document.body.appendChild(glint);
-
-
-    glint.animate(
-
-        [
-            {
-                opacity: 0,
-                transform: "scale(0)"
-            },
-
-            {
-                opacity: 1,
-                transform: "scale(1.5)"
-            },
-
-            {
-                opacity: 0,
-                transform: "scale(0)"
-            }
-        ],
-
-        {
-            duration: 900
-        }
-
-    ).onfinish = () => {
-
-        glint.remove();
+        email: "amrsamydxb@gmail.com"
 
     };
 
-}, 1800);
+
+    const vCard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:${contact.name}
+TEL;TYPE=CELL:${contact.phone}
+EMAIL:${contact.email}
+TITLE:Magician
+END:VCARD
+`;
+
+
+    try {
+
+        const blob = new Blob(
+            [vCard],
+            {
+                type: "text/vcard"
+            }
+        );
+
+
+        const url = URL.createObjectURL(blob);
+
+
+        const link = document.createElement("a");
+
+        link.href = url;
+
+        link.download = "Amr-Samy.vcf";
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        document.body.removeChild(link);
+
+        URL.revokeObjectURL(url);
+
+
+        showToast();
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+});
+
+
+function showToast() {
+
+    toast.classList.add("show");
+
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+
+/* -----------------------------------------
+   MAGICAL MOUSE GLOW
+----------------------------------------- */
+
+document.addEventListener("mousemove", (event) => {
+
+    const x = event.clientX;
+    const y = event.clientY;
+
+
+    document.documentElement.style.setProperty(
+        "--mouse-x",
+        `${x}px`
+    );
+
+
+    document.documentElement.style.setProperty(
+        "--mouse-y",
+        `${y}px`
+    );
+
+});
+
+
+
+/* -----------------------------------------
+   LITTLE CARD TILT EFFECT
+----------------------------------------- */
+
+const socialCards =
+    document.querySelectorAll(".social-card");
+
+
+socialCards.forEach(card => {
+
+    card.addEventListener("mousemove", (event) => {
+
+        const rect =
+            card.getBoundingClientRect();
+
+
+        const x =
+            event.clientX - rect.left;
+
+
+        const y =
+            event.clientY - rect.top;
+
+
+        const centerX =
+            rect.width / 2;
+
+
+        const centerY =
+            rect.height / 2;
+
+
+        const rotateX =
+            ((y - centerY) / centerY) * -2;
+
+
+        const rotateY =
+            ((x - centerX) / centerX) * 2;
+
+
+        card.style.transform =
+            `perspective(500px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-4px)`;
+
+    });
+
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+    });
+
+});
+
+
+
+/* -----------------------------------------
+   RANDOM MAGICAL SPARKLES
+----------------------------------------- */
+
+function createSparkle() {
+
+    const sparkle =
+        document.createElement("div");
+
+
+    sparkle.innerHTML = "✦";
+
+
+    sparkle.style.position = "fixed";
+
+    sparkle.style.left =
+        Math.random() * 100 + "%";
+
+    sparkle.style.top =
+        Math.random() * 100 + "%";
+
+
+    sparkle.style.color =
+        "#d8b56a";
+
+
+    sparkle.style.fontSize =
+        Math.random() * 8 + 5 + "px";
+
+
+    sparkle.style.pointerEvents =
+        "none";
+
+
+    sparkle.style.zIndex =
+        "-1";
+
+
+    sparkle.style.opacity =
+        "0";
+
+
+    sparkle.style.transition =
+        "all 2s ease";
+
+
+    document.body.appendChild(sparkle);
+
+
+    requestAnimationFrame(() => {
+
+        sparkle.style.opacity =
+            Math.random() * .5 + .2;
+
+        sparkle.style.transform =
+            "translateY(-30px) scale(1.5)";
+
+    });
+
+
+    setTimeout(() => {
+
+        sparkle.style.opacity = "0";
+
+        setTimeout(() => {
+
+            sparkle.remove();
+
+        }, 500);
+
+    }, 1800);
+
+}
+
+
+setInterval(createSparkle, 700);
