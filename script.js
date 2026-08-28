@@ -1,202 +1,288 @@
-/* =========================================
-   AMR SAMY
-   MAGIC DIGITAL CARD
-========================================= */
-/* =========================================
-   REVEAL MAGIC
-========================================= */
-const revealButton =
-  document.getElementById("revealButton");
-const content =
-  document.getElementById("content");
-revealButton.addEventListener(
-  "click",
-  () => {
-    content.classList.add("active");
-    revealButton.innerHTML =
-      '<span>✦</span><span>THE MAGIC IS OPEN</span>';
+/* =====================================
+   AMR SAMY MAGIC
+   DIGITAL BUSINESS CARD
+===================================== */
+
+
+/* =====================================
+   CREATE MAGICAL PARTICLES
+===================================== */
+
+const particleContainer =
+    document.getElementById("particles");
+
+const particleCount = 45;
+
+for (let i = 0; i < particleCount; i++) {
+
+    const particle =
+        document.createElement("div");
+
+    particle.classList.add("particle");
+
+    particle.style.left =
+        Math.random() * 100 + "%";
+
+    particle.style.animationDuration =
+        (7 + Math.random() * 13) + "s";
+
+    particle.style.animationDelay =
+        Math.random() * 10 + "s";
+
+    particle.style.width =
+        (1 + Math.random() * 3) + "px";
+
+    particle.style.height =
+        particle.style.width;
+
+    particleContainer.appendChild(particle);
+
+}
+
+
+/* =====================================
+   3D CARD MOVEMENT
+===================================== */
+
+const card =
+    document.getElementById("magicCard");
+
+
+document.addEventListener("mousemove", (event) => {
+
+    if (window.innerWidth < 700) return;
+
+    const x =
+        (window.innerWidth / 2 - event.clientX) / 35;
+
+    const y =
+        (window.innerHeight / 2 - event.clientY) / 35;
+
+    card.style.transform =
+        `
+        perspective(1200px)
+        rotateY(${x}deg)
+        rotateX(${y}deg)
+        translateZ(5px)
+        `;
+
+});
+
+
+document.addEventListener("mouseleave", () => {
+
+    card.style.transform =
+        `
+        perspective(1200px)
+        rotateY(0deg)
+        rotateX(0deg)
+        translateZ(0)
+        `;
+
+});
+
+
+/* =====================================
+   MAGIC BUTTON
+===================================== */
+
+const magicButton =
+    document.getElementById("magicButton");
+
+const flash =
+    document.getElementById("magicFlash");
+
+
+magicButton.addEventListener("click", () => {
+
+    flash.classList.remove("active");
+
+    void flash.offsetWidth;
+
+    flash.classList.add("active");
+
+    createBurst();
+
+});
+
+
+/* =====================================
+   MAGIC BURST
+===================================== */
+
+function createBurst() {
+
+    const rect =
+        magicButton.getBoundingClientRect();
+
+    const centerX =
+        rect.left + rect.width / 2;
+
+    const centerY =
+        rect.top + rect.height / 2;
+
+
+    for (let i = 0; i < 35; i++) {
+
+        const spark =
+            document.createElement("div");
+
+        spark.className = "particle";
+
+        spark.style.position = "fixed";
+
+        spark.style.left =
+            centerX + "px";
+
+        spark.style.top =
+            centerY + "px";
+
+        spark.style.width = "4px";
+
+        spark.style.height = "4px";
+
+        spark.style.animation = "none";
+
+        spark.style.zIndex = "200";
+
+        document.body.appendChild(spark);
+
+
+        const angle =
+            Math.random() * Math.PI * 2;
+
+        const distance =
+            60 + Math.random() * 180;
+
+        const x =
+            Math.cos(angle) * distance;
+
+        const y =
+            Math.sin(angle) * distance;
+
+
+        spark.animate(
+
+            [
+                {
+                    transform:
+                        "translate(0,0) scale(1)",
+                    opacity: 1
+                },
+
+                {
+                    transform:
+                        `translate(${x}px,${y}px) scale(0)`,
+                    opacity: 0
+                }
+            ],
+
+            {
+                duration:
+                    700 + Math.random() * 500,
+
+                easing: "cubic-bezier(.2,.8,.3,1)"
+            }
+
+        ).onfinish = () => {
+
+            spark.remove();
+
+        };
+
+    }
+
+}
+
+
+/* =====================================
+   TOUCH EFFECT FOR MOBILE
+===================================== */
+
+card.addEventListener("touchstart", () => {
+
+    card.style.boxShadow =
+        `
+        0 30px 80px rgba(0,0,0,.9),
+        0 0 50px rgba(197,154,74,.18)
+        `;
+
+});
+
+
+card.addEventListener("touchend", () => {
+
     setTimeout(() => {
-      content.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }, 350);
-  }
-);
-/* =========================================
-   SAVE CONTACT
-========================================= */
-const saveContact =
-  document.getElementById("saveContact");
-saveContact.addEventListener(
-  "click",
-  () => {
-    const vCard = `BEGIN:VCARD
-VERSION:3.0
-FN:Amr Samy
-N:Samy;Amr;;;
-ORG:Amr Samy The Magician
-TITLE:The Magician
-TEL;TYPE=CELL:+201115552621
-EMAIL:amrsamydxb@gmail.com
-URL:https://iamamrsamy.github.io/amrsamy/
-NOTE:Professional Magician & Entertainer
-END:VCARD`;
-    const blob =
-      new Blob(
-        [vCard],
+
+        card.style.boxShadow =
+            `
+            0 40px 100px rgba(0,0,0,.85),
+            0 0 60px rgba(197,154,74,.08)
+            `;
+
+    }, 300);
+
+});
+
+
+/* =====================================
+   RANDOM MAGICAL GLINT
+===================================== */
+
+setInterval(() => {
+
+    const glint =
+        document.createElement("div");
+
+    glint.className = "particle";
+
+    glint.style.position = "fixed";
+
+    glint.style.left =
+        (20 + Math.random() * 60) + "%";
+
+    glint.style.top =
+        (20 + Math.random() * 60) + "%";
+
+    glint.style.width = "5px";
+
+    glint.style.height = "5px";
+
+    glint.style.animation =
+        "none";
+
+    glint.style.opacity = "0";
+
+    document.body.appendChild(glint);
+
+
+    glint.animate(
+
+        [
+            {
+                opacity: 0,
+                transform: "scale(0)"
+            },
+
+            {
+                opacity: 1,
+                transform: "scale(1.5)"
+            },
+
+            {
+                opacity: 0,
+                transform: "scale(0)"
+            }
+        ],
+
         {
-          type:
-            "text/vcard;charset=utf-8"
+            duration: 900
         }
-      );
-    const url =
-      URL.createObjectURL(blob);
-    const link =
-      document.createElement("a");
-    link.href = url;
-    link.download =
-      "Amr-Samy.vcf";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    saveContact.innerHTML =
-      "✓ CONTACT SAVED";
-    setTimeout(() => {
-      saveContact.innerHTML =
-        "♧ SAVE CONTACT";
-    }, 2500);
-  }
-);
-/* =========================================
-   SHARE
-========================================= */
-const shareCard =
-  document.getElementById("shareCard");
-shareCard.addEventListener(
-  "click",
-  async () => {
-    const data = {
-      title:
-        "Amr Samy — The Magician",
-      text:
-        "Meet Amr Samy — The Magician ✦",
-      url:
-        "https://iamamrsamy.github.io/amrsamy/"
+
+    ).onfinish = () => {
+
+        glint.remove();
+
     };
-    if (navigator.share) {
-      try {
-        await navigator.share(data);
-      }
-      catch (error) {
-        console.log(error);
-      }
-    }
-    else {
-      try {
-        await navigator.clipboard.writeText(
-          data.url
-        );
-        shareCard.innerHTML =
-          "✓ LINK COPIED";
-        setTimeout(() => {
-          shareCard.innerHTML =
-            "✦ SHARE CARD";
-        }, 2000);
-      }
-      catch {
-        alert(data.url);
-      }
-    }
-  }
-);
-/* =========================================
-   MAGIC PARTICLES
-========================================= */
-function createMagicParticle() {
-  const particle =
-    document.createElement("div");
-  const symbols =
-    ["✦", "✧", "·", "♦", "♠"];
-  particle.innerText =
-    symbols[
-      Math.floor(
-        Math.random() *
-        symbols.length
-      )
-    ];
-  particle.style.position =
-    "fixed";
-  particle.style.left =
-    Math.random() * 100 + "vw";
-  particle.style.bottom =
-    "-20px";
-  particle.style.zIndex =
-    "1";
-  particle.style.pointerEvents =
-    "none";
-  particle.style.color =
-    Math.random() > .85
-      ? "#8c1728"
-      : "#c9a74a";
-  particle.style.fontSize =
-    (Math.random() * 8 + 5) + "px";
-  const animation =
-    particle.animate(
-      [
-        {
-          transform:
-            "translateY(0) rotate(0deg)",
-          opacity: 0
-        },
-        {
-          transform:
-            "translateY(-45vh) rotate(180deg)",
-          opacity: .45
-        },
-        {
-          transform:
-            "translateY(-100vh) rotate(360deg)",
-          opacity: 0
-        }
-      ],
-      {
-        duration:
-          Math.random() * 5000 + 5000,
-        easing:
-          "linear"
-      }
-    );
-  document.body.appendChild(
-    particle
-  );
-  animation.onfinish =
-    () => particle.remove();
-}
-setInterval(
-  createMagicParticle,
-  1000
-);
-/* =========================================
-   DESKTOP 3D CARD MOVEMENT
-========================================= */
-const logo =
-  document.querySelector(".magic-logo");
-if (window.innerWidth > 700) {
-  document.addEventListener(
-    "mousemove",
-    (event) => {
-      const x =
-        (event.clientX /
-          window.innerWidth -
-          .5) * 8;
-      const y =
-        (event.clientY /
-          window.innerHeight -
-          .5) * 8;
-      logo.style.transform =
-        `translate(${x}px, ${y}px)`;
-    }
-  );
-}
+
+}, 1800);
