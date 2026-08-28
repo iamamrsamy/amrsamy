@@ -1,123 +1,192 @@
-/* =====================================
-   AMR SAMY MAGIC CARD
-===================================== */
+/* =========================================
+   AMR SAMY — MAGIC EXPERIENCE
+========================================= */
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const intro =
+  document.getElementById("intro");
+
+const enterMagic =
+  document.getElementById("enterMagic");
+
+const experience =
+  document.getElementById("experience");
 
 const card =
   document.getElementById("magicCard");
 
-const cursorGlow =
-  document.querySelector(".cursor-glow");
-
 const saveContact =
   document.getElementById("saveContact");
 
-const shareCard =
-  document.getElementById("shareCard");
+const shareButton =
+  document.getElementById("shareButton");
 
 const qrButton =
   document.getElementById("qrButton");
 
-const qrContainer =
-  document.getElementById("qrContainer");
+const qrBox =
+  document.getElementById("qrBox");
 
 
-/* =====================================
-   MOUSE LIGHT
-===================================== */
+/* =========================================
+   ENTER MAGIC
+========================================= */
 
-document.addEventListener(
-  "mousemove",
-  (e) => {
+enterMagic.addEventListener(
+  "click",
+  () => {
 
-    cursorGlow.style.left =
-      e.clientX + "px";
+    enterMagic.innerHTML =
+      "THE MAGIC BEGINS...";
 
-    cursorGlow.style.top =
-      e.clientY + "px";
+    setTimeout(() => {
+
+      intro.classList.add("hide");
+
+      document.body.style.overflow =
+        "auto";
+
+    }, 600);
 
   }
 );
 
 
-/* =====================================
-   3D CARD
-===================================== */
+/* =========================================
+   3D CARD — DESKTOP
+========================================= */
 
 document.addEventListener(
   "mousemove",
-  (e) => {
+  (event) => {
 
-    if (window.innerWidth < 700)
-      return;
+    if (
+      window.innerWidth < 700
+    ) return;
+
 
     const x =
-      (e.clientX /
+      (event.clientX /
       window.innerWidth) - .5;
 
+
     const y =
-      (e.clientY /
+      (event.clientY /
       window.innerHeight) - .5;
 
+
     const rotateX =
-      y * -8;
+      y * -12;
+
 
     const rotateY =
-      x * 10;
+      x * 15;
+
 
     card.style.transform = `
-      perspective(1200px)
       rotateX(${rotateX}deg)
       rotateY(${rotateY}deg)
-      scale(1.015)
+      scale(1.02)
     `;
 
   }
 );
 
+
+/* =========================================
+   RESET CARD
+========================================= */
 
 document.addEventListener(
   "mouseleave",
   () => {
 
-    card.style.transform = `
-      perspective(1200px)
-      rotateX(0deg)
-      rotateY(0deg)
-      scale(1)
+    card.style.transform =
+      "rotateX(0deg) rotateY(0deg)";
+
+  }
+);
+
+
+/* =========================================
+   MOBILE TOUCH MAGIC
+========================================= */
+
+let touchStartX = 0;
+
+let touchStartY = 0;
+
+
+card.addEventListener(
+  "touchstart",
+  (event) => {
+
+    touchStartX =
+      event.touches[0].clientX;
+
+    touchStartY =
+      event.touches[0].clientY;
+
+  }
+);
+
+
+card.addEventListener(
+  "touchmove",
+  (event) => {
+
+    const currentX =
+      event.touches[0].clientX;
+
+    const currentY =
+      event.touches[0].clientY;
+
+
+    const deltaX =
+      currentX - touchStartX;
+
+    const deltaY =
+      currentY - touchStartY;
+
+
+    const rotateY =
+      deltaX * .12;
+
+    const rotateX =
+      deltaY * -.12;
+
+
+    card.querySelector(
+      ".card-inner"
+    ).style.transform = `
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
     `;
 
   }
 );
 
 
-/* =====================================
-   TOUCH EFFECT
-===================================== */
-
-card.addEventListener(
-  "touchstart",
-  () => {
-
-    card.style.transform =
-      "scale(.98)";
-
-  }
-);
-
 card.addEventListener(
   "touchend",
   () => {
 
-    card.style.transform =
-      "scale(1)";
+    card.querySelector(
+      ".card-inner"
+    ).style.transform =
+      "rotateX(0deg) rotateY(0deg)";
 
   }
 );
 
 
-/* =====================================
+/* =========================================
    SAVE CONTACT
-===================================== */
+========================================= */
 
 saveContact.addEventListener(
   "click",
@@ -137,6 +206,7 @@ NOTE:Professional Magician & Entertainer
 END:VCARD
 `;
 
+
     const blob =
       new Blob(
         [vCard],
@@ -146,16 +216,20 @@ END:VCARD
         }
       );
 
+
     const url =
       URL.createObjectURL(blob);
+
 
     const link =
       document.createElement("a");
 
+
     link.href = url;
 
     link.download =
-      "Amr-Samy-Contact.vcf";
+      "Amr-Samy.vcf";
+
 
     document.body.appendChild(link);
 
@@ -169,11 +243,12 @@ END:VCARD
     saveContact.innerHTML =
       "✓ CONTACT SAVED";
 
+
     setTimeout(
       () => {
 
         saveContact.innerHTML =
-          "<span>♧</span> SAVE CONTACT";
+          "<span>♣</span> SAVE CONTACT";
 
       },
       2500
@@ -183,15 +258,15 @@ END:VCARD
 );
 
 
-/* =====================================
+/* =========================================
    SHARE
-===================================== */
+========================================= */
 
-shareCard.addEventListener(
+shareButton.addEventListener(
   "click",
   async () => {
 
-    const shareData = {
+    const data = {
 
       title:
         "Amr Samy — The Magician",
@@ -212,37 +287,43 @@ shareCard.addEventListener(
       try {
 
         await navigator.share(
-          shareData
+          data
         );
 
-      } catch (error) {}
+      }
 
-    } else {
+      catch (error) {}
+
+    }
+
+    else {
 
       try {
 
         await navigator.clipboard.writeText(
-          shareData.url
+          data.url
         );
 
-        shareCard.innerHTML =
+
+        shareButton.innerHTML =
           "✓ LINK COPIED";
+
 
         setTimeout(
           () => {
 
-            shareCard.innerHTML =
-              "<span>↗</span> SHARE";
+            shareButton.innerHTML =
+              "<span>↗</span> SHARE MAGIC";
 
           },
           2000
         );
 
-      } catch (error) {
+      }
 
-        alert(
-          shareData.url
-        );
+      catch (error) {
+
+        alert(data.url);
 
       }
 
@@ -252,34 +333,34 @@ shareCard.addEventListener(
 );
 
 
-/* =====================================
+/* =========================================
    QR CODE
-===================================== */
+========================================= */
 
 qrButton.addEventListener(
   "click",
   () => {
 
-    qrContainer.classList.toggle(
+    qrBox.classList.toggle(
       "show"
     );
 
 
     if (
-      qrContainer.classList.contains("show") &&
-      qrContainer.children.length === 0
+      qrBox.classList.contains("show") &&
+      qrBox.children.length === 0
     ) {
 
       new QRCode(
-        qrContainer,
+        qrBox,
         {
 
           text:
             "https://iamamrsamy.github.io/amrsamy/",
 
-          width: 150,
+          width: 160,
 
-          height: 150,
+          height: 160,
 
           colorDark:
             "#000000",
@@ -295,97 +376,245 @@ qrButton.addEventListener(
 
     }
 
+
+    if (
+      qrBox.classList.contains("show")
+    ) {
+
+      qrButton.innerHTML =
+        "<span>×</span> HIDE QR";
+
+    }
+
+    else {
+
+      qrButton.innerHTML =
+        "<span>▦</span> REVEAL MY QR";
+
+    }
+
   }
 );
 
 
-/* =====================================
-   RANDOM MAGIC SPARKS
-===================================== */
+/* =========================================
+   MAGIC PARTICLES
+========================================= */
 
-function createSpark() {
+function createMagicParticle() {
 
-  const spark =
+  const particle =
     document.createElement("div");
 
-  spark.innerHTML =
+
+  particle.innerHTML =
     Math.random() > .5
       ? "✦"
       : "♦";
 
-  spark.style.position =
+
+  particle.style.position =
     "fixed";
 
-  spark.style.left =
+
+  particle.style.left =
     Math.random() * 100 + "vw";
 
-  spark.style.bottom =
+
+  particle.style.bottom =
     "-20px";
 
-  spark.style.color =
-    "#d4af37";
 
-  spark.style.opacity =
+  particle.style.color =
+    Math.random() > .7
+      ? "#8e1827"
+      : "#d4af37";
+
+
+  particle.style.fontSize =
+    Math.random() * 8 + 5 + "px";
+
+
+  particle.style.opacity =
     "0";
 
-  spark.style.fontSize =
-    Math.random() * 8 + 7 + "px";
 
-  spark.style.pointerEvents =
+  particle.style.pointerEvents =
     "none";
 
-  spark.style.zIndex =
-    "2";
+
+  particle.style.zIndex =
+    "3";
 
 
   const duration =
     Math.random() * 5000 + 5000;
 
 
-  spark.animate(
+  const animation =
+    particle.animate(
 
-    [
+      [
+
+        {
+          transform:
+            "translateY(0) rotate(0deg)",
+          opacity: 0
+        },
+
+        {
+          transform:
+            "translateY(-110vh) rotate(360deg)",
+          opacity: .5
+        },
+
+        {
+          transform:
+            "translateY(-120vh) rotate(700deg)",
+          opacity: 0
+        }
+
+      ],
 
       {
-        transform:
-          "translateY(0) rotate(0deg)",
-        opacity: 0
-      },
 
-      {
-        transform:
-          "translateY(-110vh) rotate(360deg)",
-        opacity: .5
+        duration:
+
+          duration,
+
+        easing:
+
+          "linear"
+
       }
 
-    ],
-
-    {
-      duration:
-        duration,
-
-      easing:
-        "linear"
-
-    }
-
-  );
+    );
 
 
   document.body.appendChild(
-    spark
+    particle
   );
 
 
-  setTimeout(
-    () => spark.remove(),
-    duration
-  );
+  animation.onfinish =
+    () => particle.remove();
 
 }
 
 
 setInterval(
-  createSpark,
-  1400
+  createMagicParticle,
+  900
+);
+
+
+/* =========================================
+   RANDOM CARD FLASH
+========================================= */
+
+const suits = [
+  "♠",
+  "♥",
+  "♦",
+  "♣"
+];
+
+
+function magicFlash() {
+
+  const flash =
+    document.createElement("div");
+
+
+  flash.innerText =
+    suits[
+      Math.floor(
+        Math.random() *
+        suits.length
+      )
+    ];
+
+
+  flash.style.position =
+    "fixed";
+
+
+  flash.style.left =
+    Math.random() * 90 + 5 + "vw";
+
+
+  flash.style.top =
+    Math.random() * 90 + 5 + "vh";
+
+
+  flash.style.fontFamily =
+    "Georgia, serif";
+
+
+  flash.style.fontSize =
+    "20px";
+
+
+  flash.style.color =
+    "#d4af37";
+
+
+  flash.style.opacity =
+    "0";
+
+
+  flash.style.pointerEvents =
+    "none";
+
+
+  flash.style.zIndex =
+    "2";
+
+
+  document.body.appendChild(
+    flash
+  );
+
+
+  flash.animate(
+
+    [
+
+      {
+        opacity: 0,
+        transform:
+          "scale(.5) rotate(-20deg)"
+      },
+
+      {
+        opacity: .3,
+        transform:
+          "scale(1) rotate(0deg)"
+      },
+
+      {
+        opacity: 0,
+        transform:
+          "scale(1.5) rotate(20deg)"
+      }
+
+    ],
+
+    {
+
+      duration: 1800,
+
+      easing: "ease-out"
+
+    }
+
+  ).onfinish =
+    () => flash.remove();
+
+}
+
+
+setInterval(
+  magicFlash,
+  3500
 );
