@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080808">
 
     <title>Amr Samy | Magician</title>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- Fonts -->
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
           rel="stylesheet">
 
     <!-- Icons -->
@@ -23,161 +27,361 @@
 <body>
 
     <!-- Magical Background -->
-    <div class="magic-bg"></div>
+    <div class="magic-background">
 
-    <!-- Stars -->
-    <div class="stars"></div>
+        <div class="moon"></div>
 
-    <!-- Floating particles -->
-    <div id="particles"></div>
+        <div class="stars"></div>
 
-    <!-- Main Scene -->
-    <main class="scene">
+        <div class="floating-suit suit-1">♠</div>
+        <div class="floating-suit suit-2 red">♥</div>
+        <div class="floating-suit suit-3">♣</div>
+        <div class="floating-suit suit-4 red">♦</div>
 
-        <!-- Magical Card -->
-        <div class="magic-card" id="magicCard">
+        <div class="glow glow-1"></div>
+        <div class="glow glow-2"></div>
 
-            <!-- Golden Border -->
-            <div class="gold-frame"></div>
+    </div>
 
-            <!-- Top Symbol -->
-            <div class="top-symbol">
-                <span>A</span>
-                <small>♠</small>
+
+    <!-- Main Container -->
+    <main class="card-container">
+
+        <!-- Top Decoration -->
+        <div class="ornament top-ornament">
+            ✦ ─────────────── ✧ ─────────────── ✦
+        </div>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="profile-frame">
+
+                <div class="profile-glow"></div>
+
+                <!-- Replace this with your photo -->
+                <img src="profile.jpg"
+                     alt="Amr Samy">
+
+                <div class="frame-suit">♠</div>
+
             </div>
 
-            <!-- Decorative corner -->
-            <div class="corner corner-tl">✦</div>
-            <div class="corner corner-tr">✦</div>
-            <div class="corner corner-bl">✦</div>
-            <div class="corner corner-br">✦</div>
 
-            <!-- Main Logo -->
-            <div class="logo-container">
-
-                <!-- Put your logo here -->
-                <img src="logo.png"
-                     alt="Amr Samy Magic Logo"
-                     class="logo">
-
-                <div class="magic-ring"></div>
-                <div class="magic-ring ring-two"></div>
-
-            </div>
-
-            <!-- Name -->
-            <div class="name-area">
+            <div class="hero-content">
 
                 <div class="small-title">
-                    THE ART OF
+                    ✦ THE ART OF IMPOSSIBLE ✦
                 </div>
 
-                <h1>AMR SAMY</h1>
+                <h1>
+                    AMR SAMY
+                </h1>
 
-                <div class="title-line">
-                    <span></span>
-                    <b>MAGICIAN</b>
-                    <span></span>
+                <div class="profession">
+                    — MAGICIAN —
+                </div>
+
+                <p class="tagline">
+                    I don't just perform magic.<br>
+                    <span>I create unforgettable moments.</span>
+                </p>
+
+                <div class="suits-line">
+                    <span>♠</span>
+                    <span class="red">♥</span>
+                    <span>♣</span>
+                    <span class="red">♦</span>
                 </div>
 
             </div>
 
-            <!-- Description -->
-            <p class="intro">
-                Creating moments that feel impossible.
-            </p>
+        </section>
 
-            <!-- Magical Divider -->
-            <div class="divider">
+
+        <!-- Divider -->
+        <div class="magic-divider">
+            <span>✧</span>
+            <div></div>
+            <span>♠</span>
+            <div></div>
+            <span>✧</span>
+        </div>
+
+
+        <!-- CONTACT -->
+        <section class="contact-section">
+
+            <div class="section-title">
                 <span>✦</span>
-                <i></i>
-                <span>♠</span>
-                <i></i>
+                <h2>CONNECT WITH ME</h2>
                 <span>✦</span>
             </div>
 
-            <!-- Contact -->
-            <div class="contact-area">
 
-                <a href="tel:01115552621" class="contact-item">
+            <div class="social-grid">
+
+                <!-- Phone -->
+                <a href="tel:+201115552621"
+                   class="social-card">
 
                     <div class="icon">
                         <i class="fa-solid fa-phone"></i>
                     </div>
 
                     <div>
-                        <small>CALL THE MAGICIAN</small>
-                        <strong>01115552621</strong>
+                        <span>Phone</span>
+                        <strong>+20 111 555 2621</strong>
                     </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/201115552621"
+                   target="_blank"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+
+                    <div>
+                        <span>WhatsApp</span>
+                        <strong>+20 111 555 2621</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- Instagram -->
+                <a href="https://instagram.com/Iamamrsamy"
+                   target="_blank"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+
+                    <div>
+                        <span>Instagram</span>
+                        <strong>@Iamamrsamy</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@Iamamrsamy"
+                   target="_blank"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </div>
+
+                    <div>
+                        <span>TikTok</span>
+                        <strong>@Iamamrsamy</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- YouTube -->
+                <a href="https://youtube.com/@Iamamrsamy"
+                   target="_blank"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-brands fa-youtube"></i>
+                    </div>
+
+                    <div>
+                        <span>YouTube</span>
+                        <strong>@Iamamrsamy</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/Iamamrsamy"
+                   target="_blank"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+
+                    <div>
+                        <span>LinkedIn</span>
+                        <strong>Iamamrsamy</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- X -->
+                <a href="https://x.com/Iamamrsamy"
+                   target="_blank"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </div>
+
+                    <div>
+                        <span>Twitter / X</span>
+                        <strong>@Iamamrsamy</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
+
+                </a>
+
+
+                <!-- Email -->
+                <a href="mailto:amrsamydxb@gmail.com"
+                   class="social-card">
+
+                    <div class="icon">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <strong>amrsamydxb@gmail.com</strong>
+                    </div>
+
+                    <div class="arrow">↗</div>
 
                 </a>
 
             </div>
 
-            <!-- Social -->
-            <div class="social-area">
 
-                <p>FOLLOW THE MAGIC</p>
+            <!-- Save Contact -->
+            <button class="save-contact"
+                    id="saveContact">
 
-                <div class="socials">
+                <i class="fa-solid fa-address-card"></i>
 
-                    <a href="https://instagram.com/iamamrsamy"
-                       target="_blank">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
+                <span>SAVE MY CONTACT</span>
 
-                    <a href="https://facebook.com/iamamrsamy"
-                       target="_blank">
-                        <i class="fa-brands fa-facebook-f"></i>
-                    </a>
-
-                    <a href="https://www.tiktok.com/@iamamrsamy"
-                       target="_blank">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
-
-                    <a href="https://youtube.com/@iamamrsamy"
-                       target="_blank">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-
-                </div>
-
-                <div class="username">
-                    @iamamrsamy
-                </div>
-
-            </div>
-
-            <!-- Enter Button -->
-            <button class="magic-button" id="magicButton">
-
-                <span>ENTER THE MAGIC</span>
-
-                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <span class="button-suit">♠</span>
 
             </button>
 
-            <!-- Bottom Playing Card -->
-            <div class="bottom-card-symbol">
-                <span>♠</span>
-                <b>A</b>
+        </section>
+
+
+        <!-- ABOUT -->
+        <section class="about-section">
+
+            <div class="section-title">
+                <span>✦</span>
+                <h2>ABOUT ME</h2>
+                <span>✦</span>
             </div>
 
-        </div>
 
-        <!-- Bottom Text -->
-        <div class="scene-footer">
-            <span>AMR SAMY MAGIC</span>
-            <i></i>
-            <span>EST. MAGIC</span>
-        </div>
+            <div class="about-box">
+
+                <div class="about-symbol">
+                    <span>♠</span>
+                    <span class="red">♥</span>
+                    <span>♣</span>
+                    <span class="red">♦</span>
+                </div>
+
+                <p>
+                    I'm <strong>Amr Samy</strong>, a professional magician
+                    passionate about creating magical experiences
+                    that leave people amazed.
+                </p>
+
+                <p>
+                    From close-up illusions to unforgettable performances,
+                    my goal is simple:
+                </p>
+
+                <div class="quote">
+                    "Make the impossible feel real."
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Magical Quote -->
+        <section class="quote-section">
+
+            <div class="quote-card">
+
+                <span class="quote-mark">“</span>
+
+                <p>
+                    Every great illusion begins
+                    with a little bit of imagination.
+                </p>
+
+                <div class="quote-suit">
+                    ♣
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer>
+
+            <div class="footer-suits">
+
+                <span>♠</span>
+                <span class="red">♥</span>
+                <span>♣</span>
+                <span class="red">♦</span>
+                <span>♠</span>
+                <span class="red">♥</span>
+                <span>♣</span>
+                <span class="red">♦</span>
+
+            </div>
+
+            <p>
+                © 2026 Amr Samy Magic
+            </p>
+
+            <small>
+                Made with a little bit of magic ✦
+            </small>
+
+        </footer>
 
     </main>
 
 
-    <!-- Magic Flash -->
-    <div class="magic-flash" id="magicFlash"></div>
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        ✦ Contact saved successfully ✦
+    </div>
 
 
     <script src="script.js"></script>
