@@ -62,7 +62,7 @@ TITLE:The Magician
 TEL;TYPE=CELL:+201115552621
 EMAIL;TYPE=INTERNET:amrsamydxb@gmail.com
 URL:${currentURL}
-ADR;TYPE=WORK:;;Dubai;;;United Arab Emirates
+ADR;TYPE=WORK:;;Cairo;;;Egypt
 NOTE:Magician | Entertainer | Illusionist
 END:VCARD`;
 
