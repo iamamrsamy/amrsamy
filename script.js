@@ -1,17 +1,37 @@
-/* ==========================================
+/* =========================================
    AMR SAMY
-   DIGITAL MAGIC BUSINESS CARD
-========================================== */
-/* =========================
+   MAGIC DIGITAL CARD
+========================================= */
+/* =========================================
+   REVEAL MAGIC
+========================================= */
+const revealButton =
+  document.getElementById("revealButton");
+const content =
+  document.getElementById("content");
+revealButton.addEventListener(
+  "click",
+  () => {
+    content.classList.add("active");
+    revealButton.innerHTML =
+      '<span>✦</span><span>THE MAGIC IS OPEN</span>';
+    setTimeout(() => {
+      content.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }, 350);
+  }
+);
+/* =========================================
    SAVE CONTACT
-========================= */
+========================================= */
 const saveContact =
   document.getElementById("saveContact");
 saveContact.addEventListener(
   "click",
-  function () {
-    const vCard = `
-BEGIN:VCARD
+  () => {
+    const vCard = `BEGIN:VCARD
 VERSION:3.0
 FN:Amr Samy
 N:Samy;Amr;;;
@@ -21,8 +41,7 @@ TEL;TYPE=CELL:+201115552621
 EMAIL:amrsamydxb@gmail.com
 URL:https://iamamrsamy.github.io/amrsamy/
 NOTE:Professional Magician & Entertainer
-END:VCARD
-`;
+END:VCARD`;
     const blob =
       new Blob(
         [vCard],
@@ -37,45 +56,38 @@ END:VCARD
       document.createElement("a");
     link.href = url;
     link.download =
-      "Amr-Samy-Contact.vcf";
+      "Amr-Samy.vcf";
     document.body.appendChild(link);
     link.click();
     link.remove();
     URL.revokeObjectURL(url);
     saveContact.innerHTML =
-      "✓ CONTACT READY";
-    setTimeout(
-      function () {
-        saveContact.innerHTML =
-          "<span>＋</span> ADD TO CONTACTS";
-      },
-      2500
-    );
+      "✓ CONTACT SAVED";
+    setTimeout(() => {
+      saveContact.innerHTML =
+        "♧ SAVE CONTACT";
+    }, 2500);
   }
 );
-/* =========================
-   SHARE CARD
-========================= */
+/* =========================================
+   SHARE
+========================================= */
 const shareCard =
   document.getElementById("shareCard");
 shareCard.addEventListener(
   "click",
-  async function () {
-    const shareData = {
+  async () => {
+    const data = {
       title:
         "Amr Samy — The Magician",
       text:
-        "Amr Samy — The Magician ✦",
+        "Meet Amr Samy — The Magician ✦",
       url:
         "https://iamamrsamy.github.io/amrsamy/"
     };
-    if (
-      navigator.share
-    ) {
+    if (navigator.share) {
       try {
-        await navigator.share(
-          shareData
-        );
+        await navigator.share(data);
       }
       catch (error) {
         console.log(error);
@@ -84,151 +96,54 @@ shareCard.addEventListener(
     else {
       try {
         await navigator.clipboard.writeText(
-          shareData.url
+          data.url
         );
         shareCard.innerHTML =
           "✓ LINK COPIED";
-        setTimeout(
-          function () {
-            shareCard.innerHTML =
-              "↗ SHARE CARD";
-          },
-          2000
-        );
+        setTimeout(() => {
+          shareCard.innerHTML =
+            "✦ SHARE CARD";
+        }, 2000);
       }
-      catch (error) {
-        prompt(
-          "Copy your card link:",
-          shareData.url
-        );
+      catch {
+        alert(data.url);
       }
     }
   }
 );
-/* =========================
-   QR CODE
-========================= */
-const showQR =
-  document.getElementById("showQR");
-const qrContainer =
-  document.getElementById("qrContainer");
-showQR.addEventListener(
-  "click",
-  function () {
-    qrContainer.classList.toggle(
-      "show"
-    );
-    if (
-      qrContainer.classList.contains("show")
-    ) {
-      if (
-        qrContainer.innerHTML === ""
-      ) {
-        new QRCode(
-          qrContainer,
-          {
-            text:
-              "https://iamamrsamy.github.io/amrsamy/",
-            width: 170,
-            height: 170,
-            colorDark:
-              "#000000",
-            colorLight:
-              "#ffffff",
-            correctLevel:
-              QRCode.CorrectLevel.H
-          }
-        );
-      }
-      showQR.innerHTML =
-        "× HIDE QR";
-    }
-    else {
-      showQR.innerHTML =
-        "▦ QR CODE";
-    }
-  }
-);
-/* =========================
-   CARD TILT
-========================= */
-const profileCard =
-  document.querySelector(
-    ".profile-card"
-  );
-if (
-  window.innerWidth > 700
-) {
-  profileCard.addEventListener(
-    "mousemove",
-    function (event) {
-      const rect =
-        profileCard.getBoundingClientRect();
-      const x =
-        event.clientX -
-        rect.left;
-      const y =
-        event.clientY -
-        rect.top;
-      const centerX =
-        rect.width / 2;
-      const centerY =
-        rect.height / 2;
-      const rotateY =
-        (x - centerX) /
-        35;
-      const rotateX =
-        (centerY - y) /
-        35;
-      profileCard.style.transform = `
-        perspective(900px)
-        rotateX(${rotateX}deg)
-        rotateY(${rotateY}deg)
-        translateY(-2px)
-      `;
-    }
-  );
-  profileCard.addEventListener(
-    "mouseleave",
-    function () {
-      profileCard.style.transform =
-        "";
-    }
-  );
-}
-/* =========================
-   MAGIC SPARKS
-========================= */
-function createSpark() {
-  const spark =
-    document.createElement("span");
+/* =========================================
+   MAGIC PARTICLES
+========================================= */
+function createMagicParticle() {
+  const particle =
+    document.createElement("div");
   const symbols =
-    ["✦", "✧", "♦", "♠"];
-  spark.innerHTML =
+    ["✦", "✧", "·", "♦", "♠"];
+  particle.innerText =
     symbols[
       Math.floor(
         Math.random() *
         symbols.length
       )
     ];
-  spark.style.position =
+  particle.style.position =
     "fixed";
-  spark.style.left =
+  particle.style.left =
     Math.random() * 100 + "vw";
-  spark.style.bottom =
+  particle.style.bottom =
     "-20px";
-  spark.style.zIndex =
+  particle.style.zIndex =
     "1";
-  spark.style.pointerEvents =
+  particle.style.pointerEvents =
     "none";
-  spark.style.color =
-    Math.random() > .75
-      ? "#9b1d2d"
-      : "#d7b85a";
-  spark.style.fontSize =
-    Math.random() * 8 + 6 + "px";
+  particle.style.color =
+    Math.random() > .85
+      ? "#8c1728"
+      : "#c9a74a";
+  particle.style.fontSize =
+    (Math.random() * 8 + 5) + "px";
   const animation =
-    spark.animate(
+    particle.animate(
       [
         {
           transform:
@@ -238,7 +153,7 @@ function createSpark() {
         {
           transform:
             "translateY(-45vh) rotate(180deg)",
-          opacity: .35
+          opacity: .45
         },
         {
           transform:
@@ -254,14 +169,34 @@ function createSpark() {
       }
     );
   document.body.appendChild(
-    spark
+    particle
   );
   animation.onfinish =
-    function () {
-      spark.remove();
-    };
+    () => particle.remove();
 }
 setInterval(
-  createSpark,
-  1200
+  createMagicParticle,
+  1000
 );
+/* =========================================
+   DESKTOP 3D CARD MOVEMENT
+========================================= */
+const logo =
+  document.querySelector(".magic-logo");
+if (window.innerWidth > 700) {
+  document.addEventListener(
+    "mousemove",
+    (event) => {
+      const x =
+        (event.clientX /
+          window.innerWidth -
+          .5) * 8;
+      const y =
+        (event.clientY /
+          window.innerHeight -
+          .5) * 8;
+      logo.style.transform =
+        `translate(${x}px, ${y}px)`;
+    }
+  );
+}
