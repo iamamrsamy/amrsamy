@@ -223,18 +223,57 @@ body {
 ===================================================== */
 
 .logo {
-    width: 150px;
-    margin: 0 auto 20px;
+
+    width: 130px;
+
+    margin-bottom: 10px;
+
     text-align: center;
+
 }
 
-.logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(199,149,50,.25));
+
+.logo-letter {
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 80px;
+
+    line-height: .75;
+
+    font-weight: 600;
+
+    text-shadow:
+        0 0 20px rgba(199,149,50,.2);
+
 }
+
+
+.logo-text {
+
+    margin-top: 14px;
+
+    color: var(--gold-light);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+
+    letter-spacing: 7px;
+
+}
+
+
+.logo-star {
+
+    margin-top: 8px;
+
+    color: var(--gold-light);
+
+}
+
 
 
 /* =====================================================
@@ -1636,27 +1675,4 @@ footer small {
 
     }
 
-}
-/* =========================================
-   LOGO INSIDE THE MAGIC CIRCLE
-========================================= */
-
-.circle-logo {
-    position: absolute;
-
-    z-index: 6;
-
-    top: 25px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 95px;
-    height: auto;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(0 0 8px rgba(199,149,50,0.7))
-        drop-shadow(0 0 20px rgba(199,149,50,0.3));
 }
