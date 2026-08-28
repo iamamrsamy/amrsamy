@@ -1,416 +1,383 @@
-/* =========================
-   LOADER
-========================= */
-
-window.addEventListener("load", () => {
-
-  const loader = document.getElementById("loader");
-
-  setTimeout(() => {
-    loader.style.opacity = "0";
-    loader.style.pointerEvents = "none";
-
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 1000);
-
-  }, 1800);
-
-});
-
-
-/* =========================
-   CUSTOM CURSOR
-========================= */
-
-const cursor = document.querySelector(".cursor");
-const follower = document.querySelector(".cursor-follower");
-
-document.addEventListener("mousemove", (e) => {
-
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
-
-  follower.animate(
-    {
-      left: e.clientX + "px",
-      top: e.clientY + "px"
-    },
-    {
-      duration: 500,
-      fill: "forwards"
-    }
-  );
-
-});
-
-
-/* =========================
-   PARTICLES
-========================= */
-
-const canvas = document.getElementById("particles");
+/* =========================================
+   AMR SAMY MAGIC CARD
+========================================= */
+/* =========================================
+   ELEMENTS
+========================================= */
+const magicCard = document.getElementById("magicCard");
+const revealBtn = document.getElementById("revealBtn");
+const shareBtn = document.getElementById("shareBtn");
+const saveBtn = document.getElementById("saveBtn");
+const qrBtn = document.getElementById("qrBtn");
+const qrBox = document.getElementById("qrBox");
+const canvas = document.getElementById("magicCanvas");
 const ctx = canvas.getContext("2d");
-
+/* =========================================
+   CARD FLIP
+========================================= */
+function revealMagic() {
+  magicCard.classList.toggle("flipped");
+  if (magicCard.classList.contains("flipped")) {
+    revealBtn.innerHTML =
+      "<span>♠</span> HIDE MAGIC";
+  } else {
+    revealBtn.innerHTML =
+      "<span>🪄</span> REVEAL MAGIC";
+  }
+}
+magicCard.addEventListener("click", revealMagic);
+revealBtn.addEventListener("click", revealMagic);
+/* =========================================
+   3D CARD MOVEMENT
+========================================= */
+document.addEventListener("mousemove", (e) => {
+  if (window.innerWidth < 700) return;
+  const x =
+    (e.clientX / window.innerWidth - .5);
+  const y =
+    (e.clientY / window.innerHeight - .5);
+  const rotateX = y * -5;
+  const rotateY = x * 7;
+  if (!magicCard.classList.contains("flipped")) {
+    magicCard.style.transform =
+      `rotateX(${rotateX}deg)
+       rotateY(${rotateY}deg)`;
+  } else {
+    magicCard.style.transform =
+      `rotateX(${rotateX}deg)
+       rotateY(${rotateY + 180}deg)`;
+  }
+});
+magicCard.addEventListener("mouseleave", () => {
+  if (magicCard.classList.contains("flipped")) {
+    magicCard.style.transform =
+      "rotateY(180deg)";
+  } else {
+    magicCard.style.transform =
+      "rotateY(0deg)";
+  }
+});
+/* =========================================
+   MOBILE DEVICE TILT
+========================================= */
+window.addEventListener("deviceorientation", (event) => {
+  if (window.innerWidth > 700) return;
+  const x = event.gamma || 0;
+  const y = event.beta || 0;
+  const rotateY =
+    Math.max(-7, Math.min(7, x / 4));
+  const rotateX =
+    Math.max(-5, Math.min(5, (y - 45) / 5));
+  if (magicCard.classList.contains("flipped")) {
+    magicCard.style.transform =
+      `rotateX(${rotateX}deg)
+       rotateY(${180 + rotateY}deg)`;
+  } else {
+    magicCard.style.transform =
+      `rotateX(${rotateX}deg)
+       rotateY(${rotateY}deg)`;
+  }
+});
+/* =========================================
+   PARTICLE MAGIC
+========================================= */
 let particles = [];
-
 function resizeCanvas() {
-
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
 }
-
 resizeCanvas();
-
 window.addEventListener("resize", resizeCanvas);
-
-
-class Particle {
-
+class MagicParticle {
   constructor() {
-
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-
-    this.size = Math.random() * 1.5 + .3;
-
-    this.speedX = (Math.random() - .5) * .3;
-    this.speedY = (Math.random() - .5) * .3;
-
+    this.reset();
+    this.y =
+      Math.random() * canvas.height;
   }
-
-
+  reset() {
+    this.x =
+      Math.random() * canvas.width;
+    this.y =
+      canvas.height + Math.random() * 100;
+    this.size =
+      Math.random() * 1.7 + .4;
+    this.speed =
+      Math.random() * .5 + .15;
+    this.opacity =
+      Math.random() * .6 + .15;
+    this.symbol =
+      Math.random() > .82
+        ? ["✦", "✧", "♠", "♦"][Math.floor(Math.random() * 4)]
+        : null;
+  }
   update() {
-
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x < 0) this.x = canvas.width;
-    if (this.x > canvas.width) this.x = 0;
-
-    if (this.y < 0) this.y = canvas.height;
-    if (this.y > canvas.height) this.y = 0;
-
+    this.y -= this.speed;
+    this.x +=
+      Math.sin(this.y * .008) * .15;
+    if (this.y < -20) {
+      this.reset();
+    }
   }
-
-
   draw() {
-
-    ctx.beginPath();
-
-    ctx.arc(
-      this.x,
-      this.y,
-      this.size,
-      0,
-      Math.PI * 2
-    );
-
-    ctx.fillStyle = "rgba(212,175,55,.6)";
-
-    ctx.fill();
-
+    ctx.globalAlpha = this.opacity;
+    ctx.fillStyle = "#d4af37";
+    if (this.symbol) {
+      ctx.font =
+        `${this.size * 9}px Georgia`;
+      ctx.fillText(
+        this.symbol,
+        this.x,
+        this.y
+      );
+    } else {
+      ctx.beginPath();
+      ctx.arc(
+        this.x,
+        this.y,
+        this.size,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+    }
   }
-
 }
-
-
 function createParticles() {
-
   particles = [];
-
   const amount =
-    window.innerWidth < 600 ? 50 : 120;
-
+    window.innerWidth < 600
+      ? 45
+      : 100;
   for (let i = 0; i < amount; i++) {
-
-    particles.push(new Particle());
-
+    particles.push(
+      new MagicParticle()
+    );
   }
-
 }
-
-
 createParticles();
-
-
-function animateParticles() {
-
+function animateMagic() {
   ctx.clearRect(
     0,
     0,
     canvas.width,
     canvas.height
   );
-
-  particles.forEach(p => {
-
-    p.update();
-    p.draw();
-
+  particles.forEach(particle => {
+    particle.update();
+    particle.draw();
   });
-
-  requestAnimationFrame(animateParticles);
-
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(
+    animateMagic
+  );
 }
-
-animateParticles();
-
-
-/* =========================
-   3D MAGIC CARDS
-========================= */
-
-const cards =
-  document.querySelectorAll(".magic-card");
-
-cards.forEach(card => {
-
-  card.addEventListener("mousemove", (e) => {
-
-    const rect = card.getBoundingClientRect();
-
-    const x =
-      e.clientX - rect.left;
-
-    const y =
-      e.clientY - rect.top;
-
-    const rotateX =
-      ((y / rect.height) - .5) * -10;
-
-    const rotateY =
-      ((x / rect.width) - .5) * 10;
-
-    card.style.transform =
-      `perspective(800px)
-       rotateX(${rotateX}deg)
-       rotateY(${rotateY}deg)
-       translateY(-10px)`;
-
-  });
-
-
-  card.addEventListener("mouseleave", () => {
-
-    card.style.transform =
-      "perspective(800px) rotateX(0) rotateY(0)";
-
-  });
-
-});
-
-
-/* =========================
-   SCROLL REVEAL
-========================= */
-
-const revealElements =
-  document.querySelectorAll(
-    ".section-title, .about-text, .magic-card, .contact-card, .social-section"
-  );
-
-
-revealElements.forEach(el => {
-
-  el.style.opacity = "0";
-  el.style.transform = "translateY(50px)";
-  el.style.transition =
-    "opacity 1s ease, transform 1s ease";
-
-});
-
-
-const observer =
-  new IntersectionObserver(
-    entries => {
-
-      entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-          entry.target.style.opacity = "1";
-
-          entry.target.style.transform =
-            "translateY(0)";
-
-          observer.unobserve(entry.target);
-
-        }
-
-      });
-
-    },
-    {
-      threshold: .15
-    }
-  );
-
-
-revealElements.forEach(el => {
-
-  observer.observe(el);
-
-});
-
-
-/* =========================
-   MAGNETIC BUTTONS
-========================= */
-
-const buttons =
-  document.querySelectorAll(
-    ".magic-button, .big-magic-button, .nav-button"
-  );
-
-
-buttons.forEach(button => {
-
-  button.addEventListener("mousemove", e => {
-
-    const rect =
-      button.getBoundingClientRect();
-
-    const x =
-      e.clientX - rect.left - rect.width / 2;
-
-    const y =
-      e.clientY - rect.top - rect.height / 2;
-
-    button.style.transform =
-      `translate(${x * .12}px, ${y * .12}px)`;
-
-  });
-
-
-  button.addEventListener("mouseleave", () => {
-
-    button.style.transform =
-      "translate(0,0)";
-
-  });
-
-});
-
-
-/* =========================
-   RANDOM MAGIC SYMBOLS
-========================= */
-
-const symbols =
-  ["♠", "♥", "♣", "♦"];
-
-setInterval(() => {
-
-  if (window.innerWidth < 600) return;
-
-  const symbol =
-    document.createElement("div");
-
-  symbol.innerHTML =
-    symbols[
-      Math.floor(Math.random() * symbols.length)
-    ];
-
-  symbol.style.position = "fixed";
-  symbol.style.left =
-    Math.random() * 100 + "vw";
-
-  symbol.style.bottom = "-30px";
-
-  symbol.style.color =
-    Math.random() > .5
-      ? "#d4af37"
-      : "#ffffff";
-
-  symbol.style.fontSize =
-    Math.random() * 20 + 12 + "px";
-
-  symbol.style.opacity = ".5";
-
-  symbol.style.pointerEvents = "none";
-
-  symbol.style.zIndex = "1";
-
-  document.body.appendChild(symbol);
-
-
-  const duration =
-    Math.random() * 4000 + 4000;
-
-
-  symbol.animate(
-    [
-      {
-        transform: "translateY(0) rotate(0deg)",
-        opacity: 0
-      },
-      {
-        transform:
-          `translateY(-110vh)
-           rotate(360deg)`,
-        opacity: .6
+animateMagic();
+/* =========================================
+   MAGIC SPARK EXPLOSION
+========================================= */
+function magicExplosion(x, y) {
+  for (let i = 0; i < 25; i++) {
+    const angle =
+      Math.random() * Math.PI * 2;
+    const speed =
+      Math.random() * 4 + 1;
+    const particle = {
+      x,
+      y,
+      vx:
+        Math.cos(angle) * speed,
+      vy:
+        Math.sin(angle) * speed,
+      life: 1
+    };
+    const start =
+      performance.now();
+    function animateSpark(time) {
+      const elapsed =
+        (time - start) / 700;
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.life =
+        1 - elapsed;
+      ctx.globalAlpha =
+        Math.max(0, particle.life);
+      ctx.fillStyle =
+        "#d4af37";
+      ctx.beginPath();
+      ctx.arc(
+        particle.x,
+        particle.y,
+        2,
+        0,
+        Math.PI * 2
+      );
+      ctx.fill();
+      if (particle.life > 0) {
+        requestAnimationFrame(
+          animateSpark
+        );
       }
-    ],
-    {
-      duration: duration,
-      easing: "linear"
     }
+    requestAnimationFrame(
+      animateSpark
+    );
+  }
+}
+/* =========================================
+   CLICK MAGIC
+========================================= */
+magicCard.addEventListener("click", (e) => {
+  magicExplosion(
+    e.clientX,
+    e.clientY
   );
-
-
-  setTimeout(() => {
-
-    symbol.remove();
-
-  }, duration);
-
-
-}, 900);
-
-
-/* =========================
-   ACTIVE NAVIGATION
-========================= */
-
-const sections =
-  document.querySelectorAll("section[id]");
-
-const navLinks =
-  document.querySelectorAll(".nav-links a");
-
-
-window.addEventListener("scroll", () => {
-
-  let current = "";
-
-  sections.forEach(section => {
-
-    const sectionTop =
-      section.offsetTop - 200;
-
-    if (scrollY >= sectionTop) {
-
-      current = section.getAttribute("id");
-
-    }
-
-  });
-
-
-  navLinks.forEach(link => {
-
-    link.style.color = "";
-
-    if (
-      link.getAttribute("href") === "#" + current
-    ) {
-
-      link.style.color = "#d4af37";
-
-    }
-
-  });
-
 });
+/* =========================================
+   SHARE
+========================================= */
+shareBtn.addEventListener("click", async () => {
+  const shareData = {
+    title:
+      "Amr Samy | The Magician",
+    text:
+      "Check out Amr Samy's Digital Magic Card ✨",
+    url:
+      window.location.href
+  };
+  if (navigator.share) {
+    try {
+      await navigator.share(
+        shareData
+      );
+    } catch (error) {}
+  } else {
+    await navigator.clipboard.writeText(
+      window.location.href
+    );
+    shareBtn.innerHTML =
+      "✓ LINK COPIED";
+    setTimeout(() => {
+      shareBtn.innerHTML =
+        "↗ SHARE";
+    }, 2000);
+  }
+});
+/* =========================================
+   SAVE CONTACT
+========================================= */
+saveBtn.addEventListener("click", () => {
+  const vCard = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Amr Samy
+N:Samy;Amr;;;
+ORG:Amr Samy The Magician
+TITLE:The Magician
+TEL;TYPE=CELL:+201115552621
+EMAIL:amrsamydxb@gmail.com
+URL:https://iamamrsamy.github.io/amrsamy/
+URL:https://instagram.com/iamamrsamy
+NOTE:Professional Magician & Entertainer
+END:VCARD
+`;
+  const blob =
+    new Blob(
+      [vCard],
+      { type: "text/vcard" }
+    );
+  const url =
+    URL.createObjectURL(blob);
+  const link =
+    document.createElement("a");
+  link.href = url;
+  link.download =
+    "Amr-Samy-Contact.vcf";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
+  saveBtn.innerHTML =
+    "✓ CONTACT READY";
+  setTimeout(() => {
+    saveBtn.innerHTML =
+      "♡ SAVE CONTACT";
+  }, 2500);
+});
+/* =========================================
+   QR CODE
+========================================= */
+qrBtn.addEventListener("click", () => {
+  qrBox.classList.toggle("show");
+  if (
+    qrBox.classList.contains("show") &&
+    !document.getElementById("qrcode").hasChildNodes()
+  ) {
+    new QRCode(
+      document.getElementById("qrcode"),
+      {
+        text:
+          "https://iamamrsamy.github.io/amrsamy/",
+        width: 150,
+        height: 150,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel:
+          QRCode.CorrectLevel.H
+      }
+    );
+  }
+});
+/* =========================================
+   WAND SPARKS
+========================================= */
+setInterval(() => {
+  const wand =
+    document.querySelector(".wand");
+  if (!wand) return;
+  const rect =
+    wand.getBoundingClientRect();
+  magicExplosion(
+    rect.left,
+    rect.top
+  );
+}, 3500);
+/* =========================================
+   TOUCH MAGIC
+========================================= */
+let touchStartX = 0;
+magicCard.addEventListener(
+  "touchstart",
+  e => {
+    touchStartX =
+      e.touches[0].clientX;
+  },
+  { passive: true }
+);
+magicCard.addEventListener(
+  "touchend",
+  e => {
+    const touchEndX =
+      e.changedTouches[0].clientX;
+    const difference =
+      touchEndX - touchStartX;
+    if (Math.abs(difference) > 60) {
+      revealMagic();
+    }
+  }
+);
+/* =========================================
+   PREVENT DOUBLE TAP ZOOM
+========================================= */
+let lastTouch = 0;
+document.addEventListener(
+  "touchend",
+  e => {
+    const now =
+      Date.now();
+    if (now - lastTouch <= 300) {
+      e.preventDefault();
+    }
+    lastTouch = now;
+  },
+  { passive: false }
+);
