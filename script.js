@@ -1,21 +1,28 @@
-/* =========================
+/* =========================================
    QR CODE
-========================= */
+========================================= */
 
-const currentURL = window.location.href;
+const qrCanvas =
+    document.getElementById("qrcode");
+
+
+const pageURL =
+    window.location.href;
 
 
 QRCode.toCanvas(
 
-    document.getElementById("qrcode"),
+    qrCanvas,
 
-    currentURL,
+    pageURL,
 
     {
 
-        width: 220,
+        width: 205,
 
-        margin: 2,
+        margin: 1,
+
+        errorCorrectionLevel: "H",
 
         color: {
 
@@ -41,11 +48,12 @@ QRCode.toCanvas(
 
 
 
-/* =========================
+/* =========================================
    SAVE CONTACT
-========================= */
+========================================= */
 
 function saveContact() {
+
 
     const vcard = `BEGIN:VCARD
 VERSION:3.0
@@ -54,29 +62,34 @@ N:Samy;Amr;;;
 TITLE:The Magician
 TEL;TYPE=CELL:+201115552621
 EMAIL:amrsamydxb@gmail.com
-URL:${window.location.href}
+URL:${pageURL}
 NOTE:Magician - Entertainer - Illusionist
+ADR;TYPE=WORK:;;Dubai;;;United Arab Emirates
 END:VCARD`;
 
 
-    const file = new Blob(
+    const blob =
+        new Blob(
 
-        [vcard],
+            [vcard],
 
-        {
-            type: "text/vcard"
-        }
+            {
+                type:
+                    "text/vcard;charset=utf-8"
+            }
 
-    );
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
 
 
     const link =
         document.createElement("a");
 
 
-    link.href =
-        URL.createObjectURL(file);
-
+    link.href = url;
 
     link.download =
         "Amr-Samy.vcf";
@@ -84,36 +97,44 @@ END:VCARD`;
 
     document.body.appendChild(link);
 
-
     link.click();
-
 
     document.body.removeChild(link);
 
 
-    showMessage();
+    URL.revokeObjectURL(url);
+
+
+    showToast();
 
 }
 
 
 
-/* =========================
-   MESSAGE
-========================= */
+/* =========================================
+   TOAST
+========================================= */
 
-function showMessage() {
-
-    const message =
-        document.getElementById("message");
+function showToast() {
 
 
-    message.classList.add("show");
+    const toast =
+        document.getElementById("toast");
 
 
-    setTimeout(function() {
+    toast.classList.add("show");
 
-        message.classList.remove("show");
 
-    }, 2000);
+    setTimeout(
+
+        function() {
+
+            toast.classList.remove("show");
+
+        },
+
+        2200
+
+    );
 
 }
