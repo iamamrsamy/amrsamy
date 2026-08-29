@@ -1,15 +1,14 @@
 :root {
-  --purple: #7657e8;
-  --purple-dark: #5735c5;
-  --pink: #ff5fa2;
-  --blue: #38bdf8;
+  --purple: #7454e8;
+  --purple-dark: #4d32b5;
+  --pink: #ff5b9f;
+  --blue: #3ebbf0;
   --yellow: #ffd83d;
-  --green: #4ed49b;
-  --orange: #ff9f43;
-  --red: #ff4d6d;
-  --white: #ffffff;
+  --orange: #ff9d3c;
+  --green: #54d6a0;
   --dark: #30264a;
-  --gray: #746b87;
+  --gray: #7d748c;
+  --white: #ffffff;
 }
 * {
   box-sizing: border-box;
@@ -21,400 +20,352 @@ html {
 }
 body {
   min-height: 100vh;
-  background:
-    linear-gradient(
-      180deg,
-      #eaf8ff 0%,
-      #fff4fb 45%,
-      #f6edff 100%
-    );
-  color: var(--dark);
   font-family:
     "Fredoka",
     sans-serif;
+  color: var(--dark);
   overflow-x: hidden;
-}
-button,
-a {
-  -webkit-tap-highlight-color:
-    transparent;
+  background:
+    radial-gradient(
+      circle at 50% 5%,
+      #fff7b8 0,
+      transparent 22%
+    ),
+    linear-gradient(
+      180deg,
+      #8bdcff 0%,
+      #d8f5ff 18%,
+      #fff1fb 48%,
+      #f1eaff 75%,
+      #fff8d9 100%
+    );
 }
 a {
   color: inherit;
   text-decoration: none;
 }
-/* ==================================
-   SKY GLOW
-================================== */
-.sky-glow {
+button {
+  font-family: inherit;
+}
+/* =====================================
+   MAIN WORLD
+===================================== */
+.world {
+  width: min(
+    100%,
+    650px
+  );
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
+/* =====================================
+   MAGIC BACKGROUND
+===================================== */
+.magic-bg {
   position: fixed;
-  width: 400px;
-  height: 400px;
-  top: -180px;
-  left: 50%;
-  transform:
-    translateX(-50%);
-  border-radius: 50%;
-  background:
-    rgba(255,216,61,.28);
-  filter:
-    blur(70px);
+  inset: 0;
   pointer-events: none;
-}
-/* ==================================
-   CLOUDS
-================================== */
-.cloud {
-  position: fixed;
-  width: 120px;
-  height: 40px;
-  border-radius: 100px;
-  background:
-    rgba(255,255,255,.7);
-  filter:
-    blur(1px);
-  opacity: .7;
-  pointer-events: none;
-}
-.cloud::before,
-.cloud::after {
-  content: "";
-  position: absolute;
-  background: inherit;
-  border-radius: 50%;
-}
-.cloud::before {
-  width: 55px;
-  height: 55px;
-  left: 20px;
-  bottom: 5px;
-}
-.cloud::after {
-  width: 70px;
-  height: 70px;
-  right: 15px;
-  bottom: 0;
-}
-.cloud-1 {
-  top: 13%;
-  left: -40px;
-  animation:
-    cloudMove 18s linear infinite;
-}
-.cloud-2 {
-  top: 43%;
-  right: -60px;
-  transform:
-    scale(.7);
-  animation:
-    cloudMoveReverse 22s linear infinite;
-}
-.cloud-3 {
-  top: 72%;
-  left: -50px;
-  transform:
-    scale(.5);
-  animation:
-    cloudMove 25s linear infinite;
-}
-@keyframes cloudMove {
-  from {
-    transform:
-      translateX(-100px);
-  }
-  to {
-    transform:
-      translateX(650px);
-  }
-}
-@keyframes cloudMoveReverse {
-  from {
-    transform:
-      translateX(100px)
-      scale(.7);
-  }
-  to {
-    transform:
-      translateX(-650px)
-      scale(.7);
-  }
-}
-/* ==================================
-   FLOATING CARDS
-================================== */
-.floating-card {
-  position: fixed;
+  overflow: hidden;
   z-index: 1;
-  font-family: Georgia, serif;
-  font-size: 90px;
-  opacity: .09;
-  pointer-events: none;
-  animation:
-    floatCard 7s ease-in-out infinite;
 }
-.card-1 {
-  left: -25px;
-  top: 18%;
+.playing-card {
+  position: absolute;
+  font-family: Georgia, serif;
+  font-size: 120px;
+  opacity: .08;
+  animation:
+    cardFloat 8s ease-in-out infinite;
+}
+.card-spade {
+  top: 15%;
+  left: -35px;
   color: var(--purple);
 }
-.card-2 {
-  right: -20px;
-  top: 28%;
+.card-heart {
+  top: 35%;
+  right: -35px;
   color: var(--pink);
   animation-delay: 1s;
 }
-.card-3 {
-  left: -10px;
-  bottom: 20%;
+.card-diamond {
+  bottom: 27%;
+  left: -30px;
   color: var(--blue);
   animation-delay: 2s;
 }
-.card-4 {
-  right: -10px;
+.card-club {
   bottom: 8%;
+  right: -30px;
   color: var(--green);
   animation-delay: 3s;
 }
-@keyframes floatCard {
+@keyframes cardFloat {
   50% {
     transform:
       translateY(-25px)
       rotate(12deg);
   }
 }
-/* ==================================
-   STARS
-================================== */
-.star {
-  position: fixed;
+/* =====================================
+   SPARKLES
+===================================== */
+.sparkle {
+  position: absolute;
   color: var(--yellow);
   font-size: 25px;
-  pointer-events: none;
   animation:
-    twinkle 2s ease-in-out infinite;
+    sparkleFloat 2s ease-in-out infinite;
 }
-.star-1 {
-  left: 14%;
-  top: 25%;
-}
-.star-2 {
-  right: 15%;
+.s1 {
+  left: 12%;
   top: 18%;
+}
+.s2 {
+  right: 14%;
+  top: 12%;
   animation-delay: .5s;
 }
-.star-3 {
-  left: 17%;
-  bottom: 25%;
+.s3 {
+  left: 8%;
+  top: 55%;
   animation-delay: 1s;
 }
-.star-4 {
-  right: 17%;
-  bottom: 32%;
+.s4 {
+  right: 9%;
+  top: 65%;
   animation-delay: 1.5s;
 }
-@keyframes twinkle {
+.s5 {
+  right: 22%;
+  bottom: 10%;
+  animation-delay: 2s;
+}
+@keyframes sparkleFloat {
   50% {
     transform:
       scale(1.5)
-      rotate(20deg);
-    opacity: .45;
+      rotate(25deg);
+    opacity: .4;
   }
 }
-/* ==================================
-   PAGE
-================================== */
-.page {
-  position: relative;
-  z-index: 3;
-  width: min(100%, 560px);
-  margin: auto;
-}
-/* ==================================
-   HERO
-================================== */
-.hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  padding:
-    30px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-/* ==================================
-   MAGIC BURST
-================================== */
-.magic-burst {
+/* =====================================
+   BALLOONS
+===================================== */
+.balloon {
   position: absolute;
-  width: 240px;
-  height: 240px;
-  pointer-events: none;
-}
-.magic-burst span {
-  position: absolute;
-  color: var(--yellow);
-  font-size: 18px;
+  font-size: 42px;
   animation:
-    burstFloat 3s ease-in-out infinite;
+    balloonFloat 6s ease-in-out infinite;
 }
-.magic-burst span:nth-child(1) {
+.balloon1 {
   left: 5%;
-  top: 35%;
+  top: 30%;
 }
-.magic-burst span:nth-child(2) {
-  right: 8%;
-  top: 25%;
-  animation-delay: .5s;
-}
-.magic-burst span:nth-child(3) {
-  left: 10%;
-  bottom: 25%;
+.balloon2 {
+  right: 4%;
+  top: 48%;
   animation-delay: 1s;
 }
-.magic-burst span:nth-child(4) {
-  right: 5%;
-  bottom: 30%;
-  animation-delay: 1.5s;
-}
-.magic-burst span:nth-child(5) {
-  left: 45%;
-  top: 5%;
+.balloon3 {
+  left: 12%;
+  bottom: 5%;
   animation-delay: 2s;
 }
-@keyframes burstFloat {
+@keyframes balloonFloat {
   50% {
     transform:
-      translateY(-15px)
-      rotate(25deg)
-      scale(1.3);
+      translateY(-30px)
+      rotate(8deg);
   }
 }
-/* ==================================
-   MAGIC HAT
-================================== */
-.magic-hat {
+/* =====================================
+   HERO
+===================================== */
+.hero {
   position: relative;
-  width: 130px;
-  height: 105px;
-  margin-bottom: 5px;
-  animation:
-    hatBounce 3s ease-in-out infinite;
+  min-height: 620px;
+  padding:
+    35px 18px 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
-.hat-top {
+/* =====================================
+   MOON
+===================================== */
+.moon {
   position: absolute;
-  top: 2px;
-  left: 32px;
-  width: 66px;
-  height: 68px;
-  background:
-    linear-gradient(
-      135deg,
-      #8058e9,
-      #4c2db1
-    );
-  border-radius:
-    35px 35px 8px 8px;
-  transform:
-    skewX(-4deg);
-}
-.hat-body {
-  position: absolute;
-  bottom: 7px;
-  left: 10px;
-  width: 110px;
-  height: 42px;
+  width: 180px;
+  height: 180px;
+  top: 30px;
   border-radius: 50%;
   background:
-    linear-gradient(
-      135deg,
-      #8159ed,
-      #4b2cae
-    );
+    #fff8b4;
   box-shadow:
-    0 12px 0
-    rgba(74,40,175,.12);
+    0 0 70px
+    rgba(255,216,61,.55);
+  opacity: .65;
 }
-.hat-band {
+/* =====================================
+   CASTLE
+===================================== */
+.castle {
   position: absolute;
-  left: 0;
-  top: 8px;
-  width: 100%;
-  height: 13px;
-  background:
-    var(--pink);
-}
-.hat-star {
-  position: absolute;
-  right: 23px;
-  top: 1px;
-  color: var(--yellow);
-  font-size: 18px;
-}
-@keyframes hatBounce {
-  50% {
-    transform:
-      translateY(-8px)
-      rotate(-2deg);
-  }
-}
-/* ==================================
-   WAND
-================================== */
-.wand {
-  position: absolute;
-  top: 24%;
-  right: 17%;
-  width: 80px;
-  height: 25px;
+  bottom: 15px;
+  left: 50%;
   transform:
-    rotate(-25deg);
-  animation:
-    wandWave 3s ease-in-out infinite;
+    translateX(-50%);
+  width: 430px;
+  height: 180px;
+  opacity: .7;
 }
-.wand-stick {
+.castle-center {
   position: absolute;
-  width: 65px;
-  height: 7px;
-  top: 10px;
-  border-radius: 10px;
+  left: 50%;
+  bottom: 0;
+  transform:
+    translateX(-50%);
+  width: 155px;
+  height: 150px;
   background:
     linear-gradient(
       90deg,
-      #7c4b20,
-      #c47b37
+      #8b72dc,
+      #6c4cc7
+    );
+  border-radius:
+    75px 75px 0 0;
+}
+.castle-roof {
+  position: absolute;
+  top: -65px;
+  left: -22px;
+  width: 200px;
+  height: 100px;
+  background:
+    #5d3bb8;
+  clip-path:
+    polygon(
+      50% 0,
+      100% 100%,
+      0 100%
     );
 }
-.wand-star {
+.castle-window {
   position: absolute;
-  right: -5px;
-  top: -4px;
-  font-size: 25px;
-  animation:
-    sparkle 1s infinite;
+  top: 45px;
+  left: 50%;
+  transform:
+    translateX(-50%);
+  width: 42px;
+  height: 55px;
+  border-radius:
+    25px 25px 5px 5px;
+  background:
+    #fff5a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 }
-@keyframes wandWave {
+.castle-door {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform:
+    translateX(-50%);
+  width: 42px;
+  height: 65px;
+  border-radius:
+    25px 25px 0 0;
+  background:
+    #40248e;
+}
+.castle-tower {
+  position: absolute;
+  bottom: 0;
+  width: 75px;
+  height: 115px;
+  background:
+    #8068d3;
+}
+.tower-left {
+  left: 42px;
+}
+.tower-right {
+  right: 42px;
+}
+.tower-roof {
+  position: absolute;
+  top: -42px;
+  left: -12px;
+  width: 100px;
+  height: 65px;
+  background:
+    #5837af;
+  clip-path:
+    polygon(
+      50% 0,
+      100% 100%,
+      0 100%
+    );
+}
+.tower-window {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform:
+    translateX(-50%);
+  width: 25px;
+  height: 34px;
+  border-radius:
+    20px 20px 0 0;
+  background:
+    #fff3a3;
+}
+/* =====================================
+   HERO CARD
+===================================== */
+.hero-card {
+  position: relative;
+  z-index: 5;
+  width: min(
+    100%,
+    410px
+  );
+  padding:
+    35px 25px 28px;
+  text-align: center;
+  border-radius: 40px;
+  background:
+    rgba(255,255,255,.88);
+  border:
+    5px solid
+    rgba(255,255,255,.8);
+  box-shadow:
+    0 25px 70px
+    rgba(75,45,150,.18);
+  backdrop-filter:
+    blur(15px);
+  animation:
+    heroFloat 5s ease-in-out infinite;
+}
+@keyframes heroFloat {
   50% {
     transform:
-      rotate(-15deg)
       translateY(-7px);
   }
 }
-@keyframes sparkle {
-  50% {
-    transform:
-      scale(1.3)
-      rotate(20deg);
-  }
-}
-/* ==================================
+/* =====================================
    LOGO
-================================== */
-.logo {
-  width: 115px;
-  height: 115px;
-  margin-top: -5px;
+===================================== */
+.logo-orbit {
+  width: 125px;
+  height: 125px;
+  margin:
+    0 auto 15px;
   padding: 6px;
   border-radius: 50%;
   background:
@@ -424,61 +375,65 @@ a {
       var(--orange)
     );
   box-shadow:
-    0 12px 25px
-    rgba(255,159,67,.25);
+    0 10px 30px
+    rgba(255,159,61,.3);
 }
-.logo-circle {
+.logo {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background:
-    white;
   border:
     4px dashed
     var(--purple);
+  background:
+    white;
 }
-.logo-circle span {
-  color: var(--purple);
+.logo span {
   font-family:
     "Baloo 2",
     sans-serif;
-  font-size: 38px;
+  font-size: 43px;
   font-weight: 800;
+  color:
+    var(--purple);
 }
-/* ==================================
-   HERO TEXT
-================================== */
-.hello {
-  margin-top: 18px;
-  color: var(--purple);
-  font-size: 8px;
+/* =====================================
+   HERO TYPOGRAPHY
+===================================== */
+.welcome {
+  color:
+    var(--purple);
+  font-size: 9px;
   font-weight: 700;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 .hero h1 {
-  margin-top: 4px;
+  margin-top: 6px;
   font-family:
     "Baloo 2",
     sans-serif;
-  font-size: 55px;
-  line-height: .85;
+  font-size: 62px;
+  line-height: .78;
   font-weight: 800;
-  color: var(--dark);
+  color:
+    var(--dark);
   text-shadow:
-    3px 3px 0
-    rgba(255,216,61,.65);
+    4px 4px 0
+    rgba(255,216,61,.7);
 }
 .hero h1 span {
   display: block;
-  color: var(--pink);
+  color:
+    var(--pink);
 }
-.magic-title {
-  margin-top: 12px;
+.title-pill {
+  display: inline-block;
+  margin-top: 18px;
   padding:
-    7px 16px;
+    8px 20px;
   border-radius: 50px;
   background:
     var(--purple);
@@ -487,479 +442,595 @@ a {
   font-weight: 600;
   box-shadow:
     0 8px 20px
-    rgba(118,87,232,.25);
+    rgba(116,84,232,.3);
 }
-.hero-text {
-  max-width: 290px;
-  margin-top: 13px;
-  color: var(--gray);
-  font-size: 10px;
-  line-height: 1.6;
+.hero-card > p {
+  margin-top: 12px;
+  color:
+    var(--gray);
+  font-size: 11px;
 }
-/* ==================================
-   MAGIC BUTTON
-================================== */
-.magic-button {
-  margin-top: 23px;
-  min-width: 250px;
-  height: 55px;
-  padding:
-    0 22px;
-  border: none;
-  border-radius: 18px;
-  background:
-    linear-gradient(
-      135deg,
-      var(--pink),
-      var(--purple)
-    );
-  color: white;
-  font-family:
-    "Fredoka",
-    sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  box-shadow:
-    0 12px 25px
-    rgba(118,87,232,.25);
-  cursor: pointer;
-  transition: .3s;
+.cards-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 20px;
 }
-.magic-button:hover {
-  transform:
-    translateY(-4px)
-    rotate(-1deg);
-}
-.magic-button:active {
-  transform:
-    scale(.96);
-}
-.scroll-hint {
-  margin-top: 20px;
-  color: #a79db8;
-  font-size: 7px;
-  letter-spacing: 2px;
-}
-.scroll-hint span {
-  display: block;
-  margin-bottom: 4px;
+.cards-row span {
   animation:
-    down 1s infinite;
+    cardPop 2s ease-in-out infinite;
 }
-@keyframes down {
+.cards-row span:nth-child(2) {
+  animation-delay: .2s;
+}
+.cards-row span:nth-child(3) {
+  animation-delay: .4s;
+}
+.cards-row span:nth-child(4) {
+  animation-delay: .6s;
+}
+@keyframes cardPop {
   50% {
     transform:
-      translateY(5px);
+      translateY(-6px)
+      rotate(5deg);
   }
 }
-/* ==================================
-   CONTENT
-================================== */
-.content {
-  padding:
-    10px 16px 40px;
-  opacity: 0;
+/* =====================================
+   WAND
+===================================== */
+.hero-wand {
+  position: absolute;
+  z-index: 8;
+  right: 7%;
+  top: 27%;
+  font-size: 55px;
   transform:
-    translateY(35px);
-  pointer-events: none;
-  transition:
-    .7s ease;
+    rotate(-25deg);
+  animation:
+    wandMagic 2.5s ease-in-out infinite;
 }
-.content.active {
-  opacity: 1;
-  transform:
-    translateY(0);
-  pointer-events: auto;
+@keyframes wandMagic {
+  50% {
+    transform:
+      rotate(-10deg)
+      translateY(-10px)
+      scale(1.08);
+  }
 }
-/* ==================================
-   BLOCK
-================================== */
-.block {
-  margin-top: 25px;
+/* =====================================
+   CLOUDS
+===================================== */
+.hero-cloud {
+  position: absolute;
+  bottom: 0;
+  width: 170px;
+  height: 45px;
+  border-radius: 50px;
+  background:
+    rgba(255,255,255,.7);
 }
-.section-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.section-title .number {
-  width: 25px;
-  height: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.hero-cloud::before,
+.hero-cloud::after {
+  content: "";
+  position: absolute;
   border-radius: 50%;
   background:
-    var(--yellow);
-  color: var(--dark);
-  font-size: 8px;
-  font-weight: 700;
+    inherit;
 }
-.section-title h2 {
-  color: var(--dark);
-  font-size: 11px;
-  font-weight: 700;
+.hero-cloud::before {
+  width: 80px;
+  height: 80px;
+  left: 20px;
+  bottom: 5px;
 }
-/* ==================================
-   CONTACT
-================================== */
-.contact-box {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.hero-cloud::after {
+  width: 90px;
+  height: 90px;
+  right: 10px;
+  bottom: 0;
 }
-.contact {
-  min-height: 70px;
+.cloud-left {
+  left: -70px;
+}
+.cloud-right {
+  right: -70px;
+}
+/* =====================================
+   SECTIONS
+===================================== */
+.section {
   padding:
-    10px;
+    25px 17px;
+}
+.section-heading {
   display: flex;
   align-items: center;
-  gap: 11px;
-  border-radius: 18px;
-  background:
-    rgba(255,255,255,.8);
-  border:
-    2px solid
-    rgba(118,87,232,.08);
-  box-shadow:
-    0 7px 20px
-    rgba(100,80,150,.07);
-  transition: .3s;
+  gap: 12px;
+  margin-bottom: 14px;
 }
-.contact:hover {
-  transform:
-    translateX(4px);
-  box-shadow:
-    0 10px 25px
-    rgba(100,80,150,.12);
+.section-heading small {
+  display: block;
+  color:
+    #aaa1b7;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
 }
-.contact-icon {
-  width: 43px;
-  height: 43px;
+.section-heading h2 {
+  margin-top: 2px;
+  font-family:
+    "Baloo 2",
+    sans-serif;
+  font-size: 20px;
+  line-height: 1;
+}
+.magic-number {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  font-size: 20px;
-}
-.phone {
   background:
-    #fff0a6;
+    var(--yellow);
+  font-size: 11px;
+  font-weight: 800;
 }
-.whatsapp {
+.magic-number.pink {
   background:
-    #baf4d8;
+    #ffb5d2;
 }
-.email {
+.magic-number.blue {
   background:
-    #cfeeff;
+    #9de4ff;
 }
-.contact small {
-  display: block;
-  color: #9a92a7;
-  font-size: 6px;
-  font-weight: 700;
-  letter-spacing: 1px;
+/* =====================================
+   CONTACT WORLD
+===================================== */
+.contact-world {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.contact strong {
-  display: block;
-  margin-top: 3px;
-  color: var(--dark);
-  font-size: 9px;
-}
-.arrow {
-  margin-left: auto;
-  color: var(--purple);
-  font-size: 18px;
-}
-/* ==================================
-   SOCIAL
-================================== */
-.social-grid {
-  display: grid;
-  grid-template-columns:
-    repeat(2, 1fr);
-  gap: 8px;
-}
-.social {
-  min-height: 73px;
-  padding:
-    10px;
+.contact-item {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 9px;
-  border-radius: 18px;
+  min-height: 92px;
+  padding: 12px;
+  gap: 13px;
+  border-radius: 25px;
   background:
     white;
   box-shadow:
-    0 7px 20px
-    rgba(100,80,150,.07);
-  transition: .3s;
+    0 10px 30px
+    rgba(75,50,120,.08);
+  transition:
+    .3s ease;
+  overflow: hidden;
 }
-.social:hover {
+.contact-item:hover {
   transform:
     translateY(-4px);
 }
-.social-icon {
-  width: 37px;
-  height: 37px;
+.contact-item::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  right: -45px;
+  bottom: -50px;
+  border-radius: 50%;
+  background:
+    rgba(255,255,255,.4);
+}
+.phone {
+  border-left:
+    7px solid
+    var(--yellow);
+}
+.whatsapp {
+  border-left:
+    7px solid
+    var(--green);
+}
+.email {
+  border-left:
+    7px solid
+    var(--blue);
+}
+.big-icon {
+  width: 58px;
+  height: 58px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  color: white;
-  font-size: 17px;
-  font-weight: 700;
+  border-radius: 19px;
+  font-size: 27px;
 }
-.instagram .social-icon {
+.phone .big-icon {
   background:
-    #ff5c9d;
+    #fff2a7;
 }
-.tiktok .social-icon {
+.whatsapp .big-icon {
   background:
-    #111;
+    #bdf5dc;
 }
-.youtube .social-icon {
+.email .big-icon {
   background:
-    #ff5252;
+    #c9efff;
 }
-.facebook .social-icon {
-  background:
-    #4d82e8;
-}
-.social strong {
+.contact-text small {
   display: block;
-  font-size: 8px;
+  color:
+    #aaa1b0;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-.social small {
+.contact-text strong {
   display: block;
   margin-top: 3px;
-  color: #999;
-  font-size: 6px;
+  font-size: 12px;
 }
-.social > span:last-child {
+.contact-text span {
+  display: block;
+  margin-top: 3px;
+  color:
+    #aaa1b0;
+  font-size: 8px;
+}
+.go {
   margin-left: auto;
-  color: #aaa;
+  color:
+    var(--purple);
+  font-size: 22px;
 }
-/* ==================================
-   SHOWS
-================================== */
-.shows {
+/* =====================================
+   SOCIAL WORLD
+===================================== */
+.social-world {
   display: grid;
   grid-template-columns:
-    repeat(2, 1fr);
-  gap: 8px;
+    repeat(2,1fr);
+  gap: 10px;
 }
-.show {
-  position: relative;
-  min-height: 155px;
-  padding:
-    15px;
-  overflow: hidden;
-  border-radius: 22px;
-  color: white;
+.social-card {
+  min-height: 105px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 24px;
+  background:
+    white;
   box-shadow:
-    0 10px 22px
-    rgba(70,50,100,.12);
-  transition: .3s;
+    0 10px 30px
+    rgba(75,50,120,.08);
+  transition:
+    .3s;
 }
-.show:hover {
+.social-card:hover {
   transform:
     translateY(-5px)
     rotate(-1deg);
 }
-.show::after {
-  content: "✦";
+.social-symbol {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+}
+.instagram .social-symbol {
+  background:
+    #ff5c9d;
+}
+.tiktok .social-symbol {
+  background:
+    #161616;
+}
+.youtube .social-symbol {
+  background:
+    #ff4d4d;
+}
+.facebook .social-symbol {
+  background:
+    #4f83ed;
+}
+.social-card strong {
+  display: block;
+  font-size: 9px;
+}
+.social-card span {
+  display: block;
+  margin-top: 3px;
+  color:
+    #a59cab;
+  font-size: 7px;
+}
+.social-card b {
+  margin-left: auto;
+  align-self: flex-start;
+  color:
+    #aaa;
+}
+/* =====================================
+   ADVENTURE
+===================================== */
+.adventure-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(2,1fr);
+  gap: 10px;
+}
+.adventure {
+  position: relative;
+  min-height: 205px;
+  padding: 18px;
+  overflow: hidden;
+  border-radius: 28px;
+  color: white;
+  box-shadow:
+    0 15px 30px
+    rgba(70,50,110,.12);
+  transition:
+    .3s;
+}
+.adventure:hover {
+  transform:
+    translateY(-6px);
+}
+.adventure::before {
+  content: "";
   position: absolute;
-  right: 8px;
-  bottom: -5px;
-  font-size: 55px;
-  opacity: .12;
+  width: 120px;
+  height: 120px;
+  right: -40px;
+  top: -40px;
+  border-radius: 50%;
+  background:
+    rgba(255,255,255,.15);
 }
-.show-purple {
+.purple {
   background:
     linear-gradient(
       135deg,
-      #8b68ef,
-      #6540d0
+      #8a68ee,
+      #5e3bc4
     );
 }
-.show-pink {
+.pink {
   background:
     linear-gradient(
       135deg,
-      #ff72ae,
-      #f23c84
+      #ff78ae,
+      #ed3d83
     );
 }
-.show-blue {
+.blue {
   background:
     linear-gradient(
       135deg,
-      #43c7f4,
-      #258de0
+      #51cdf2,
+      #268dd7
     );
 }
-.show-yellow {
+.yellow {
   background:
     linear-gradient(
       135deg,
       #ffd83d,
-      #ffad32
+      #f6a12e
     );
 }
-.show-icon {
-  font-size: 30px;
+.adventure-art {
+  font-size: 43px;
+  filter:
+    drop-shadow(
+      0 6px 4px
+      rgba(0,0,0,.12)
+    );
 }
-.show h3 {
-  margin-top: 8px;
-  font-size: 10px;
-  font-weight: 700;
+.adventure h3 {
+  margin-top: 13px;
+  font-size: 13px;
 }
-.show p {
+.adventure p {
   margin-top: 7px;
-  max-width: 140px;
-  font-size: 7px;
+  max-width: 190px;
+  font-size: 8px;
   line-height: 1.6;
-  opacity: .9;
+  opacity: .92;
 }
-/* ==================================
-   BIG ACTION
-================================== */
-.big-action {
-  margin-top: 28px;
+.adventure-star {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  font-size: 42px;
+  opacity: .16;
+}
+/* =====================================
+   QUOTE
+===================================== */
+.quote-world {
+  position: relative;
+  margin:
+    25px 17px;
   padding:
-    25px 18px;
-  border-radius: 28px;
+    38px 20px;
   text-align: center;
+  border-radius: 35px;
   background:
+    radial-gradient(
+      circle at top,
+      #ff82b5,
+      transparent 50%
+    ),
     linear-gradient(
       135deg,
-      #7657e8,
-      #ff5fa2
+      #6948d0,
+      #4c2ea9
     );
   color: white;
+  overflow: hidden;
   box-shadow:
-    0 15px 35px
-    rgba(118,87,232,.22);
+    0 20px 45px
+    rgba(78,45,170,.25);
 }
-.action-stars {
-  font-size: 16px;
-  animation:
-    sparkle 2s infinite;
+.quote-stars {
+  font-size: 18px;
 }
-.big-action h2 {
-  margin-top: 8px;
-  font-size: 17px;
+.quote-cards {
+  margin-top: 10px;
+  font-size: 22px;
+  letter-spacing: 5px;
 }
-.big-action p {
-  margin-top: 6px;
+.quote-world h2 {
+  margin-top: 17px;
+  font-family:
+    "Baloo 2",
+    sans-serif;
+  font-size: 25px;
+  line-height: 1;
+}
+.quote-world h2 span {
+  display: block;
+  color:
+    var(--yellow);
+}
+.quote-world p {
+  margin-top: 10px;
   font-size: 9px;
   opacity: .9;
 }
 .book-button {
-  display: inline-flex;
+  display: flex;
+  width: 200px;
+  height: 52px;
+  margin:
+    20px auto 0;
   align-items: center;
   justify-content: center;
-  margin-top: 16px;
-  width: 180px;
-  height: 45px;
-  border-radius: 15px;
+  border-radius: 17px;
   background:
     var(--yellow);
-  color: var(--dark);
-  font-size: 9px;
+  color:
+    var(--dark);
+  font-size: 10px;
   font-weight: 700;
   box-shadow:
     0 7px 0
-    rgba(150,100,0,.15);
-  transition: .25s;
+    rgba(120,80,0,.15);
+  transition:
+    .25s;
 }
 .book-button:hover {
   transform:
     translateY(-3px);
 }
-/* ==================================
-   BOTTOM ACTIONS
-================================== */
-.bottom-actions {
+/* =====================================
+   ACTIONS
+===================================== */
+.actions {
   display: grid;
   grid-template-columns:
     1fr 1fr;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  padding:
+    0 17px;
 }
-.bottom-actions button {
-  height: 47px;
+.actions button {
+  height: 52px;
   border:
     2px solid
-    rgba(118,87,232,.2);
-  border-radius: 16px;
+    rgba(116,84,232,.15);
+  border-radius: 18px;
   background:
     white;
-  color: var(--purple);
-  font-family:
-    "Fredoka",
-    sans-serif;
-  font-size: 8px;
-  font-weight: 600;
+  color:
+    var(--purple);
+  font-size: 9px;
+  font-weight: 700;
   cursor: pointer;
-  transition: .3s;
+  transition:
+    .3s;
 }
-.bottom-actions button:hover {
-  background:
-    #f7f2ff;
+.actions button:hover {
   transform:
-    translateY(-2px);
+    translateY(-3px);
 }
-/* ==================================
+/* =====================================
    FOOTER
-================================== */
+===================================== */
 footer {
-  margin-top: 45px;
   padding:
-    25px 10px;
+    45px 20px;
   text-align: center;
 }
-.footer-cards {
-  font-size: 18px;
+.footer-magic {
+  font-size: 22px;
   letter-spacing: 7px;
 }
 footer h3 {
   margin-top: 12px;
-  color: var(--purple);
-  font-size: 16px;
+  font-family:
+    "Baloo 2",
+    sans-serif;
+  font-size: 22px;
+  color:
+    var(--purple);
 }
-footer p {
-  margin-top: 2px;
-  color: var(--pink);
+footer div:not(.footer-magic) {
+  color:
+    var(--pink);
   font-size: 7px;
   font-weight: 700;
   letter-spacing: 2px;
 }
-footer small {
-  display: block;
-  margin-top: 9px;
-  color: #aaa2b5;
+footer p {
+  margin-top: 8px;
+  color:
+    #aaa1af;
   font-size: 7px;
 }
-/* ==================================
+/* =====================================
    MOBILE
-================================== */
-@media(max-width:380px) {
+===================================== */
+@media(max-width:390px) {
+  .hero {
+    min-height: 590px;
+  }
   .hero h1 {
-    font-size: 48px;
+    font-size: 55px;
   }
-  .magic-hat {
+  .hero-card {
+    padding:
+      28px 17px 24px;
+  }
+  .logo-orbit {
+    width: 110px;
+    height: 110px;
+  }
+  .castle {
     transform:
-      scale(.9);
+      translateX(-50%)
+      scale(.82);
   }
-  .wand {
-    right: 8%;
+  .hero-wand {
+    right: 2%;
+    font-size: 45px;
   }
-  .show {
-    min-height: 145px;
+  .adventure {
+    min-height: 190px;
+    padding: 15px;
   }
 }
