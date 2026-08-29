@@ -1,130 +1,12 @@
 /* =========================================
    AMR SAMY
-   KIDS MAGIC DIGITAL CARD
+   MAGICAL WORLD DIGITAL CARD
 ========================================= */
-/* =========================================
-   MAGIC REVEAL
-========================================= */
-const magicButton =
-  document.getElementById("magicButton");
-const content =
-  document.getElementById("content");
-magicButton.addEventListener(
-  "click",
-  function () {
-    /* Button transformation */
-    magicButton.innerHTML =
-      "✨ MAGIC UNLOCKED! ✨";
-    /* Reveal */
-    content.classList.add("active");
-    /* Confetti */
-    createConfettiBurst();
-    /* Scroll */
-    setTimeout(
-      function () {
-        content.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-      },
-      400
-    );
-  }
-);
-/* =========================================
-   CONFETTI
-========================================= */
-function createConfettiBurst() {
-  const pieces = [
-    "⭐",
-    "✨",
-    "🎉",
-    "🎈",
-    "♦",
-    "♠",
-    "♥",
-    "♣",
-    "🌟"
-  ];
-  for (
-    let i = 0;
-    i < 35;
-    i++
-  ) {
-    const piece =
-      document.createElement("div");
-    piece.innerText =
-      pieces[
-        Math.floor(
-          Math.random() *
-          pieces.length
-        )
-      ];
-    piece.style.position =
-      "fixed";
-    piece.style.left =
-      "50%";
-    piece.style.top =
-      "45%";
-    piece.style.zIndex =
-      "999";
-    piece.style.pointerEvents =
-      "none";
-    piece.style.fontSize =
-      (
-        Math.random() * 12 + 10
-      ) + "px";
-    const angle =
-      Math.random() *
-      Math.PI *
-      2;
-    const distance =
-      Math.random() *
-      260 + 80;
-    const x =
-      Math.cos(angle) *
-      distance;
-    const y =
-      Math.sin(angle) *
-      distance;
-    const animation =
-      piece.animate(
-        [
-          {
-            transform:
-              "translate(-50%, -50%) scale(.3) rotate(0deg)",
-            opacity: 1
-          },
-          {
-            transform:
-              `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1) rotate(360deg)`,
-            opacity: 0
-          }
-        ],
-        {
-          duration:
-            Math.random() *
-            900 + 900,
-          easing:
-            "cubic-bezier(.2,.8,.3,1)"
-        }
-      );
-    document.body.appendChild(
-      piece
-    );
-    animation.onfinish =
-      function () {
-        piece.remove();
-      };
-  }
-}
 /* =========================================
    SAVE CONTACT
 ========================================= */
 const saveContact =
-  document.getElementById(
-    "saveContact"
-  );
+  document.getElementById("saveContact");
 saveContact.addEventListener(
   "click",
   function () {
@@ -155,32 +37,26 @@ END:VCARD`;
     link.href = url;
     link.download =
       "Amr-Samy.vcf";
-    document.body.appendChild(
-      link
-    );
+    document.body.appendChild(link);
     link.click();
     link.remove();
-    URL.revokeObjectURL(
-      url
-    );
+    URL.revokeObjectURL(url);
     saveContact.innerHTML =
-      "🎉 CONTACT SAVED!";
+      "✨ SAVED!";
     setTimeout(
       function () {
         saveContact.innerHTML =
           "💾 SAVE CONTACT";
       },
-      2500
+      2200
     );
   }
 );
 /* =========================================
-   SHARE
+   SHARE CARD
 ========================================= */
 const shareCard =
-  document.getElementById(
-    "shareCard"
-  );
+  document.getElementById("shareCard");
 shareCard.addEventListener(
   "click",
   async function () {
@@ -188,7 +64,7 @@ shareCard.addEventListener(
       title:
         "Amr Samy — The Magician",
       text:
-        "🎩 Meet Amr Samy — The Magician ✨",
+        "🎩 Welcome to Amr Samy's Magical World ✨",
       url:
         "https://iamamrsamy.github.io/amrsamy/"
     };
@@ -210,13 +86,13 @@ shareCard.addEventListener(
           shareData.url
         );
         shareCard.innerHTML =
-          "🎉 LINK COPIED!";
+          "✨ LINK COPIED!";
         setTimeout(
           function () {
             shareCard.innerHTML =
               "🚀 SHARE CARD";
           },
-          2000
+          2200
         );
       }
       catch {
@@ -228,102 +104,62 @@ shareCard.addEventListener(
   }
 );
 /* =========================================
-   RANDOM MAGIC SPARKLES
+   SCROLL REVEAL
 ========================================= */
-function createSparkle() {
-  const sparkle =
-    document.createElement(
-      "div"
-    );
-  const symbols = [
-    "✨",
-    "⭐",
-    "✦",
-    "🎈"
-  ];
-  sparkle.innerText =
-    symbols[
-      Math.floor(
-        Math.random() *
-        symbols.length
-      )
-    ];
-  sparkle.style.position =
-    "fixed";
-  sparkle.style.left =
-    Math.random() * 100 + "vw";
-  sparkle.style.bottom =
-    "-20px";
-  sparkle.style.zIndex =
-    "1";
-  sparkle.style.pointerEvents =
-    "none";
-  sparkle.style.fontSize =
-    (
-      Math.random() * 8 + 7
-    ) + "px";
-  const animation =
-    sparkle.animate(
-      [
-        {
-          transform:
-            "translateY(0) rotate(0deg)",
-          opacity: 0
-        },
-        {
-          transform:
-            "translateY(-50vh) rotate(180deg)",
-          opacity: 1
-        },
-        {
-          transform:
-            "translateY(-105vh) rotate(360deg)",
-          opacity: 0
-        }
-      ],
-      {
-        duration:
-          Math.random() *
-          5000 + 5000,
-        easing:
-          "linear"
-      }
-    );
-  document.body.appendChild(
-    sparkle
+const revealElements =
+  document.querySelectorAll(
+    ".section, .quote-world, .actions"
   );
-  animation.onfinish =
-    function () {
-      sparkle.remove();
-    };
-}
-setInterval(
-  createSparkle,
-  900
+const observer =
+  new IntersectionObserver(
+    function(entries) {
+      entries.forEach(
+        function(entry) {
+          if (
+            entry.isIntersecting
+          ) {
+            entry.target.style.opacity =
+              "1";
+            entry.target.style.transform =
+              "translateY(0)";
+          }
+        }
+      );
+    },
+    {
+      threshold: .12
+    }
+  );
+revealElements.forEach(
+  function(element) {
+    element.style.opacity =
+      "0";
+    element.style.transform =
+      "translateY(35px)";
+    element.style.transition =
+      "opacity .7s ease, transform .7s ease";
+    observer.observe(element);
+  }
 );
 /* =========================================
-   TOUCH MAGIC
+   MAGIC TOUCH
 ========================================= */
 document.addEventListener(
-  "touchstart",
-  function (event) {
-    const touch =
-      event.touches[0];
-    createTouchSpark(
-      touch.clientX,
-      touch.clientY
+  "click",
+  function(event) {
+    createMagicSpark(
+      event.clientX,
+      event.clientY
     );
   }
 );
-function createTouchSpark(
+function createMagicSpark(
   x,
   y
 ) {
   const spark =
-    document.createElement(
-      "div"
-    );
-  spark.innerText =
+    document.createElement("div");
+  spark.innerHTML =
     "✨";
   spark.style.position =
     "fixed";
@@ -332,7 +168,7 @@ function createTouchSpark(
   spark.style.top =
     y + "px";
   spark.style.zIndex =
-    "999";
+    "9999";
   spark.style.pointerEvents =
     "none";
   spark.style.fontSize =
@@ -342,28 +178,131 @@ function createTouchSpark(
       [
         {
           transform:
-            "scale(.4)",
+            "translate(-50%,-50%) scale(.3) rotate(0deg)",
           opacity: 0
         },
         {
           transform:
-            "scale(1.5) translateY(-20px)",
+            "translate(-50%,-80%) scale(1.4) rotate(25deg)",
           opacity: 1
         },
         {
           transform:
-            "scale(.8) translateY(-45px)",
+            "translate(-50%,-150%) scale(.7) rotate(80deg)",
           opacity: 0
         }
       ],
       {
-        duration:
-          700
+        duration: 700,
+        easing:
+          "ease-out"
       }
     );
   document.body.appendChild(
     spark
   );
   animation.onfinish =
-    () => spark.remove();
+    function() {
+      spark.remove();
+    };
 }
+/* =========================================
+   FLOATING MAGIC
+========================================= */
+const magicSymbols = [
+  "✨",
+  "⭐",
+  "✦",
+  "♦",
+  "♥"
+];
+function floatingMagic() {
+  const element =
+    document.createElement("div");
+  element.innerText =
+    magicSymbols[
+      Math.floor(
+        Math.random() *
+        magicSymbols.length
+      )
+    ];
+  element.style.position =
+    "fixed";
+  element.style.left =
+    Math.random() * 100 + "vw";
+  element.style.bottom =
+    "-20px";
+  element.style.zIndex =
+    "1";
+  element.style.pointerEvents =
+    "none";
+  element.style.fontSize =
+    (
+      Math.random() * 12 + 8
+    ) + "px";
+  const animation =
+    element.animate(
+      [
+        {
+          transform:
+            "translateY(0) rotate(0deg)",
+          opacity: 0
+        },
+        {
+          transform:
+            "translateY(-50vh) rotate(180deg)",
+          opacity: .8
+        },
+        {
+          transform:
+            "translateY(-110vh) rotate(360deg)",
+          opacity: 0
+        }
+      ],
+      {
+        duration:
+          Math.random() * 5000 + 5000,
+        easing:
+          "linear"
+      }
+    );
+  document.body.appendChild(
+    element
+  );
+  animation.onfinish =
+    function() {
+      element.remove();
+    };
+}
+setInterval(
+  floatingMagic,
+  850
+);
+/* =========================================
+   MAGIC CARD TILT
+========================================= */
+const heroCard =
+  document.querySelector(".hero-card");
+document.addEventListener(
+  "mousemove",
+  function(event) {
+    if (
+      window.innerWidth < 700
+    ) return;
+    const x =
+      (window.innerWidth / 2 -
+       event.clientX) / 70;
+    const y =
+      (window.innerHeight / 2 -
+       event.clientY) / 70;
+    heroCard.style.transform =
+      `rotateY(${x}deg) rotateX(${y}deg)`;
+  }
+);
+document.addEventListener(
+  "mouseleave",
+  function() {
+    heroCard.style.transform =
+      "";
+  }
+);
