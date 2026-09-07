@@ -1,308 +1,444 @@
-/* =========================================
-   AMR SAMY
-   MAGICAL WORLD DIGITAL CARD
-========================================= */
-/* =========================================
-   SAVE CONTACT
-========================================= */
-const saveContact =
-  document.getElementById("saveContact");
-saveContact.addEventListener(
-  "click",
-  function () {
-    const vCard =
-`BEGIN:VCARD
-VERSION:3.0
-FN:Amr Samy
-N:Samy;Amr;;;
-ORG:Amr Samy The Magician
-TITLE:The Magician
-TEL;TYPE=CELL:+201115552621
-EMAIL:amrsamydxb@gmail.com
-URL:https://iamamrsamy.github.io/amrsamy/
-NOTE:Magician, Entertainer & Happiness Maker
-END:VCARD`;
-    const blob =
-      new Blob(
-        [vCard],
-        {
-          type:
-            "text/vcard;charset=utf-8"
+/* ================================================= */
+/* شاشة البداية */
+/* ================================================= */
+
+window.addEventListener("load", function () {
+
+    const loader =
+        document.querySelector(".loading-screen");
+
+    setTimeout(function () {
+
+        loader.classList.add("hide");
+
+    }, 1200);
+
+});
+
+
+
+/* ================================================= */
+/* القائمة على الموبايل */
+/* ================================================= */
+
+const menuButton =
+    document.querySelector(".menu-toggle");
+
+const nav =
+    document.querySelector(".main-nav");
+
+
+if (menuButton) {
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            nav.classList.toggle("open");
+
         }
-      );
-    const url =
-      URL.createObjectURL(blob);
-    const link =
-      document.createElement("a");
-    link.href = url;
-    link.download =
-      "Amr-Samy.vcf";
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(url);
-    saveContact.innerHTML =
-      "✨ SAVED!";
-    setTimeout(
-      function () {
-        saveContact.innerHTML =
-          "💾 SAVE CONTACT";
-      },
-      2200
     );
-  }
-);
-/* =========================================
-   SHARE CARD
-========================================= */
-const shareCard =
-  document.getElementById("shareCard");
-shareCard.addEventListener(
-  "click",
-  async function () {
-    const shareData = {
-      title:
-        "Amr Samy — The Magician",
-      text:
-        "🎩 Welcome to Amr Samy's Magical World ✨",
-      url:
-        "https://iamamrsamy.github.io/amrsamy/"
-    };
-    if (
-      navigator.share
-    ) {
-      try {
-        await navigator.share(
-          shareData
-        );
-      }
-      catch (error) {
-        console.log(error);
-      }
+
+}
+
+
+document.querySelectorAll(
+    ".main-nav a"
+).forEach(function (link) {
+
+    link.addEventListener(
+        "click",
+        function () {
+
+            nav.classList.remove("open");
+
+        }
+    );
+
+});
+
+
+
+/* ================================================= */
+/* آراء الجمهور */
+/* ================================================= */
+
+const reviews =
+    document.querySelectorAll(".review");
+
+const nextReview =
+    document.querySelector(".review-next");
+
+const previousReview =
+    document.querySelector(".review-prev");
+
+let currentReview = 0;
+
+
+function showReview(index) {
+
+    reviews.forEach(function (review) {
+
+        review.classList.remove("active");
+
+    });
+
+    reviews[index].classList.add("active");
+
+}
+
+
+if (nextReview) {
+
+    nextReview.addEventListener(
+        "click",
+        function () {
+
+            currentReview++;
+
+            if (currentReview >= reviews.length) {
+
+                currentReview = 0;
+
+            }
+
+            showReview(currentReview);
+
+        }
+    );
+
+}
+
+
+if (previousReview) {
+
+    previousReview.addEventListener(
+        "click",
+        function () {
+
+            currentReview--;
+
+            if (currentReview < 0) {
+
+                currentReview =
+                    reviews.length - 1;
+
+            }
+
+            showReview(currentReview);
+
+        }
+    );
+
+}
+
+
+/* تغيير الرأي تلقائياً */
+
+setInterval(function () {
+
+    if (reviews.length > 0) {
+
+        currentReview++;
+
+        if (currentReview >= reviews.length) {
+
+            currentReview = 0;
+
+        }
+
+        showReview(currentReview);
+
     }
-    else {
-      try {
-        await navigator.clipboard.writeText(
-          shareData.url
-        );
-        shareCard.innerHTML =
-          "✨ LINK COPIED!";
-        setTimeout(
-          function () {
-            shareCard.innerHTML =
-              "🚀 SHARE CARD";
-          },
-          2200
-        );
-      }
-      catch {
-        alert(
-          shareData.url
-        );
-      }
-    }
-  }
-);
-/* =========================================
-   SCROLL REVEAL
-========================================= */
+
+}, 5000);
+
+
+
+/* ================================================= */
+/* ظهور العناصر أثناء النزول */
+/* ================================================= */
+
 const revealElements =
-  document.querySelectorAll(
-    ".section, .quote-world, .actions"
-  );
+    document.querySelectorAll(
+        ".show-card, .why-item, .glass-card, .gallery-item, .number-item"
+    );
+
+
 const observer =
-  new IntersectionObserver(
-    function(entries) {
-      entries.forEach(
-        function(entry) {
-          if (
-            entry.isIntersecting
-          ) {
-            entry.target.style.opacity =
-              "1";
-            entry.target.style.transform =
-              "translateY(0)";
-          }
+    new IntersectionObserver(
+        function (entries) {
+
+            entries.forEach(function (entry) {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "revealed"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .12
         }
-      );
-    },
-    {
-      threshold: .12
-    }
-  );
+    );
+
+
 revealElements.forEach(
-  function(element) {
-    element.style.opacity =
-      "0";
-    element.style.transform =
-      "translateY(35px)";
-    element.style.transition =
-      "opacity .7s ease, transform .7s ease";
-    observer.observe(element);
-  }
+    function (element) {
+
+        element.classList.add(
+            "reveal-element"
+        );
+
+        observer.observe(element);
+
+    }
 );
-/* =========================================
-   MAGIC TOUCH
-========================================= */
+
+
+
+/* ================================================= */
+/* تأثير حركة الماوس */
+/* ================================================= */
+
 document.addEventListener(
-  "click",
-  function(event) {
-    createMagicSpark(
-      event.clientX,
-      event.clientY
-    );
-  }
+    "mousemove",
+    function (event) {
+
+        const x =
+            (event.clientX /
+                window.innerWidth -
+                .5);
+
+        const y =
+            (event.clientY /
+                window.innerHeight -
+                .5);
+
+
+        const cards =
+            document.querySelectorAll(
+                ".magic-card"
+            );
+
+
+        cards.forEach(
+            function (card, index) {
+
+                const strength =
+                    (index + 1) * 5;
+
+                card.style.transform =
+                    `
+                    translate(
+                        ${x * strength}px,
+                        ${y * strength}px
+                    )
+                    rotate(
+                        ${x * strength}deg
+                    )
+                    `;
+
+            }
+        );
+
+    }
 );
-function createMagicSpark(
-  x,
-  y
-) {
-  const spark =
-    document.createElement("div");
-  spark.innerHTML =
-    "✨";
-  spark.style.position =
-    "fixed";
-  spark.style.left =
-    x + "px";
-  spark.style.top =
-    y + "px";
-  spark.style.zIndex =
-    "9999";
-  spark.style.pointerEvents =
-    "none";
-  spark.style.fontSize =
-    "18px";
-  const animation =
-    spark.animate(
-      [
-        {
-          transform:
-            "translate(-50%,-50%) scale(.3) rotate(0deg)",
-          opacity: 0
-        },
-        {
-          transform:
-            "translate(-50%,-80%) scale(1.4) rotate(25deg)",
-          opacity: 1
-        },
-        {
-          transform:
-            "translate(-50%,-150%) scale(.7) rotate(80deg)",
-          opacity: 0
-        }
-      ],
-      {
-        duration: 700,
-        easing:
-          "ease-out"
-      }
-    );
-  document.body.appendChild(
-    spark
-  );
-  animation.onfinish =
-    function() {
-      spark.remove();
-    };
+
+
+
+/* ================================================= */
+/* لمعات تظهر عند الضغط */
+/* ================================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.innerHTML = "✨";
+
+        sparkle.style.position =
+            "fixed";
+
+        sparkle.style.left =
+            event.clientX + "px";
+
+        sparkle.style.top =
+            event.clientY + "px";
+
+        sparkle.style.pointerEvents =
+            "none";
+
+        sparkle.style.zIndex =
+            "99999";
+
+        sparkle.style.fontSize =
+            "20px";
+
+        sparkle.style.animation =
+            "clickSparkle 900ms ease forwards";
+
+        document.body.appendChild(
+            sparkle
+        );
+
+
+        setTimeout(
+            function () {
+
+                sparkle.remove();
+
+            },
+            900
+        );
+
+    }
+);
+
+
+
+/* ================================================= */
+/* إضافة Animation للضغط */
+/* ================================================= */
+
+const clickStyle =
+document.createElement("style");
+
+
+clickStyle.innerHTML = `
+
+@keyframes clickSparkle {
+
+    0% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.4)
+            rotate(0deg);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform:
+            translate(-50%,-120px)
+            scale(1.5)
+            rotate(180deg);
+
+        opacity: 0;
+
+    }
+
 }
-/* =========================================
-   FLOATING MAGIC
-========================================= */
-const magicSymbols = [
-  "✨",
-  "⭐",
-  "✦",
-  "♦",
-  "♥"
-];
-function floatingMagic() {
-  const element =
-    document.createElement("div");
-  element.innerText =
-    magicSymbols[
-      Math.floor(
-        Math.random() *
-        magicSymbols.length
-      )
-    ];
-  element.style.position =
-    "fixed";
-  element.style.left =
-    Math.random() * 100 + "vw";
-  element.style.bottom =
-    "-20px";
-  element.style.zIndex =
-    "1";
-  element.style.pointerEvents =
-    "none";
-  element.style.fontSize =
-    (
-      Math.random() * 12 + 8
-    ) + "px";
-  const animation =
-    element.animate(
-      [
-        {
-          transform:
-            "translateY(0) rotate(0deg)",
-          opacity: 0
-        },
-        {
-          transform:
-            "translateY(-50vh) rotate(180deg)",
-          opacity: .8
-        },
-        {
-          transform:
-            "translateY(-110vh) rotate(360deg)",
-          opacity: 0
-        }
-      ],
-      {
-        duration:
-          Math.random() * 5000 + 5000,
-        easing:
-          "linear"
-      }
-    );
-  document.body.appendChild(
-    element
-  );
-  animation.onfinish =
-    function() {
-      element.remove();
-    };
+
+.reveal-element {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity .7s ease,
+        transform .7s ease;
+
 }
-setInterval(
-  floatingMagic,
-  850
+
+.reveal-element.revealed {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+`;
+
+
+document.head.appendChild(
+    clickStyle
 );
-/* =========================================
-   MAGIC CARD TILT
-========================================= */
-const heroCard =
-  document.querySelector(".hero-card");
-document.addEventListener(
-  "mousemove",
-  function(event) {
-    if (
-      window.innerWidth < 700
-    ) return;
-    const x =
-      (window.innerWidth / 2 -
-       event.clientX) / 70;
-    const y =
-      (window.innerHeight / 2 -
-       event.clientY) / 70;
-    heroCard.style.transform =
-      `rotateY(${x}deg) rotateX(${y}deg)`;
-  }
+
+
+
+/* ================================================= */
+/* زر الحجز - رسالة واتساب جاهزة */
+/* ================================================= */
+
+const whatsappButtons =
+document.querySelectorAll(
+    ".whatsapp-button"
 );
-document.addEventListener(
-  "mouseleave",
-  function() {
-    heroCard.style.transform =
-      "";
-  }
+
+
+whatsappButtons.forEach(
+    function (button) {
+
+        button.addEventListener(
+            "click",
+            function () {
+
+                const message =
+                    "مرحباً عمرو 👋 أريد الاستفسار عن حجز عرض سحري. ✨";
+
+                const url =
+                    "https://wa.me/201115552621?text="
+                    +
+                    encodeURIComponent(
+                        message
+                    );
+
+                button.href = url;
+
+            }
+        );
+
+    }
+);
+
+
+
+/* ================================================= */
+/* تأثير البارالاكس للـHero */
+/* ================================================= */
+
+window.addEventListener(
+    "scroll",
+    function () {
+
+        const scroll =
+            window.scrollY;
+
+        const heroVisual =
+            document.querySelector(
+                ".hero-visual"
+            );
+
+
+        if (
+            heroVisual &&
+            scroll < 900
+        ) {
+
+            heroVisual.style.transform =
+                `translateY(${scroll * .08}px)`;
+
+        }
+
+    }
 );
