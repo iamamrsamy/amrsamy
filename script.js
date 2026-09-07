@@ -1,81 +1,55 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    /*
-    ========================================
-    ✨ إنشاء الشرارات السحرية
-    ========================================
-    */
+    /* تأثير بسيط عند ظهور العناصر */
 
-    const sparkleContainer =
-        document.querySelector(".magic-sparkles");
+    const elements = document.querySelectorAll(
+        ".magic-door, .magic-scroll, .booking-box, .social-links a"
+    );
 
+    const observer = new IntersectionObserver(
+        (entries) => {
 
-    for (let i = 0; i < 45; i++) {
+            entries.forEach((entry) => {
 
-        const sparkle =
-            document.createElement("span");
+                if (entry.isIntersecting) {
 
-        sparkle.classList.add("spark");
-
-
-        sparkle.style.left =
-            Math.random() * 100 + "%";
-
-
-        sparkle.style.top =
-            Math.random() * 100 + "%";
-
-
-        sparkle.style.animationDelay =
-            Math.random() * 3 + "s";
-
-
-        sparkle.style.animationDuration =
-            1.5 +
-            Math.random() * 3 +
-            "s";
-
-
-        sparkleContainer.appendChild(sparkle);
-
-    }
-
-
-
-    /*
-    ========================================
-    🎬 Smooth Scroll
-    ========================================
-    */
-
-    document
-        .querySelectorAll('a[href^="#"]')
-        .forEach(function (link) {
-
-            link.addEventListener(
-                "click",
-                function (event) {
-
-                    const target =
-                        document.querySelector(
-                            this.getAttribute("href")
-                        );
-
-
-                    if (target) {
-
-                        event.preventDefault();
-
-
-                        target.scrollIntoView({
-                            behavior: "smooth"
-                        });
-
-                    }
+                    entry.target.classList.add("show");
 
                 }
-            );
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+    elements.forEach((element) => {
+
+        element.classList.add("hidden");
+
+        observer.observe(element);
+
+    });
+
+
+    /* تأثير عصا سحرية عند الضغط */
+
+    document.querySelectorAll("a").forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            document.body.classList.add("magic-click");
+
+            setTimeout(() => {
+
+                document.body.classList.remove("magic-click");
+
+            }, 500);
 
         });
+
+    });
 
 });
