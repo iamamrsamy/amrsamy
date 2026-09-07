@@ -1,7 +1,3 @@
-/* ========================================
-   الإعدادات الأساسية
-======================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -13,15 +9,10 @@ html {
 }
 
 body {
-
     font-family: "Cairo", sans-serif;
-
-    background: #17092d;
-
+    background: #160b2d;
     color: white;
-
     overflow-x: hidden;
-
 }
 
 a {
@@ -30,1068 +21,1132 @@ a {
 }
 
 
-/* ========================================
-   HERO
-======================================== */
+/* =========================
+   COLORS
+========================= */
 
-.hero {
+:root {
+    --purple: #6d35c9;
+    --purple-dark: #21103d;
 
-    min-height: 100vh;
+    --pink: #ff4fa3;
+    --pink-light: #ff91c5;
 
-    position: relative;
+    --blue: #35c8ff;
+    --blue-dark: #1666b3;
 
-    display: flex;
+    --yellow: #ffd84d;
+    --gold: #ffb72e;
 
-    flex-direction: column;
+    --red: #d92d55;
 
-    overflow: hidden;
+    --white: #fffaf2;
+}
+
+
+/* =========================
+   FIXED MAGIC CASTLE
+========================= */
+
+.castle-background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
 
     background:
 
+        /* إضاءة مركز القصر */
         radial-gradient(
-            circle at 50% 30%,
-            rgba(255, 211, 100, .35),
+            circle at 50% 35%,
+            rgba(255, 196, 75, 0.28),
             transparent 25%
         ),
 
+        /* بنفسجي */
         radial-gradient(
-            circle at 10% 80%,
-            rgba(30, 210, 200, .3),
-            transparent 30%
+            circle at 15% 30%,
+            rgba(185, 72, 255, 0.35),
+            transparent 35%
         ),
 
+        /* أزرق */
         radial-gradient(
-            circle at 90% 70%,
-            rgba(230, 70, 150, .3),
-            transparent 30%
+            circle at 90% 60%,
+            rgba(40, 190, 255, 0.25),
+            transparent 35%
         ),
 
+        /* الخلفية الأساسية */
         linear-gradient(
-            135deg,
-            #6426a5,
-            #241044 50%,
-            #101a45
+            180deg,
+            #34105b 0%,
+            #241044 40%,
+            #120921 100%
         );
 
+    overflow: hidden;
 }
 
 
-/*
-لو عملنا صورة القصر بعد كده:
+/* إضاءة القصر */
 
-.hero {
+.castle-light {
+    position: absolute;
+    width: 500px;
+    height: 700px;
 
-background-image:
+    top: 10%;
 
-linear-gradient(
-rgba(20,5,40,.25),
-rgba(20,5,40,.75)
-),
+    opacity: .35;
 
-url("castle.jpg");
-
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
-
+    filter: blur(60px);
 }
-*/
 
+.light-one {
+    right: 5%;
 
-/* ========================================
-   NAVBAR
-======================================== */
+    background: rgba(255, 91, 174, .35);
 
-.navbar {
+    transform: rotate(15deg);
+}
 
-    width: 92%;
+.light-two {
+    left: 5%;
 
-    max-width: 1200px;
+    background: rgba(48, 198, 255, .3);
 
-    margin: auto;
-
-    padding: 25px 0;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
+    transform: rotate(-15deg);
 }
 
 
-.logo {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 26px;
-
-    letter-spacing: 3px;
-
-    font-weight: 800;
-
-}
-
-.logo span {
-
-    color: #ffd66b;
-
-}
-
-
-.nav-button {
-
-    padding: 10px 20px;
-
-    border-radius: 50px;
-
-    border: 1px solid rgba(255,255,255,.35);
-
-    background: rgba(255,255,255,.1);
-
-    backdrop-filter: blur(10px);
-
-    transition: .3s;
-
-}
-
-
-.nav-button:hover {
-
-    transform: translateY(-3px);
-
-    background: rgba(255,255,255,.2);
-
-}
-
-
-/* ========================================
-   HERO CONTENT
-======================================== */
-
-.hero-content {
-
-    flex: 1;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    text-align: center;
-
-    padding: 30px 20px 100px;
-
-}
-
-
-.welcome {
-
-    padding: 10px 22px;
-
-    border-radius: 50px;
-
-    border: 1px solid rgba(255,211,107,.45);
-
-    background: rgba(255,255,255,.08);
-
-    backdrop-filter: blur(10px);
-
-    color: #fff5d0;
-
-    margin-bottom: 25px;
-
-}
-
-
-.magic-hat {
-
-    font-size: 72px;
-
-    filter: drop-shadow(
-        0 15px 20px rgba(0,0,0,.3)
-    );
-
-    animation: floating 4s ease-in-out infinite;
-
-}
-
-
-.small-title {
-
-    margin-top: 10px;
-
-    color: #dacff1;
-
-    letter-spacing: 2px;
-
-}
-
-
-.hero h1 {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(60px, 11vw, 120px);
-
-    line-height: 1;
-
-    margin: 10px 0;
-
-    text-shadow:
-        0 10px 40px rgba(0,0,0,.3);
-
-}
-
-
-.hero h2 {
-
-    font-size: clamp(25px, 4vw, 43px);
-
-}
-
-
-.hero h2 span {
-
-    color: #ffd66b;
-
-}
-
-
-.hero-description {
-
-    font-size: 20px;
-
-    margin-top: 12px;
-
-    color: #fff1ca;
-
-}
-
-
-/* ========================================
-   BUTTONS
-======================================== */
-
-.hero-buttons {
-
-    display: flex;
-
-    gap: 15px;
-
-    margin-top: 30px;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-}
-
-
-.button {
-
-    padding: 16px 28px;
-
-    border-radius: 50px;
-
-    font-weight: 800;
-
-    transition: .3s;
-
-}
-
-
-.button:hover {
-
-    transform: translateY(-5px);
-
-}
-
-
-.gold {
-
-    color: #32134f;
+/* =========================
+   CURTAINS
+========================= */
+
+.curtain {
+    position: absolute;
+
+    top: -5%;
+    width: 22%;
+    height: 75%;
 
     background:
+
+        repeating-linear-gradient(
+            90deg,
+            rgba(0,0,0,.15) 0px,
+            rgba(255,255,255,.08) 22px,
+            rgba(0,0,0,.15) 45px
+        ),
+
         linear-gradient(
-            135deg,
-            #fff0a3,
-            #ffd05b
+            90deg,
+            #78183e,
+            #d42e62,
+            #8a1645
         );
 
     box-shadow:
-        0 15px 35px rgba(255,190,60,.25);
+        inset -25px 0 40px rgba(0,0,0,.35),
+        inset 25px 0 40px rgba(255,255,255,.1),
+        0 15px 50px rgba(0,0,0,.4);
 
+    opacity: .9;
+}
+
+.curtain-left {
+    left: -5%;
+
+    border-radius: 0 0 60% 0;
+
+    transform: rotate(3deg);
+}
+
+.curtain-right {
+    right: -5%;
+
+    border-radius: 0 0 0 60%;
+
+    transform: rotate(-3deg);
 }
 
 
-.glass {
+/* =========================
+   CHANDELIER
+========================= */
 
-    border: 1px solid rgba(255,255,255,.4);
-
-    background: rgba(255,255,255,.1);
-
-    backdrop-filter: blur(10px);
-
-}
-
-
-/* ========================================
-   SCROLL
-======================================== */
-
-.scroll-down {
-
+.chandelier {
     position: absolute;
 
-    bottom: 20px;
-
+    top: 5%;
     left: 50%;
 
     transform: translateX(-50%);
 
-    text-align: center;
+    font-size: 85px;
 
-    color: #cfc1e3;
+    color: var(--yellow);
 
-    font-size: 12px;
+    text-shadow:
+        0 0 20px #ffd84d,
+        0 0 50px #ff9f1c;
 
-    animation: bounce 2s infinite;
+    animation: chandelierGlow 3s ease-in-out infinite;
+}
 
+@keyframes chandelierGlow {
+
+    0%,
+    100% {
+        opacity: .7;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 
-/* ========================================
-   WORLD
-======================================== */
+/* =========================
+   MAGIC PARTICLES
+========================= */
 
-.world {
+.floating-magic {
+    position: absolute;
 
-    padding: 110px 5%;
+    font-size: 30px;
+
+    color: var(--yellow);
+
+    text-shadow:
+        0 0 15px #ffd84d;
+
+    animation: floatMagic 5s ease-in-out infinite;
+}
+
+.magic-one {
+    top: 35%;
+    left: 18%;
+}
+
+.magic-two {
+    top: 55%;
+    right: 15%;
+    animation-delay: 1s;
+}
+
+.magic-three {
+    top: 70%;
+    left: 12%;
+    color: var(--pink);
+    animation-delay: 2s;
+}
+
+.magic-four {
+    top: 75%;
+    right: 20%;
+    animation-delay: 3s;
+}
+
+@keyframes floatMagic {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: .4;
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(15deg);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px 60px;
+
+    position: relative;
+}
+
+
+/* cards */
+
+.castle-top {
+    font-size: 25px;
+
+    letter-spacing: 12px;
+
+    color: var(--yellow);
+
+    margin-bottom: 25px;
+
+    text-shadow:
+        0 0 15px rgba(255,216,77,.8);
+}
+
+
+/* =========================
+   MAGIC ARCH
+========================= */
+
+.entrance {
+    width: min(760px, 92%);
+
+    padding: 8px;
+
+    border-radius: 380px 380px 30px 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffd84d,
+            #fff0a0,
+            #d78b1d,
+            #ffd84d
+        );
+
+    box-shadow:
+        0 0 0 4px rgba(255,216,77,.25),
+        0 0 60px rgba(255,188,44,.25),
+        0 30px 80px rgba(0,0,0,.45);
+}
+
+
+.arch {
+    min-height: 690px;
+
+    border-radius: 370px 370px 22px 22px;
+
+    padding: 80px 30px 50px;
 
     background:
 
         radial-gradient(
-            circle at 10% 20%,
-            rgba(36,207,197,.15),
-            transparent 25%
+            circle at 50% 20%,
+            rgba(255,255,255,.18),
+            transparent 20%
         ),
 
-        radial-gradient(
-            circle at 90% 20%,
-            rgba(233,76,155,.15),
-            transparent 25%
-        ),
-
-        #241044;
-
-}
-
-
-.section-title {
-
-    text-align: center;
-
-    max-width: 750px;
-
-    margin: auto;
-
-}
-
-
-.section-title > div {
-
-    color: #ffd66b;
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-}
-
-
-.section-title h2 {
-
-    font-size: clamp(38px,6vw,60px);
-
-    margin: 10px 0;
-
-}
-
-
-.section-title p {
-
-    color: #d3c7e1;
-
-}
-
-
-/* ========================================
-   GATES
-======================================== */
-
-.gates {
-
-    max-width: 1100px;
-
-    margin: 50px auto 0;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, 1fr);
-
-    gap: 20px;
-
-}
-
-
-.gate {
-
-    min-height: 190px;
-
-    padding: 28px;
-
-    border-radius: 30px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 20px;
+        linear-gradient(
+            180deg,
+            #5e239b,
+            #301356 70%,
+            #190a2d
+        );
 
     position: relative;
 
     overflow: hidden;
-
-    border:
-        1px solid rgba(255,255,255,.17);
-
-    background:
-        rgba(255,255,255,.08);
-
-    backdrop-filter: blur(15px);
-
-    transition: .4s;
-
 }
 
 
-.gate:hover {
-
-    transform: translateY(-8px);
-
-    border-color:
-        rgba(255,255,255,.5);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
-
-}
-
-
-.gate-icon {
-
-    width: 80px;
-
-    height: 80px;
-
-    min-width: 80px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 24px;
-
-    font-size: 40px;
-
-}
-
-
-.gate-text small {
-
-    color: #d7cae5;
-
-    letter-spacing: 2px;
-
-}
-
-
-.gate-text h3 {
-
-    font-size: 28px;
-
-    margin: 2px 0;
-
-}
-
-
-.gate-text p {
-
-    color: #c9bed9;
-
-    font-size: 14px;
-
-}
-
-
-.arrow {
-
-    margin-right: auto;
-
-    font-size: 28px;
-
-    color: #ffd66b;
-
-}
-
-
-/* ألوان البوابات */
-
-.kids .gate-icon {
-
-    background:
-        linear-gradient(
-            135deg,
-            #27d6c8,
-            #1689a4
-        );
-
-}
-
-
-.birthday .gate-icon {
-
-    background:
-        linear-gradient(
-            135deg,
-            #f467b1,
-            #a932ca
-        );
-
-}
-
-
-.adults .gate-icon {
-
-    background:
-        linear-gradient(
-            135deg,
-            #8b68ff,
-            #4b39c4
-        );
-
-}
-
-
-.events .gate-icon {
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffd05e,
-            #e7892e
-        );
-
-}
-
-
-/* ========================================
-   MAGIC MESSAGE
-======================================== */
-
-.magic-message {
-
-    padding: 100px 5%;
-
-    background: #160a2c;
-
-}
-
-
-.message-card {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    text-align: center;
-
-    padding: 70px 25px;
-
-    border-radius: 35px;
-
-    border:
-        1px solid rgba(255,211,107,.3);
-
-    background:
-
-        radial-gradient(
-            circle at 50% 0,
-            rgba(255,211,107,.15),
-            transparent 50%
-        ),
-
-        rgba(255,255,255,.04);
-
-}
-
-
-.quote {
-
-    font-family: serif;
-
-    font-size: 90px;
-
-    color: #ffd66b;
-
-}
-
-
-.message-card h2 {
-
-    font-size: clamp(28px,5vw,48px);
-
-    line-height: 1.5;
-
-}
-
-
-.message-card h2 span {
-
-    color: #ffacd3;
-
-}
-
-
-.magic-divider {
-
-    margin: 25px;
-
-    color: #ffd66b;
-
-    letter-spacing: 8px;
-
-}
-
-
-.message-card p {
-
-    color: #c7bad7;
-
-}
-
-
-/* ========================================
-   BOOKING
-======================================== */
-
-.booking {
-
-    padding: 80px 5%;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #55228f,
-            #14888b
-        );
-
-}
-
-
-.booking-box {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 40px;
-
-}
-
-
-.booking-small {
-
-    color: #ffd66b;
-
-    font-size: 12px;
-
-    letter-spacing: 3px;
-
-}
-
-
-.booking h2 {
-
-    font-size: clamp(38px,6vw,60px);
-
-    line-height: 1.2;
-
-    margin: 10px 0;
-
-}
-
-
-.booking h2 span {
-
-    color: #ffd66b;
-
-}
-
-
-.booking p {
-
-    color: #eee3f5;
-
-    max-width: 600px;
-
-}
-
-
-.whatsapp-button {
-
-    padding: 18px 28px;
-
-    border-radius: 50px;
-
-    background: #fff;
-
-    color: #32134f;
-
-    font-weight: 800;
-
-    white-space: nowrap;
-
-    transition: .3s;
-
-}
-
-
-.whatsapp-button:hover {
-
-    transform: scale(1.05);
-
-}
-
-
-/* ========================================
-   FOOTER
-======================================== */
-
-footer {
-
-    text-align: center;
-
-    padding: 45px 20px;
-
-    background: #0e071e;
-
-    color: #9f92b0;
-
-}
-
-
-.footer-logo {
-
-    font-family: "Playfair Display", serif;
-
-    font-size: 26px;
-
-    color: white;
-
-    letter-spacing: 3px;
-
-}
-
-
-.footer-logo span {
-
-    color: #ffd66b;
-
-}
-
-
-footer p {
-
-    margin: 8px;
-
-}
-
-
-/* ========================================
-   MAGIC SPARKLES
-======================================== */
-
-.magic-sparkles {
+.arch::before {
+    content: "";
 
     position: absolute;
 
     inset: 0;
 
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.04),
+            transparent 20%,
+            transparent 80%,
+            rgba(255,255,255,.04)
+        );
+
     pointer-events: none;
-
-    z-index: 5;
-
 }
 
 
-.spark {
+/* =========================
+   LOGO
+========================= */
 
+.logo-box {
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-ring {
     position: absolute;
 
-    width: 5px;
+    inset: -12px;
 
-    height: 5px;
+    border: 2px solid rgba(255,216,77,.8);
 
     border-radius: 50%;
 
-    background: white;
-
     box-shadow:
-        0 0 15px 5px
-        rgba(255,220,120,.7);
+        0 0 25px rgba(255,216,77,.4);
 
-    animation:
-        sparkle 2.5s infinite;
+    animation: ring 5s linear infinite;
+}
 
+@keyframes ring {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.logo-box img {
+    width: 130px;
+    height: 130px;
+
+    object-fit: contain;
+
+    position: relative;
+
+    z-index: 2;
+
+    filter:
+        drop-shadow(0 10px 20px rgba(0,0,0,.4));
 }
 
 
-/* ========================================
-   CURTAIN
-======================================== */
+/* =========================
+   HERO TEXT
+========================= */
 
-.curtain {
+.magic-label {
+    display: inline-block;
 
-    position: fixed;
+    margin-top: 25px;
 
-    top: 0;
+    padding: 8px 20px;
 
-    width: 50%;
+    border-radius: 50px;
 
-    height: 100vh;
+    background: rgba(255,216,77,.13);
 
-    z-index: 999;
+    border: 1px solid rgba(255,216,77,.45);
+
+    color: #ffe99a;
+
+    font-size: 14px;
+}
+
+.hero h1 {
+    font-family: "Amiri", serif;
+
+    font-size: clamp(50px, 8vw, 90px);
+
+    margin-top: 15px;
+
+    line-height: 1;
+
+    color: white;
+
+    text-shadow:
+        0 5px 0 rgba(0,0,0,.15),
+        0 0 35px rgba(255,255,255,.15);
+}
+
+.hero h2 {
+    font-size: clamp(21px, 4vw, 34px);
+
+    margin-top: 12px;
+
+    color: #ffd84d;
+}
+
+.hero h2 span {
+    color: #ff82bb;
+}
+
+.hero-text {
+    margin-top: 20px;
+
+    color: rgba(255,255,255,.82);
+
+    font-size: 17px;
+
+    line-height: 2;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 35px;
+
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 15px 28px;
+
+    border-radius: 50px;
+
+    font-weight: 800;
+
+    transition: .3s;
+
+    min-width: 190px;
+}
+
+.btn-main {
+    color: #301356;
+
+    background: linear-gradient(
+        135deg,
+        #ffe66d,
+        #ffb82e
+    );
+
+    box-shadow:
+        0 10px 30px rgba(255,184,46,.25);
+}
+
+.btn-whatsapp {
+    background: #25d366;
+
+    color: white;
+
+    box-shadow:
+        0 10px 30px rgba(37,211,102,.2);
+}
+
+.btn:hover {
+    transform: translateY(-5px) scale(1.03);
+}
+
+
+/* =========================
+   WORLD
+========================= */
+
+.world {
+    padding: 100px 20px;
+
+    max-width: 1150px;
+
+    margin: auto;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 45px;
+}
+
+.small-title {
+    color: var(--yellow);
+
+    font-size: 14px;
+
+    margin-bottom: 10px;
+}
+
+.section-heading h2 {
+    font-size: clamp(28px, 5vw, 45px);
+}
+
+.section-heading h2 span {
+    color: var(--pink);
+}
+
+.section-heading p {
+    color: rgba(255,255,255,.65);
+
+    margin-top: 10px;
+}
+
+
+/* =========================
+   DOORS
+========================= */
+
+.doors {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.magic-door {
+    min-height: 290px;
+
+    border-radius: 28px;
+
+    padding: 28px 20px;
+
+    text-align: center;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 3px solid rgba(255,255,255,.18);
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: .35s;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.25);
+}
+
+.magic-door::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.12);
+
+    top: -60px;
+    right: -60px;
+}
+
+.magic-door:hover {
+    transform: translateY(-12px);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.4);
+}
+
+.door-pink {
+    background:
+        linear-gradient(
+            145deg,
+            #ff4fa3,
+            #9c2675
+        );
+}
+
+.door-yellow {
+    background:
+        linear-gradient(
+            145deg,
+            #ffce3a,
+            #e87920
+        );
+}
+
+.door-purple {
+    background:
+        linear-gradient(
+            145deg,
+            #9149e8,
+            #4b1d8b
+        );
+}
+
+.door-blue {
+    background:
+        linear-gradient(
+            145deg,
+            #36c8ff,
+            #1765ad
+        );
+}
+
+.door-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+
+    filter:
+        drop-shadow(0 8px 8px rgba(0,0,0,.2));
+}
+
+.magic-door h3 {
+    font-size: 22px;
+}
+
+.magic-door p {
+    font-size: 14px;
+
+    color: rgba(255,255,255,.9);
+
+    line-height: 1.8;
+
+    margin: 8px 0 15px;
+}
+
+.magic-door span {
+    font-size: 13px;
+
+    font-weight: 800;
+
+    color: white;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    padding: 50px 20px 100px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+.magic-scroll {
+    width: min(700px, 94%);
+
+    padding: 55px 45px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff4c9,
+            #f7d985
+        );
+
+    color: #42220c;
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.3);
+
+    position: relative;
+}
+
+.scroll-decoration {
+    color: #a56714;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.magic-scroll h2 {
+    font-family: "Amiri", serif;
+
+    font-size: 34px;
+
+    color: #57250e;
+}
+
+.magic-scroll p {
+    margin-top: 20px;
+
+    line-height: 2;
+
+    font-size: 16px;
+}
+
+.signature {
+    font-family: "Amiri", serif;
+
+    margin-top: 25px;
+
+    font-size: 28px;
+
+    color: #9b3c72;
+}
+
+
+/* =========================
+   BOOKING
+========================= */
+
+.booking {
+    padding: 70px 20px 100px;
+
+    text-align: center;
+}
+
+.booking-box {
+    max-width: 850px;
+
+    margin: auto;
+
+    padding: 55px 25px;
+
+    border-radius: 35px;
 
     background:
 
+        radial-gradient(
+            circle at center,
+            rgba(255,216,77,.2),
+            transparent 40%
+        ),
+
         linear-gradient(
-            90deg,
-            #68102d,
-            #b4214e,
-            #68102d
+            135deg,
+            #55239a,
+            #28104b
         );
 
+    border: 2px solid rgba(255,216,77,.4);
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.4);
+
+    position: relative;
 }
 
+.hat {
+    font-size: 65px;
 
-.curtain-left {
-
-    left: 0;
-
-    animation:
-        curtainLeft 1.5s
-        cubic-bezier(.7,0,.2,1)
-        .2s forwards;
-
+    margin-bottom: 5px;
 }
 
+.wand {
+    position: absolute;
 
-.curtain-right {
+    top: 45px;
+    right: 12%;
 
-    right: 0;
+    font-size: 45px;
 
-    animation:
-        curtainRight 1.5s
-        cubic-bezier(.7,0,.2,1)
-        .2s forwards;
+    transform: rotate(-25deg);
 
+    animation: wand 2.5s ease-in-out infinite;
 }
 
+@keyframes wand {
 
-/* ========================================
-   ANIMATIONS
-======================================== */
-
-@keyframes floating {
-
-    0%,100% {
-        transform: translateY(0);
+    0%,
+    100% {
+        transform: rotate(-25deg) translateY(0);
     }
 
     50% {
-        transform: translateY(-15px);
+        transform: rotate(-15deg) translateY(-8px);
     }
+}
 
+.booking-box h2 {
+    font-size: clamp(28px, 5vw, 43px);
+
+    color: var(--yellow);
+}
+
+.booking-box p {
+    color: rgba(255,255,255,.75);
+
+    margin: 12px 0 28px;
+}
+
+.big-booking-button {
+    display: inline-block;
+
+    padding: 16px 30px;
+
+    border-radius: 50px;
+
+    background: #25d366;
+
+    font-weight: 800;
+
+    transition: .3s;
+}
+
+.big-booking-button:hover {
+    transform: scale(1.05);
+}
+
+.phone {
+    display: block;
+
+    margin-top: 18px;
+
+    color: #ffd84d;
+
+    font-weight: 700;
 }
 
 
-@keyframes bounce {
+/* =========================
+   SOCIAL
+========================= */
 
-    0%,100% {
-        transform:
-            translate(-50%,0);
-    }
+.social {
+    padding: 40px 20px 100px;
 
-    50% {
-        transform:
-            translate(-50%,-10px);
-    }
+    max-width: 900px;
 
+    margin: auto;
+}
+
+.social-links {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+.social-links a {
+    min-width: 180px;
+
+    padding: 16px 22px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    text-align: center;
+
+    transition: .3s;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,.14);
 }
 
 
-@keyframes sparkle {
+/* =========================
+   FOOTER
+========================= */
 
-    0%,100% {
-        opacity: .1;
-        transform: scale(.5);
-    }
+footer {
+    text-align: center;
 
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
+    padding: 45px 20px 110px;
 
+    background: rgba(0,0,0,.2);
+
+    border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.cards {
+    color: var(--yellow);
+
+    font-size: 25px;
+
+    letter-spacing: 10px;
+
+    margin-bottom: 15px;
+}
+
+footer h3 {
+    font-family: "Amiri", serif;
+
+    font-size: 30px;
+}
+
+footer p {
+    color: rgba(255,255,255,.65);
+
+    margin: 5px 0 12px;
+}
+
+footer small {
+    color: var(--yellow);
 }
 
 
-@keyframes curtainLeft {
+/* =========================
+   WHATSAPP
+========================= */
 
-    to {
-        transform:
-            translateX(-102%);
-    }
+.floating-whatsapp {
+    position: fixed;
 
+    bottom: 22px;
+    left: 22px;
+
+    width: 62px;
+    height: 62px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 29px;
+
+    background: #25d366;
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.35);
+
+    z-index: 100;
+
+    transition: .3s;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
 }
 
 
-@keyframes curtainRight {
-
-    to {
-        transform:
-            translateX(102%);
-    }
-
-}
-
-
-/* ========================================
+/* =========================
    MOBILE
-======================================== */
+========================= */
 
-@media(max-width: 750px) {
+@media (max-width: 850px) {
 
-    .navbar {
-        padding: 18px 0;
+    .doors {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-
-    .logo {
-        font-size: 20px;
+    .curtain {
+        width: 28%;
     }
 
+    .chandelier {
+        font-size: 60px;
+    }
+}
 
-    .nav-button {
-        font-size: 12px;
-        padding: 8px 13px;
+
+@media (max-width: 600px) {
+
+    .hero {
+        padding-top: 50px;
     }
 
+    .entrance {
+        width: 100%;
+    }
+
+    .arch {
+        min-height: 650px;
+
+        padding:
+            65px 18px 40px;
+    }
+
+    .logo-box,
+    .logo-box img {
+        width: 115px;
+        height: 115px;
+    }
 
     .hero h1 {
-        font-size: 65px;
+        font-size: 55px;
     }
-
 
     .hero h2 {
-        font-size: 25px;
+        font-size: 22px;
     }
 
-
-    .hero-description {
-        font-size: 17px;
+    .hero-text {
+        font-size: 15px;
     }
 
-
-    .gates {
-
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .gate {
-
-        min-height: 160px;
-
-        padding: 20px;
-
-    }
-
-
-    .gate-icon {
-
-        width: 65px;
-
-        min-width: 65px;
-
-        height: 65px;
-
-        font-size: 30px;
-
-    }
-
-
-    .gate-text h3 {
-
-        font-size: 23px;
-
-    }
-
-
-    .gate-text p {
-
-        font-size: 12px;
-
-    }
-
-
-    .booking-box {
-
+    .buttons {
         flex-direction: column;
 
-        text-align: center;
-
+        align-items: center;
     }
 
+    .btn {
+        width: 100%;
 
-    .booking p {
-
-        margin: auto;
-
+        max-width: 300px;
     }
 
-}
-
-
-@media(prefers-reduced-motion: reduce) {
-
-    * {
-        animation: none !important;
-        transition: none !important;
+    .world {
+        padding-top: 70px;
     }
 
+    .doors {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 12px;
+    }
+
+    .magic-door {
+        min-height: 245px;
+
+        padding: 20px 12px;
+    }
+
+    .door-icon {
+        font-size: 43px;
+    }
+
+    .magic-door h3 {
+        font-size: 18px;
+    }
+
+    .magic-door p {
+        font-size: 12px;
+    }
+
+    .magic-scroll {
+        padding: 40px 22px;
+    }
+
+    .wand {
+        right: 5%;
+    }
+
+    .social-links {
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .social-links a {
+        width: 100%;
+
+        max-width: 300px;
+    }
+
+    .floating-whatsapp {
+        width: 56px;
+        height: 56px;
+
+        bottom: 16px;
+        left: 16px;
+    }
 }
