@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amr Samy | Magician & Entertainer</title>
+
+    <meta
+        name="description"
+        content="Amr Samy is a magician and entertainer creating moments of wonder, laughter and happiness for kids and adults at every event.">
+
+    <meta property="og:title"
+        content="Amr Samy | Magician & Entertainer">
+
+    <meta property="og:description"
+        content="Magic, entertainment and unforgettable moments for kids and adults.">
+
+    <meta property="og:url"
+        content="https://iamamrsamy.github.io/amrsamy/en/">
+
+    <meta property="og:image"
+        content="https://iamamrsamy.github.io/amrsamy/amr-samy.jpg">
+
+
+    <meta name="twitter:card"
+        content="summary_large_image">
+
+    <meta name="twitter:title"
+        content="Amr Samy | Magician & Entertainer">
+
+    <meta name="twitter:description"
+        content="Magic, entertainment and unforgettable moments.">
+
+    <meta name="twitter:image"
+        content="https://iamamrsamy.github.io/amrsamy/amr-samy.jpg">
+
+
+    <!-- IMPORTANT: ../ because English is inside /en/ -->
+
+    <link rel="stylesheet" href="../style.css">
+
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+    <div class="floating-shape shape1"></div>
+
+    <div class="floating-shape shape2"></div>
+
+    <div class="floating-shape shape3"></div>
+
+
+    <main class="page">
+
+
+        <!-- LANGUAGE SWITCH -->
+
+        <div class="language-switch">
+
+            <a href="../index.html">
+
+                🇪🇬 عربي
+
+            </a>
+
+
+            <a href="index.html"
+               class="active">
+
+                🇬🇧 English
+
+            </a>
+
+        </div>
+
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="magic-hat">
+                🎩
+            </div>
+
+
+            <div class="hero-name-en">
+                AMR SAMY
+            </div>
+
+
+            <h1>
+                Amr Samy
+            </h1>
+
+
+            <h2>
+                🎩 Magician & Entertainer
+            </h2>
+
+
+            <p>
+                Creating moments of wonder,
+                laughter and happiness
+                for kids and adults at every event ✨
+            </p>
+
+        </section>
+
+
+        <!-- CONTACT -->
+
+        <section class="section">
+
+            <h3>
+                📞 Get in Touch
+            </h3>
+
+
+            <div class="contact-grid">
+
+
+                <a
+                    href="tel:01115552621"
+                    class="contact-card">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                    <span>
+                        Call Me
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://wa.me/201115552621"
+                    target="_blank"
+                    class="contact-card whatsapp">
+
+                    <i class="fa-brands fa-whatsapp"></i>
+
+                    <span>
+                        WhatsApp
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- SOCIAL MEDIA -->
+
+        <section class="section">
+
+            <h3>
+                🌟 Follow Me
+            </h3>
+
+
+            <div class="social-grid">
+
+
+                <a
+                    href="https://instagram.com/iamamrsamy"
+                    target="_blank"
+                    class="social instagram">
+
+                    <i class="fa-brands fa-instagram"></i>
+
+                    <span>
+                        Instagram
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://tiktok.com/@iamamrsamy"
+                    target="_blank"
+                    class="social tiktok">
+
+                    <i class="fa-brands fa-tiktok"></i>
+
+                    <span>
+                        TikTok
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://youtube.com/@iamamrsamy"
+                    target="_blank"
+                    class="social youtube">
+
+                    <i class="fa-brands fa-youtube"></i>
+
+                    <span>
+                        YouTube
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://facebook.com/iamamrsamy"
+                    target="_blank"
+                    class="social facebook">
+
+                    <i class="fa-brands fa-facebook-f"></i>
+
+                    <span>
+                        Facebook
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://linkedin.com/in/iamamrsamy"
+                    target="_blank"
+                    class="social linkedin">
+
+                    <i class="fa-brands fa-linkedin-in"></i>
+
+                    <span>
+                        LinkedIn
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://x.com/iamamrsamy"
+                    target="_blank"
+                    class="social x">
+
+                    <i class="fa-brands fa-x-twitter"></i>
+
+                    <span>
+                        X
+                    </span>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- SERVICES -->
+
+        <section class="section">
+
+            <h3>
+                🎩 What I Do
+            </h3>
+
+
+            <div class="services-grid">
+
+
+                <div class="service">
+
+                    <span>🎩</span>
+
+                    <strong>
+                        Magic Shows
+                    </strong>
+
+                    <small>
+                        Professional Magic
+                    </small>
+
+                </div>
+
+
+                <div class="service">
+
+                    <span>🎈</span>
+
+                    <strong>
+                        Kids Entertainment
+                    </strong>
+
+                    <small>
+                        Fun for Children
+                    </small>
+
+                </div>
+
+
+                <div class="service">
+
+                    <span>🎭</span>
+
+                    <strong>
+                        Stage Shows
+                    </strong>
+
+                    <small>
+                        Live Performances
+                    </small>
+
+                </div>
+
+
+                <div class="service">
+
+                    <span>🎉</span>
+
+                    <strong>
+                        Parties & Events
+                    </strong>
+
+                    <small>
+                        Private Events
+                    </small>
+
+                </div>
+
+
+                <div class="service">
+
+                    <span>🏢</span>
+
+                    <strong>
+                        Corporate Events
+                    </strong>
+
+                    <small>
+                        Business Entertainment
+                    </small>
+
+                </div>
+
+
+                <div class="service">
+
+                    <span>✨</span>
+
+                    <strong>
+                        Entertainment
+                    </strong>
+
+                    <small>
+                        Unforgettable Moments
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- BOOKING -->
+
+        <section class="booking">
+
+
+            <div class="booking-icon">
+                ✨
+            </div>
+
+
+            <h3>
+                Ready to Make It Magical?
+            </h3>
+
+
+            <p>
+                Want to book a show or
+                collaborate with me?
+                Message me on WhatsApp 👇
+            </p>
+
+
+            <a
+                href="https://wa.me/201115552621?text=Hello%20Amr%20Samy%2C%20I'd%20like%20to%20book%20a%20show"
+                target="_blank"
+                class="booking-button">
+
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+
+                Book a Show
+
+
+            </a>
+
+
+        </section>
+
+
+        <!-- SAVE CONTACT -->
+
+        <section class="save-section">
+
+
+            <button
+                onclick="saveContact()"
+                class="save-button">
+
+
+                <i class="fa-solid fa-address-card"></i>
+
+
+                Save My Contact
+
+
+            </button>
+
+
+        </section>
+
+
+        <!-- EMAIL -->
+
+        <section class="email-section">
+
+
+            <a
+                href="mailto:amrsamydxb@gmail.com">
+
+
+                <i class="fa-solid fa-envelope"></i>
+
+
+                amrsamydxb@gmail.com
+
+
+            </a>
+
+
+        </section>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+
+            <p>
+                🎩 Amr Samy
+            </p>
+
+
+            <small>
+                Magic • Entertainment • Happiness
+            </small>
+
+
+            <div class="cards">
+
+                ♠️ ♥️ ♦️ ♣️
+
+            </div>
+
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- IMPORTANT: ../ because JS is in the main folder -->
+
+    <script src="../script.js"></script>
+
+
+</body>
+
+</html>
