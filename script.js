@@ -1,8 +1,5 @@
 
-const WHATSAPP_NUMBER = "201XXXXXXXXX";
-// استبدل X برقم واتسابك الحقيقي.
-// مثال: 201012345678
-// اكتب كود الدولة والرقم فقط، من غير + أو مسافات.
+const WHATSAPP_NUMBER = "201115552621";
 
 const translations = {
   en: {
@@ -23,7 +20,6 @@ const langToggle = document.getElementById("langToggle");
 const navLinks = document.getElementById("navLinks");
 const menuBtn = document.getElementById("menuBtn");
 const bookingForm = document.getElementById("bookingForm");
-const whatsappLink = document.getElementById("whatsappLink");
 
 function setLanguage(lang) {
   currentLang = lang;
@@ -34,32 +30,37 @@ function setLanguage(lang) {
   langToggle.textContent = translations[lang].button;
 
   document.querySelectorAll("[data-en][data-ar]").forEach(element => {
-    const translatedText = element.dataset[lang];
+    const text = element.dataset[lang];
 
-    if (translatedText !== undefined) {
-      element.innerHTML = translatedText;
+    if (text !== undefined) {
+      element.innerHTML = text;
     }
   });
 
-  document.querySelectorAll("[data-placeholder-en][data-placeholder-ar]").forEach(element => {
-    const translatedPlaceholder =
+  document.querySelectorAll(
+    "[data-placeholder-en][data-placeholder-ar]"
+  ).forEach(element => {
+    element.placeholder =
       lang === "ar"
         ? element.dataset.placeholderAr
         : element.dataset.placeholderEn;
-
-    if (translatedPlaceholder !== undefined) {
-      element.placeholder = translatedPlaceholder;
-    }
   });
 
-  document.title = lang === "ar"
-    ? "عمرو سامي | الساحر"
-    : "Amr Samy | The Magician";
-
-  document.querySelector('meta[name="description"]').content =
+  document.title =
     lang === "ar"
-      ? "عمرو سامي، ساحر محترف يقدم عروض سحر مباشرة وعروض أطفال وفعاليات للشركات والفنادق."
-      : "Amr Samy — Professional magician creating unforgettable experiences through live magic, close-up performances, stage shows and family entertainment.";
+      ? "عمرو سامي | الساحر"
+      : "Amr Samy | The Magician";
+
+  const description = document.querySelector(
+    'meta[name="description"]'
+  );
+
+  if (description) {
+    description.content =
+      lang === "ar"
+        ? "عمرو سامي، ساحر محترف يقدم عروض سحر مباشرة وعروض أطفال وفعاليات للشركات والفنادق."
+        : "Amr Samy — Professional magician for stage shows, close-up magic, kids, corporate events and hospitality.";
+  }
 }
 
 langToggle.addEventListener("click", () => {
@@ -68,6 +69,7 @@ langToggle.addEventListener("click", () => {
 
 menuBtn.addEventListener("click", () => {
   const isOpen = navLinks.classList.toggle("open");
+
   menuBtn.setAttribute("aria-expanded", String(isOpen));
   menuBtn.textContent = isOpen ? "✕" : "☰";
 });
@@ -80,18 +82,10 @@ navLinks.querySelectorAll("a").forEach(link => {
   });
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 function openWhatsApp(message = "") {
-  if (WHATSAPP_NUMBER.includes("X")) {
-    alert(
-      currentLang === "ar"
-        ? "من فضلك أضف رقم واتسابك الحقيقي في ملف script.js أولًا."
-        : "Please add your real WhatsApp number in script.js first."
-    );
-    return;
-  }
-
   const url =
     "https://wa.me/" +
     WHATSAPP_NUMBER +
@@ -100,17 +94,12 @@ function openWhatsApp(message = "") {
   window.open(url, "_blank", "noopener,noreferrer");
 }
 
-if (whatsappLink) {
-  whatsappLink.addEventListener("click", event => {
-    event.preventDefault();
-    openWhatsApp();
-  });
-}
-
 bookingForm.addEventListener("submit", event => {
   event.preventDefault();
 
-  if (!bookingForm.reportValidity()) return;
+  if (!bookingForm.reportValidity()) {
+    return;
+  }
 
   const data = new FormData(bookingForm);
 
