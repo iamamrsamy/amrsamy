@@ -353,7 +353,9 @@ h1 em, h2 em {
 
 .stat { padding: 12px 15px; }
 
-.stat + .stat { border-left: 1px solid rgba(255,255,255,.2); }
+.stat + .stat {
+  border-left: 1px solid rgba(255,255,255,.2);
+}
 
 .stat strong {
   display: block;
@@ -395,7 +397,9 @@ h1 em, h2 em {
   letter-spacing: 1.5px;
 }
 
-.about-copy h2, .section-heading h2, .contact h2 {
+.about-copy h2,
+.section-heading h2,
+.contact h2 {
   font-size: clamp(36px, 4.1vw, 55px);
   margin-bottom: 25px;
 }
@@ -434,7 +438,10 @@ h1 em, h2 em {
   margin-bottom: 45px;
 }
 
-.section-heading h2 { margin-bottom: 0; max-width: 660px; }
+.section-heading h2 {
+  margin-bottom: 0;
+  max-width: 660px;
+}
 
 .section-heading > p {
   max-width: 300px;
@@ -600,7 +607,10 @@ h1 em, h2 em {
   flex-shrink: 0;
 }
 
-.btn-light:hover { background: white; transform: translateY(-2px); }
+.btn-light:hover {
+  background: white;
+  transform: translateY(-2px);
+}
 
 .banner-star {
   position: absolute;
@@ -630,6 +640,7 @@ h1 em, h2 em {
 .contact-detail > span {
   width: 42px;
   height: 42px;
+  flex-shrink: 0;
   display: grid;
   place-items: center;
   border: 1px solid var(--border);
@@ -644,7 +655,11 @@ h1 em, h2 em {
   letter-spacing: 1.5px;
 }
 
-.contact-detail a { font-size: 13px; }
+.contact-detail a {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
 .contact-detail a:hover { color: var(--gold); }
 
 .booking-form {
@@ -711,6 +726,37 @@ h1 em, h2 em {
   font-size: 10px;
 }
 
+/* Fixed WhatsApp button */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 18px;
+  background: var(--green);
+  color: #fff;
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, .16);
+  font-size: 12px;
+  font-weight: 700;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  background: var(--green2);
+}
+
+.whatsapp-float strong {
+  color: #D9BD8C;
+  font-size: 18px;
+}
+
+/* Arabic layout */
 body[dir="rtl"] .topbar,
 body[dir="rtl"] .nav-links,
 body[dir="rtl"] .hero-actions,
@@ -736,16 +782,29 @@ body[dir="rtl"] .floating-note {
 body[dir="rtl"] .image-caption { direction: rtl; }
 body[dir="rtl"] .image-tag { left: auto; right: 0; }
 body[dir="rtl"] .portfolio-item > span { left: auto; right: 18px; }
-body[dir="rtl"] .service-content > a { direction: rtl; }
+body[dir="rtl"] .banner-star { right: auto; left: 3%; }
+
 body[dir="rtl"] .stat + .stat {
   border-left: 0;
   border-right: 1px solid rgba(255,255,255,.2);
 }
-body[dir="rtl"] .banner-star { right: auto; left: 3%; }
+
+body[dir="rtl"] .whatsapp-float {
+  right: auto;
+  left: 22px;
+}
 
 @media (max-width: 1100px) {
-  .topbar { padding-inline: 4%; gap: 12px; }
-  .nav-links { gap: 12px; font-size: 11px; }
+  .topbar {
+    padding-inline: 4%;
+    gap: 12px;
+  }
+
+  .nav-links {
+    gap: 12px;
+    font-size: 11px;
+  }
+
   .socials { gap: 4px; }
   .socials a { width: 27px; height: 27px; }
   .section { padding: 80px 6%; }
@@ -765,9 +824,22 @@ body[dir="rtl"] .banner-star { right: auto; left: 3%; }
   .brand-mark { width: 39px; height: 39px; }
   .brand-name { font-size: 11px; }
   .socials { margin-left: auto; }
-  body[dir="rtl"] .socials { margin-left: 0; margin-right: auto; }
-  .socials a { width: 26px; height: 26px; font-size: 9px; }
-  .menu-btn { display: block; order: 3; }
+
+  body[dir="rtl"] .socials {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .socials a {
+    width: 26px;
+    height: 26px;
+    font-size: 9px;
+  }
+
+  .menu-btn {
+    display: block;
+    order: 3;
+  }
 
   .nav-links {
     display: none;
@@ -783,7 +855,6 @@ body[dir="rtl"] .banner-star { right: auto; left: 3%; }
   .nav-links > a { padding: 12px 5px; }
   .nav-links .nav-cta { text-align: center; margin-top: 8px; }
   .lang-toggle { align-self: flex-start; margin: 8px 0; }
-  body[dir="rtl"] .lang-toggle { align-self: flex-start; }
 
   .section { padding: 65px 6%; }
 
@@ -798,8 +869,17 @@ body[dir="rtl"] .banner-star { right: auto; left: 3%; }
   .hero-description { font-size: 14px; }
   .hero-visual { width: 90%; justify-self: center; }
   .hero-frame { height: min(115vw, 490px); }
-  .floating-note { left: -20px; padding: 14px; font-size: 12px; }
-  body[dir="rtl"] .floating-note { left: auto; right: -20px; }
+
+  .floating-note {
+    left: -20px;
+    padding: 14px;
+    font-size: 12px;
+  }
+
+  body[dir="rtl"] .floating-note {
+    left: auto;
+    right: -20px;
+  }
 
   .stats {
     grid-template-columns: 1fr;
@@ -808,6 +888,7 @@ body[dir="rtl"] .banner-star { right: auto; left: 3%; }
   }
 
   .stat { padding: 20px 10px; }
+
   .stat + .stat {
     border-left: 0;
     border-top: 1px solid rgba(255,255,255,.2);
@@ -841,8 +922,17 @@ body[dir="rtl"] .banner-star { right: auto; left: 3%; }
   }
 
   .portfolio-item.tall { grid-row: span 2; }
-  .portfolio-item > span { left: 12px; bottom: 12px; font-size: 11px; }
-  body[dir="rtl"] .portfolio-item > span { left: auto; right: 12px; }
+
+  .portfolio-item > span {
+    left: 12px;
+    bottom: 12px;
+    font-size: 11px;
+  }
+
+  body[dir="rtl"] .portfolio-item > span {
+    left: auto;
+    right: 12px;
+  }
 
   .booking-banner {
     padding: 55px 6%;
@@ -862,6 +952,17 @@ body[dir="rtl"] .banner-star { right: auto; left: 3%; }
   }
 
   body[dir="rtl"] .footer { align-items: flex-start; }
+
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+    padding: 12px 15px;
+  }
+
+  body[dir="rtl"] .whatsapp-float {
+    right: auto;
+    left: 14px;
+  }
 }
 
 @media (max-width: 380px) {
