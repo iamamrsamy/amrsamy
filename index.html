@@ -5,16 +5,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#153D2B">
-  <meta name="description" content="Amr Samy — Professional magician creating unforgettable experiences through live magic, close-up performances, stage shows and family entertainment.">
+  <meta name="description" content="Amr Samy — Professional magician for stage shows, close-up magic, kids, corporate events and hospitality.">
   <title>Amr Samy | The Magician</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 
 <body>
-  <div class="topbar">
+  <header class="topbar">
     <a class="brand" href="#home" aria-label="Amr Samy home">
       <span class="brand-mark">AS<span>✦</span></span>
       <span class="brand-name">AMR SAMY<small>THE MAGICIAN</small></span>
@@ -28,7 +30,7 @@
       <a href="https://www.linkedin.com/in/iamamrsamy" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
     </div>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
 
     <nav class="nav-links" id="navLinks">
       <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
@@ -39,18 +41,22 @@
       <button id="langToggle" class="lang-toggle" type="button">عربي</button>
       <a class="nav-cta" href="#contact" data-en="Book a Show" data-ar="احجز عرضك">Book a Show</a>
     </nav>
-  </div>
+  </header>
 
   <main>
     <section class="hero section" id="home">
       <div class="hero-copy">
         <p class="eyebrow" data-en="LIVE MAGIC · UNFORGETTABLE EXPERIENCES" data-ar="عروض سحرية · تجارب لا تُنسى">LIVE MAGIC · UNFORGETTABLE EXPERIENCES</p>
+
         <h1 data-en="Making the <em>impossible</em> possible." data-ar="أجعل <em>المستحيل</em> حقيقة.">Making the <em>impossible</em> possible.</h1>
+
         <p class="hero-description" data-en="I'm Amr Samy, a professional magician creating moments of wonder for families, brands, hotels and events around the world." data-ar="أنا عمرو سامي، ساحر محترف بصنع لحظات من الدهشة والبهجة للعائلات والشركات والفنادق والفعاليات حول العالم.">I'm Amr Samy, a professional magician creating moments of wonder for families, brands, hotels and events around the world.</p>
+
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact" data-en="Book an Experience ↗" data-ar="احجز تجربة سحرية ↗">Book an Experience ↗</a>
           <a class="btn btn-outline" href="#portfolio" data-en="Explore My Work" data-ar="شاهد أعمالي">Explore My Work</a>
         </div>
+
         <div class="hero-note">
           <span class="status-dot"></span>
           <span data-en="Available for events worldwide" data-ar="متاح للفعاليات حول العالم">Available for events worldwide</span>
@@ -65,16 +71,28 @@
             <span>AMR SAMY · ✦</span>
           </div>
         </div>
-        <div class="floating-note"><span>✦</span><div data-en="A little wonder<br>goes a long way." data-ar="لحظة دهشة<br>قد تصنع ذكرى.">A little wonder<br>goes a long way.</div></div>
+        <div class="floating-note">
+          <span>✦</span>
+          <div data-en="A little wonder<br>goes a long way." data-ar="لحظة دهشة<br>قد تصنع ذكرى.">A little wonder<br>goes a long way.</div>
+        </div>
         <div class="decor decor-one">✳</div>
         <div class="decor decor-two">✦</div>
       </div>
     </section>
 
     <section class="stats section" aria-label="Experience highlights">
-      <div class="stat"><strong>10<span>+</span></strong><p data-en="Years of Experience" data-ar="سنوات من الخبرة">Years of Experience</p></div>
-      <div class="stat"><strong>5,850<span>+</span></strong><p data-en="Shows at SeaWorld Yas Island" data-ar="عرض في سي وورلد جزيرة ياس">Shows at SeaWorld Yas Island</p></div>
-      <div class="stat"><strong data-en="Worldwide" data-ar="حول العالم">Worldwide</strong><p data-en="Events & Entertainment" data-ar="فعاليات وترفيه">Events & Entertainment</p></div>
+      <div class="stat">
+        <strong>10<span>+</span></strong>
+        <p data-en="Years of Experience" data-ar="سنوات من الخبرة">Years of Experience</p>
+      </div>
+      <div class="stat">
+        <strong>5,850<span>+</span></strong>
+        <p data-en="Shows at SeaWorld Yas Island" data-ar="عرض في سي وورلد جزيرة ياس">Shows at SeaWorld Yas Island</p>
+      </div>
+      <div class="stat">
+        <strong data-en="Worldwide" data-ar="حول العالم">Worldwide</strong>
+        <p data-en="Events & Entertainment" data-ar="فعاليات وترفيه">Events & Entertainment</p>
+      </div>
     </section>
 
     <section class="section about" id="about">
@@ -82,6 +100,7 @@
         <img src="images/about.jpg" alt="Amr Samy, professional magician">
         <span class="image-tag" data-en="THE HAPPINESS MAKER" data-ar="صانع السعادة">THE HAPPINESS MAKER</span>
       </div>
+
       <div class="about-copy">
         <p class="eyebrow" data-en="A LITTLE ABOUT ME" data-ar="نبذة عني">A LITTLE ABOUT ME</p>
         <h2 data-en="Magic is more than a trick. It's a <em>feeling.</em>" data-ar="السحر مش مجرد خدعة… ده <em>إحساس.</em>">Magic is more than a trick. It's a <em>feeling.</em></h2>
@@ -104,19 +123,42 @@
       <div class="service-grid">
         <article class="service-card">
           <img src="images/roaming.jpg" alt="Close-up roaming magic">
-          <div class="service-content"><span class="service-number">01</span><h3 data-en="Close-Up & Roaming Magic" data-ar="سحر بين الجمهور والترابيزات">Close-Up & Roaming Magic</h3><p data-en="Mind-blowing magic performed right in front of your guests, creating personal moments of surprise." data-ar="خدع مبهرة قدام ضيوفك مباشرة، ولحظات مفاجأة وتفاعل شخصي في كل ترابيزة.">Mind-blowing magic performed right in front of your guests, creating personal moments of surprise.</p><a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a></div>
+          <div class="service-content">
+            <span class="service-number">01</span>
+            <h3 data-en="Close-Up & Roaming Magic" data-ar="سحر بين الجمهور والترابيزات">Close-Up & Roaming Magic</h3>
+            <p data-en="Mind-blowing magic performed right in front of your guests, creating personal moments of surprise." data-ar="خدع مبهرة قدام ضيوفك مباشرة، ولحظات مفاجأة وتفاعل شخصي في كل ترابيزة.">Mind-blowing magic performed right in front of your guests, creating personal moments of surprise.</p>
+            <a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a>
+          </div>
         </article>
+
         <article class="service-card">
           <img src="images/stage.jpg" alt="Live stage magic show">
-          <div class="service-content"><span class="service-number">02</span><h3 data-en="Stage Shows" data-ar="عروض سحر على المسرح">Stage Shows</h3><p data-en="A high-impact performance designed to entertain, surprise and engage an entire audience." data-ar="عرض قوي ومبهر مصمم لإمتاع الجمهور كله وإشراكه في التجربة.">A high-impact performance designed to entertain, surprise and engage an entire audience.</p><a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a></div>
+          <div class="service-content">
+            <span class="service-number">02</span>
+            <h3 data-en="Stage Shows" data-ar="عروض سحر على المسرح">Stage Shows</h3>
+            <p data-en="A high-impact performance designed to entertain, surprise and engage an entire audience." data-ar="عرض قوي ومبهر مصمم لإمتاع الجمهور كله وإشراكه في التجربة.">A high-impact performance designed to entertain, surprise and engage an entire audience.</p>
+            <a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a>
+          </div>
         </article>
+
         <article class="service-card">
           <img src="images/kids.jpg" alt="Magic show for children and families">
-          <div class="service-content"><span class="service-number">03</span><h3 data-en="Kids & Family Shows" data-ar="عروض الأطفال والعائلات">Kids & Family Shows</h3><p data-en="Interactive, joyful entertainment that brings kids and grown-ups into the magic." data-ar="عروض تفاعلية مليانة ضحك وبهجة، بتجمع الأطفال والكبار في تجربة واحدة.">Interactive, joyful entertainment that brings kids and grown-ups into the magic.</p><a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a></div>
+          <div class="service-content">
+            <span class="service-number">03</span>
+            <h3 data-en="Kids & Family Shows" data-ar="عروض الأطفال والعائلات">Kids & Family Shows</h3>
+            <p data-en="Interactive, joyful entertainment that brings kids and grown-ups into the magic." data-ar="عروض تفاعلية مليانة ضحك وبهجة، بتجمع الأطفال والكبار في تجربة واحدة.">Interactive, joyful entertainment that brings kids and grown-ups into the magic.</p>
+            <a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a>
+          </div>
         </article>
+
         <article class="service-card">
           <img src="images/corporate.jpg" alt="Corporate and hospitality entertainment">
-          <div class="service-content"><span class="service-number">04</span><h3 data-en="Corporate & Hospitality" data-ar="الشركات والفنادق والفعاليات">Corporate & Hospitality</h3><p data-en="Tailored entertainment for brand activations, gala dinners, hotels and team events." data-ar="عروض مخصصة للعلامات التجارية، وحفلات الشركات، والفنادق، وفعاليات الفرق.">Tailored entertainment for brand activations, gala dinners, hotels and team events.</p><a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a></div>
+          <div class="service-content">
+            <span class="service-number">04</span>
+            <h3 data-en="Corporate & Hospitality" data-ar="الشركات والفنادق والفعاليات">Corporate & Hospitality</h3>
+            <p data-en="Tailored entertainment for brand activations, gala dinners, hotels and team events." data-ar="عروض مخصصة للعلامات التجارية، وحفلات الشركات، والفنادق، وفعاليات الفرق.">Tailored entertainment for brand activations, gala dinners, hotels and team events.</p>
+            <a href="#contact" data-en="Enquire ↗" data-ar="استفسر عن العرض ↗">Enquire ↗</a>
+          </div>
         </article>
       </div>
     </section>
@@ -129,22 +171,30 @@
 
     <section class="section portfolio" id="portfolio">
       <div class="section-heading">
-        <div><p class="eyebrow" data-en="A GLIMPSE OF THE MAGIC" data-ar="لمحة من السحر">A GLIMPSE OF THE MAGIC</p><h2 data-en="Moments worth <em>remembering.</em>" data-ar="لحظات تستحق <em>أن تُحكى.</em>">Moments worth <em>remembering.</em></h2></div>
+        <div>
+          <p class="eyebrow" data-en="A GLIMPSE OF THE MAGIC" data-ar="لمحة من السحر">A GLIMPSE OF THE MAGIC</p>
+          <h2 data-en="Moments worth <em>remembering.</em>" data-ar="لحظات تستحق <em>أن تُحكى.</em>">Moments worth <em>remembering.</em></h2>
+        </div>
         <p data-en="Real performances. Real reactions. Unforgettable memories." data-ar="عروض حقيقية، وردود فعل حقيقية، وذكريات لا تُنسى.">Real performances. Real reactions. Unforgettable memories.</p>
       </div>
+
       <div class="portfolio-grid">
-        <a class="portfolio-item tall" href="#contact"><img src="images/reel-1.jpg" alt="Magic performance highlight"><span data-en="Live Magic" data-ar="عروض مباشرة">Live Magic ↗</span></a>
-        <a class="portfolio-item" href="#contact"><img src="images/reel-2.jpg" alt="Close-up magic moment"><span data-en="Close-Up" data-ar="سحر عن قرب">Close-Up ↗</span></a>
-        <a class="portfolio-item" href="#contact"><img src="images/reel-3.jpg" alt="Stage performance"><span data-en="On Stage" data-ar="على المسرح">On Stage ↗</span></a>
-        <a class="portfolio-item" href="#contact"><img src="images/reel-4.jpg" alt="Family entertainment"><span data-en="Family Shows" data-ar="عروض عائلية">Family Shows ↗</span></a>
-        <a class="portfolio-item" href="#contact"><img src="images/reel-5.jpg" alt="International event"><span data-en="Events" data-ar="فعاليات">Events ↗</span></a>
-        <a class="portfolio-item" href="#contact"><img src="images/reel-6.jpg" alt="Behind the magic"><span data-en="Behind the Magic" data-ar="خلف الكواليس">Behind the Magic ↗</span></a>
+        <a class="portfolio-item tall" href="#contact"><img src="images/reel-1.jpg" alt="Magic performance highlight"><span data-en="Live Magic ↗" data-ar="عروض مباشرة ↗">Live Magic ↗</span></a>
+        <a class="portfolio-item" href="#contact"><img src="images/reel-2.jpg" alt="Close-up magic moment"><span data-en="Close-Up ↗" data-ar="سحر عن قرب ↗">Close-Up ↗</span></a>
+        <a class="portfolio-item" href="#contact"><img src="images/reel-3.jpg" alt="Stage performance"><span data-en="On Stage ↗" data-ar="على المسرح ↗">On Stage ↗</span></a>
+        <a class="portfolio-item" href="#contact"><img src="images/reel-4.jpg" alt="Family entertainment"><span data-en="Family Shows ↗" data-ar="عروض عائلية ↗">Family Shows ↗</span></a>
+        <a class="portfolio-item" href="#contact"><img src="images/reel-5.jpg" alt="International event"><span data-en="Events ↗" data-ar="فعاليات ↗">Events ↗</span></a>
+        <a class="portfolio-item" href="#contact"><img src="images/reel-6.jpg" alt="Behind the magic"><span data-en="Behind the Magic ↗" data-ar="خلف الكواليس ↗">Behind the Magic ↗</span></a>
       </div>
+
       <p class="portfolio-note" data-en="Replace these photos with your real performance images and video links." data-ar="استبدل الصور دي بصور عروضك الحقيقية وروابط فيديوهاتك.">Replace these photos with your real performance images and video links.</p>
     </section>
 
     <section class="booking-banner">
-      <div><p class="eyebrow" data-en="LET'S MAKE SOMETHING MAGICAL" data-ar="خلينا نصنع لحظة سحرية">LET'S MAKE SOMETHING MAGICAL</p><h2 data-en="Your event deserves a little <em>wonder.</em>" data-ar="مناسبتك تستحق شوية <em>سحر.</em>">Your event deserves a little <em>wonder.</em></h2></div>
+      <div>
+        <p class="eyebrow" data-en="LET'S MAKE SOMETHING MAGICAL" data-ar="خلينا نصنع لحظة سحرية">LET'S MAKE SOMETHING MAGICAL</p>
+        <h2 data-en="Your event deserves a little <em>wonder.</em>" data-ar="مناسبتك تستحق شوية <em>سحر.</em>">Your event deserves a little <em>wonder.</em></h2>
+      </div>
       <a class="btn btn-light" href="#contact" data-en="Let's Talk About Your Event ↗" data-ar="خلينا نتكلم عن مناسبتك ↗">Let's Talk About Your Event ↗</a>
       <span class="banner-star">✳</span>
     </section>
@@ -154,8 +204,38 @@
         <p class="eyebrow" data-en="GET IN TOUCH" data-ar="خلينا نتواصل">GET IN TOUCH</p>
         <h2 data-en="Let's create a moment they'll <em>never forget.</em>" data-ar="خلينا نصنع لحظة <em>محدش ينساها.</em>">Let's create a moment they'll <em>never forget.</em></h2>
         <p data-en="Tell me a little about your event and I'll get back to you to discuss the best experience for your guests." data-ar="احكيلي شوية عن مناسبتك، ونتواصل عشان نختار أنسب تجربة لضيوفك.">Tell me a little about your event and I'll get back to you to discuss the best experience for your guests.</p>
-        <div class="contact-detail"><span>✉</span><div><small data-en="EMAIL" data-ar="البريد الإلكتروني">EMAIL</small><a href="mailto:amrsamydxb@gmail.com">amrsamydxb@gmail.com</a></div></div>
-        <div class="contact-detail"><span>◎</span><div><small data-en="INSTAGRAM" data-ar="إنستجرام">INSTAGRAM</small><a href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener">@iamamrsamy</a></div></div>
+
+        <div class="contact-detail">
+          <span>☎</span>
+          <div>
+            <small data-en="PHONE" data-ar="التليفون">PHONE</small>
+            <a href="tel:+201115552621">+20 111 555 2621</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span>◉</span>
+          <div>
+            <small data-en="WHATSAPP" data-ar="واتساب">WHATSAPP</small>
+            <a href="https://wa.me/201115552621" target="_blank" rel="noopener" data-en="Message me on WhatsApp ↗" data-ar="راسلني على واتساب ↗">Message me on WhatsApp ↗</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span>✉</span>
+          <div>
+            <small data-en="EMAIL" data-ar="البريد الإلكتروني">EMAIL</small>
+            <a href="mailto:amrsamydxb@gmail.com">amrsamydxb@gmail.com</a>
+          </div>
+        </div>
+
+        <div class="contact-detail">
+          <span>◎</span>
+          <div>
+            <small data-en="INSTAGRAM" data-ar="إنستجرام">INSTAGRAM</small>
+            <a href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener">@iamamrsamy</a>
+          </div>
+        </div>
       </div>
 
       <form class="booking-form" id="bookingForm">
@@ -186,9 +266,17 @@
   </main>
 
   <footer class="footer">
-    <a class="brand footer-brand" href="#home"><span class="brand-mark">AS<span>✦</span></span><span class="brand-name">AMR SAMY<small>THE MAGICIAN</small></span></a>
+    <a class="brand footer-brand" href="#home">
+      <span class="brand-mark">AS<span>✦</span></span>
+      <span class="brand-name">AMR SAMY<small>THE MAGICIAN</small></span>
+    </a>
     <p data-en="The Happiness Maker · Make the impossible possible." data-ar="صانع السعادة · اجعل المستحيل ممكنًا.">The Happiness Maker · Make the impossible possible.</p>
     <span>© <span id="year"></span> Amr Samy</span>
   </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/201115552621" target="_blank" rel="noopener" aria-label="Chat with Amr Samy on WhatsApp">
+    <span data-en="WhatsApp" data-ar="واتساب">WhatsApp</span>
+    <strong>↗</strong>
+  </a>
 </body>
 </html>
