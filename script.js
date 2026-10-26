@@ -3,7 +3,6 @@
   "use strict";
 
   const WHATSAPP_NUMBER = "201115552621";
-
   const languageToggle = document.getElementById("languageToggle");
   const menuToggle = document.getElementById("menuToggle");
   const mainNav = document.getElementById("mainNav");
@@ -24,7 +23,6 @@
 
   function setLanguage(language) {
     currentLanguage = language;
-
     const isArabic = language === "ar";
 
     document.documentElement.lang = language;
@@ -35,13 +33,11 @@
       ? "عمرو سامي | لاعب الخفة"
       : "Amr Samy | The Magician";
 
-    const description = document.querySelector(
-      'meta[name="description"]'
-    );
+    const description = document.querySelector('meta[name="description"]');
 
     if (description) {
       description.content = isArabic
-        ? "عمرو سامي، لاعب خفة محترف يقدم عروض سحر تفاعلية للأطفال والعائلات والشركات والفنادق."
+        ? "عمرو سامي، لاعب خفة محترف يقدم عروضًا سحرية للأطفال والعائلات والشركات والفنادق."
         : "Amr Samy — Professional Magician, The Happiness Maker. Live magic shows, close-up magic and unforgettable events.";
     }
 
@@ -53,30 +49,34 @@
       }
     });
 
-    const name = document.getElementById("name");
-    const location = document.getElementById("location");
-    const details = document.getElementById("details");
+    const nameInput = document.getElementById("name");
+    const locationInput = document.getElementById("location");
+    const detailsInput = document.getElementById("details");
 
-    if (name) {
-      name.placeholder = isArabic
+    if (nameInput) {
+      nameInput.placeholder = isArabic
         ? "مثال: سارة أحمد"
         : "e.g. Sarah Ahmed";
     }
 
-    if (location) {
-      location.placeholder = isArabic
+    if (locationInput) {
+      locationInput.placeholder = isArabic
         ? "القاهرة، مصر"
         : "Cairo, Egypt";
     }
 
-    if (details) {
-      details.placeholder = isArabic
+    if (detailsInput) {
+      detailsInput.placeholder = isArabic
         ? "احكيلي شوية عن مناسبتك..."
         : "Tell me a little about your event...";
     }
 
     if (languageToggle) {
       languageToggle.textContent = isArabic ? "English" : "عربي";
+      languageToggle.setAttribute(
+        "aria-label",
+        isArabic ? "Switch to English" : "التبديل إلى العربية"
+      );
     }
 
     closeMenu();
@@ -106,7 +106,9 @@
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 720) closeMenu();
+      if (window.innerWidth > 680) {
+        closeMenu();
+      }
     });
   }
 
@@ -120,13 +122,16 @@
       const isArabic = currentLanguage === "ar";
 
       const name = String(data.get("name") || "").trim();
-      const eventType = String(data.get("eventType") || "").trim();
+      const eventTypeElement = document.getElementById("eventType");
+      const eventType = eventTypeElement
+        ? eventTypeElement.options[eventTypeElement.selectedIndex].text
+        : "";
       const date = String(data.get("date") || "").trim();
       const location = String(data.get("location") || "").trim();
       const details = String(data.get("details") || "").trim();
 
       const message = isArabic
-        ? `أهلًا عمرو، حابب أستفسر عن حجز عرض.\nالاسم: ${name}\nنوع المناسبة: ${eventType}${date ? `\nالتاريخ: ${date}` : ""}${location ? `\nالمدينة / المكان: ${location}` : ""}${details ? `\nتفاصيل إضافية: ${details}` : ""}`
+        ? `أهلًا عمرو، حابب أستفسر عن حجز عرض.\nالاسم: ${name}\nنوع المناسبة: ${eventType}${date ? `\nتاريخ المناسبة: ${date}` : ""}${location ? `\nالمدينة / المكان: ${location}` : ""}${details ? `\nتفاصيل إضافية: ${details}` : ""}`
         : `Hi Amr, I'd like to enquire about booking a show.\nName: ${name}\nEvent type: ${eventType}${date ? `\nEvent date: ${date}` : ""}${location ? `\nCity / venue: ${location}` : ""}${details ? `\nAdditional details: ${details}` : ""}`;
 
       const whatsappURL =
@@ -136,10 +141,10 @@
     });
   }
 
-  const year = document.getElementById("year");
+  const yearElement = document.getElementById("year");
 
-  if (year) {
-    year.textContent = new Date().getFullYear();
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
   }
 
   setLanguage("en");
