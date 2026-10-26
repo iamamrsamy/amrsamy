@@ -1,85 +1,74 @@
 
-(() => {
-  "use strict";
-
-  const WHATSAPP_NUMBER = "201115552621";
+document.addEventListener("DOMContentLoaded", () => {
   const languageToggle = document.getElementById("languageToggle");
   const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("mainNav");
+  const navLinks = document.getElementById("navLinks");
   const bookingForm = document.getElementById("bookingForm");
+  const currentYear = document.getElementById("currentYear");
 
   let currentLanguage = "en";
 
-  function closeMenu() {
-    if (!menuToggle || !mainNav) return;
-
-    mainNav.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", "false");
-    menuToggle.setAttribute(
-      "aria-label",
-      currentLanguage === "ar" ? "فتح القائمة" : "Open menu"
-    );
+  if (currentYear) {
+    currentYear.textContent = new Date().getFullYear();
   }
 
   function setLanguage(language) {
     currentLanguage = language;
-    const isArabic = language === "ar";
 
     document.documentElement.lang = language;
-    document.documentElement.dir = isArabic ? "rtl" : "ltr";
-    document.body.dir = isArabic ? "rtl" : "ltr";
-
-    document.title = isArabic
-      ? "عمرو سامي | لاعب الخفة"
-      : "Amr Samy | The Magician";
-
-    const description = document.querySelector('meta[name="description"]');
-
-    if (description) {
-      description.content = isArabic
-        ? "عمرو سامي، لاعب خفة محترف يقدم عروضًا سحرية للأطفال والعائلات والشركات والفنادق."
-        : "Amr Samy — Professional Magician, The Happiness Maker. Live magic shows, close-up magic and unforgettable events.";
-    }
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    document.body.dir = language === "ar" ? "rtl" : "ltr";
 
     document.querySelectorAll("[data-en][data-ar]").forEach((element) => {
-      const translation = element.dataset[language];
+      const text = element.dataset[language];
 
-      if (translation !== undefined) {
-        element.innerHTML = translation;
+      if (text !== undefined) {
+        element.innerHTML = text;
       }
     });
 
-    const nameInput = document.getElementById("name");
-    const locationInput = document.getElementById("location");
-    const detailsInput = document.getElementById("details");
+    document.querySelectorAll("[data-placeholder-en][data-placeholder-ar]").forEach((element) => {
+      const placeholder =
+        language === "ar"
+          ? element.dataset.placeholderAr
+          : element.dataset.placeholderEn;
 
-    if (nameInput) {
-      nameInput.placeholder = isArabic
-        ? "مثال: سارة أحمد"
-        : "e.g. Sarah Ahmed";
-    }
-
-    if (locationInput) {
-      locationInput.placeholder = isArabic
-        ? "القاهرة، مصر"
-        : "Cairo, Egypt";
-    }
-
-    if (detailsInput) {
-      detailsInput.placeholder = isArabic
-        ? "احكيلي شوية عن مناسبتك..."
-        : "Tell me a little about your event...";
-    }
+      if (placeholder !== undefined) {
+        element.placeholder = placeholder;
+      }
+    });
 
     if (languageToggle) {
-      languageToggle.textContent = isArabic ? "English" : "عربي";
+      languageToggle.textContent = language === "en" ? "العربية" : "English";
       languageToggle.setAttribute(
         "aria-label",
-        isArabic ? "Switch to English" : "التبديل إلى العربية"
+        language === "en" ? "Switch to Arabic" : "Switch to English"
       );
     }
 
-    closeMenu();
+    if (menuToggle) {
+      menuToggle.setAttribute(
+        "aria-label",
+        language === "en" ? "Open menu" : "افتح القائمة"
+      );
+    }
+
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", closeMenu, { once: true });
+    });
+  }
+
+  function closeMenu() {
+    if (!navLinks || !menuToggle) return;
+
+    navLinks.classList.remove("is-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+
+    const icon = menuToggle.querySelector("i");
+    if (icon) {
+      icon.classList.remove("fa-xmark");
+      icon.classList.add("fa-bars");
+    }
   }
 
   if (languageToggle) {
@@ -88,25 +77,25 @@
     });
   }
 
-  if (menuToggle && mainNav) {
+  if (menuToggle && navLinks) {
     menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("open");
+      const isOpen = navLinks.classList.toggle("is-open");
 
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen
-          ? (currentLanguage === "ar" ? "إغلاق القائمة" : "Close menu")
-          : (currentLanguage === "ar" ? "فتح القائمة" : "Open menu")
-      );
+
+      const icon = menuToggle.querySelector("i");
+      if (icon) {
+        icon.classList.toggle("fa-bars", !isOpen);
+        icon.classList.toggle("fa-xmark", isOpen);
+      }
     });
 
-    mainNav.querySelectorAll("a").forEach((link) => {
+    navLinks.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", closeMenu);
     });
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 680) {
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
         closeMenu();
       }
     });
@@ -116,36 +105,48 @@
     bookingForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
-      if (!bookingForm.reportValidity()) return;
+      const name = document.getElementById("customerName").value.trim();
+      const eventType = document.getElementById("eventType").value;
+      const eventDate = document.getElementById("eventDate").value;
+      const message = document.getElementById("eventMessage").value.trim();
 
-      const data = new FormData(bookingForm);
-      const isArabic = currentLanguage === "ar";
+      if (!name || !eventType) {
+        alert(
+          currentLanguage === "ar"
+            ? "من فضلك اكتب اسمك واختار نوع المناسبة."
+            : "Please enter your name and select an event type."
+        );
+        return;
+      }
 
-      const name = String(data.get("name") || "").trim();
-      const eventTypeElement = document.getElementById("eventType");
-      const eventType = eventTypeElement
-        ? eventTypeElement.options[eventTypeElement.selectedIndex].text
-        : "";
-      const date = String(data.get("date") || "").trim();
-      const location = String(data.get("location") || "").trim();
-      const details = String(data.get("details") || "").trim();
+      const eventLabels = {
+        "Kids Magic": currentLanguage === "ar" ? "حفلة أطفال" : "Kids party",
+        "Stage Magic": currentLanguage === "ar" ? "عرض مسرحي" : "Stage show",
+        "Magic Roaming": currentLanguage === "ar" ? "سحر بين الناس" : "Magic roaming",
+        "Corporate Event": currentLanguage === "ar" ? "فعالية شركة" : "Corporate event",
+        "Other": currentLanguage === "ar" ? "أخرى" : "Other"
+      };
 
-      const message = isArabic
-        ? `أهلًا عمرو، حابب أستفسر عن حجز عرض.\nالاسم: ${name}\nنوع المناسبة: ${eventType}${date ? `\nتاريخ المناسبة: ${date}` : ""}${location ? `\nالمدينة / المكان: ${location}` : ""}${details ? `\nتفاصيل إضافية: ${details}` : ""}`
-        : `Hi Amr, I'd like to enquire about booking a show.\nName: ${name}\nEvent type: ${eventType}${date ? `\nEvent date: ${date}` : ""}${location ? `\nCity / venue: ${location}` : ""}${details ? `\nAdditional details: ${details}` : ""}`;
+      const details = [
+        currentLanguage === "ar" ? "طلب حجز عرض سحري" : "Magic Show Booking Request",
+        "",
+        `${currentLanguage === "ar" ? "الاسم" : "Name"}: ${name}`,
+        `${currentLanguage === "ar" ? "نوع المناسبة" : "Event type"}: ${eventLabels[eventType] || eventType}`,
+        eventDate
+          ? `${currentLanguage === "ar" ? "التاريخ" : "Date"}: ${eventDate}`
+          : "",
+        message
+          ? `${currentLanguage === "ar" ? "تفاصيل إضافية" : "Additional details"}: ${message}`
+          : ""
+      ].filter(Boolean);
 
-      const whatsappURL =
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      const whatsappUrl =
+        "https://wa.me/201115552621?text=" +
+        encodeURIComponent(details.join("\n"));
 
-      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     });
   }
 
-  const yearElement = document.getElementById("year");
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-
   setLanguage("en");
-})();
+});
