@@ -1,343 +1,87 @@
 
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#173c32">
-  <meta name="description" content="Amr Samy — The Happiness Maker. Professional magician for stage shows, kids parties, corporate events and magic roaming.">
-  <title>Amr Samy | The Happiness Maker</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<body>
-  <header class="site-header">
-    <div class="top-socials" aria-label="Social media">
-      <a href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/201115552621" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<section class="gallery section" id="gallery">
+  <div class="section-heading">
+    <div>
+      <div class="section-label">
+        <span>03</span>
+        <span data-en="REAL MOMENTS" data-ar="لحظات حقيقية">REAL MOMENTS</span>
+      </div>
+      <h2 data-en="A little glimpse of <em>magic.</em>" data-ar="لمحة من <em>السحر.</em>">
+        A little glimpse of <em>magic.</em>
+      </h2>
     </div>
+    <p data-en="Real performances. Genuine reactions. Memories worth sharing."
+       data-ar="عروض حقيقية وردود فعل صادقة وذكريات تستاهل المشاركة.">
+      Real performances. Genuine reactions. Memories worth sharing.
+    </p>
+  </div>
 
-    <nav class="navbar container">
-      <a class="brand" href="#home" aria-label="Amr Samy Home">
-        <span class="brand-mark"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-        <span class="brand-name">AMR SAMY<small>THE MAGICIAN</small></span>
-      </a>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
-        <a href="#about" data-en="About" data-ar="من أنا">About</a>
-        <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
-        <a href="#videos" data-en="Videos" data-ar="الفيديوهات">Videos</a>
-        <a href="#contact" data-en="Contact" data-ar="تواصل معي">Contact</a>
-        <button class="language-toggle" id="languageToggle" type="button">العربية</button>
-        <a class="nav-book" href="#contact" data-en="Book a Show" data-ar="احجز عرضك">Book a Show</a>
+  <div class="gallery-grid video-gallery">
+    <article class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="https://www.instagram.com/reel/C7_cRouRvee/embed/"
+          title="Amr Samy - Stage Magic"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
       </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero section" id="home">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow" data-en="THE HAPPINESS MAKER" data-ar="صانع السعادة">THE HAPPINESS MAKER</span>
-          <h1 data-en="Making the <em>Impossible</em> Possible." data-ar="خلّي <em>المستحيل</em> ممكن!">
-            Making the <em>Impossible</em> Possible.
-          </h1>
-          <p data-en="Professional magic that turns events into unforgettable experiences — from close-up magic to spectacular stage shows."
-             data-ar="عروض سحر احترافية بتحوّل مناسبتك لتجربة متتنسيش، من السحر بين الناس لحد العروض المسرحية المبهرة.">
-            Professional magic that turns events into unforgettable experiences — from close-up magic to spectacular stage shows.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact" data-en="Book Your Experience" data-ar="احجز تجربتك">Book Your Experience</a>
-            <a class="button button-outline" href="#videos" data-en="Watch My Shows" data-ar="شاهد عروضي">Watch My Shows</a>
-          </div>
-          <div class="hero-note">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-            <span data-en="Kids • Adults • Corporate Events" data-ar="أطفال • كبار • فعاليات الشركات">Kids • Adults • Corporate Events</span>
-          </div>
-        </div>
-
-        <div class="hero-image-wrap">
-          <div class="hero-image-frame">
-            <img src="images/hero.jpg" alt="Amr Samy performing magic" fetchpriority="high">
-          </div>
-          <div class="floating-tag">
-            <i class="fa-solid fa-star"></i>
-            <span data-en="Moments of Wonder" data-ar="لحظات من الدهشة">Moments of Wonder</span>
-          </div>
-          <div class="hero-decoration decoration-one">✦</div>
-          <div class="hero-decoration decoration-two">✧</div>
-        </div>
+      <div class="video-caption">
+        <small>01 / STAGE PERFORMANCE</small>
+        <h3 data-en="Stage Magic" data-ar="السحر المسرحي">Stage Magic</h3>
+        <a href="https://www.instagram.com/reel/C7_cRouRvee/"
+           target="_blank" rel="noopener noreferrer"
+           data-en="Watch on Instagram ↗"
+           data-ar="شاهد على إنستجرام ↗">Watch on Instagram ↗</a>
       </div>
-    </section>
+    </article>
 
-    <section class="trust-strip">
-      <div class="container trust-items">
-        <span><i class="fa-solid fa-wand-magic-sparkles"></i><span data-en="Professional Magic" data-ar="سحر احترافي">Professional Magic</span></span>
-        <span><i class="fa-solid fa-face-smile"></i><span data-en="Unforgettable Reactions" data-ar="ردود فعل لا تُنسى">Unforgettable Reactions</span></span>
-        <span><i class="fa-solid fa-earth-americas"></i><span data-en="International Experience" data-ar="خبرة دولية">International Experience</span></span>
+    <article class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="https://www.instagram.com/reel/DUFl-kVDPyz/embed/"
+          title="Amr Samy - Magic Roaming"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
       </div>
-    </section>
-
-    <section class="section about-section" id="about">
-      <div class="container about-grid">
-        <div class="about-photo">
-          <img src="images/roaming.jpg" alt="Amr Samy performing close-up magic" loading="lazy">
-          <div class="photo-caption" data-en="Magic happens everywhere." data-ar="السحر ممكن يحصل في أي مكان.">Magic happens everywhere.</div>
-        </div>
-
-        <div class="section-copy">
-          <span class="eyebrow" data-en="MEET THE MAGICIAN" data-ar="اتعرف على الساحر">MEET THE MAGICIAN</span>
-          <h2 data-en="Hello, I'm <em>Amr Samy</em>" data-ar="أهلًا، أنا <em>عمرو سامي</em>">
-            Hello, I'm <em>Amr Samy</em>
-          </h2>
-          <p data-en="I'm a professional magician and entertainer who loves creating moments of surprise, laughter and connection. My performances bring people together and make every event feel special."
-             data-ar="أنا عمرو سامي، ساحر ومؤدٍ محترف بحب أصنع لحظات من الدهشة والضحك والتفاعل. هدفي إني أجمع الناس على تجربة مختلفة وأخلي كل مناسبة ليها ذكرى مميزة.">
-            I'm a professional magician and entertainer who loves creating moments of surprise, laughter and connection. My performances bring people together and make every event feel special.
-          </p>
-          <p data-en="From intimate close-up performances to energetic stage shows for children and adults, every experience is designed around the audience."
-             data-ar="من السحر القريب بين الحضور للعروض المسرحية المليانة طاقة للأطفال والكبار، كل عرض بيتصمم علشان يناسب الجمهور والمناسبة.">
-            From intimate close-up performances to energetic stage shows for children and adults, every experience is designed around the audience.
-          </p>
-          <a class="text-link" href="#contact"><span data-en="Let's create some magic" data-ar="يلا نصنع لحظات سحرية">Let's create some magic</span> <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+      <div class="video-caption">
+        <small>02 / CLOSE-UP MAGIC</small>
+        <h3 data-en="Magic Roaming" data-ar="سحر بين الناس">Magic Roaming</h3>
+        <a href="https://www.instagram.com/reel/DUFl-kVDPyz/"
+           target="_blank" rel="noopener noreferrer"
+           data-en="Watch on Instagram ↗"
+           data-ar="شاهد على إنستجرام ↗">Watch on Instagram ↗</a>
       </div>
-    </section>
+    </article>
 
-    <section class="section services-section" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow" data-en="WHAT I DO" data-ar="بقدم إيه؟">WHAT I DO</span>
-          <h2 data-en="Choose Your <em>Magic</em>" data-ar="اختار <em>نوع السحر</em> المناسب ليك">Choose Your <em>Magic</em></h2>
-          <p data-en="Unique entertainment experiences for every audience and occasion."
-             data-ar="تجارب ترفيهية مختلفة تناسب كل جمهور وكل مناسبة.">
-            Unique entertainment experiences for every audience and occasion.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <article class="service-card">
-            <img src="images/roaming.jpg" alt="Magic roaming performance" loading="lazy">
-            <div class="service-content">
-              <span class="service-icon"><i class="fa-solid fa-people-group"></i></span>
-              <h3 data-en="Magic Roaming" data-ar="سحر بين الناس">Magic Roaming</h3>
-              <p data-en="Up-close magic, unexpected surprises and amazing reactions around the room."
-                 data-ar="خدع سحرية عن قرب ومفاجآت وردود فعل مبهرة بين الضيوف والترابيزات.">
-                Up-close magic, unexpected surprises and amazing reactions around the room.
-              </p>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img src="images/stage.jpg" alt="Stage magic show" loading="lazy">
-            <div class="service-content">
-              <span class="service-icon"><i class="fa-solid fa-masks-theater"></i></span>
-              <h3 data-en="Stage Magic" data-ar="السحر المسرحي">Stage Magic</h3>
-              <p data-en="A high-energy show filled with visual surprises, comedy and audience participation."
-                 data-ar="عرض مسرحي مليان مفاجآت بصرية وكوميديا ومشاركة من الجمهور.">
-                A high-energy show filled with visual surprises, comedy and audience participation.
-              </p>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img src="images/kids.jpg" alt="Magic show for children" loading="lazy">
-            <div class="service-content">
-              <span class="service-icon"><i class="fa-solid fa-wand-sparkles"></i></span>
-              <h3 data-en="Kids Magic" data-ar="عروض الأطفال">Kids Magic</h3>
-              <p data-en="Fun, interactive magic designed to make children laugh, wonder and join the show."
-                 data-ar="سحر تفاعلي ممتع يخلي الأطفال يضحكوا وينبهروا ويشاركوا في العرض.">
-                Fun, interactive magic designed to make children laugh, wonder and join the show.
-              </p>
-            </div>
-          </article>
-
-          <article class="service-card">
-            <img src="images/corporate.jpg" alt="Corporate event entertainment" loading="lazy">
-            <div class="service-content">
-              <span class="service-icon"><i class="fa-solid fa-building"></i></span>
-              <h3 data-en="Corporate Events" data-ar="فعاليات الشركات">Corporate Events</h3>
-              <p data-en="Memorable entertainment for launches, team building, dinners and special celebrations."
-                 data-ar="ترفيه مميز لحفلات الشركات وإطلاق المنتجات وبناء الفرق والعشاء والاحتفالات.">
-                Memorable entertainment for launches, team building, dinners and special celebrations.
-              </p>
-            </div>
-          </article>
-        </div>
+    <article class="video-card">
+      <div class="video-frame">
+        <iframe
+          src="https://www.instagram.com/reel/Ded6bpRgVO5/embed/"
+          title="Amr Samy - Kids Magic"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
       </div>
-    </section>
-
-    <section class="section videos-section" id="videos">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow" data-en="REAL SHOWS • REAL REACTIONS" data-ar="عروض حقيقية • ردود فعل حقيقية">REAL SHOWS • REAL REACTIONS</span>
-          <h2 data-en="Watch the <em>Magic</em>" data-ar="شاهد <em>السحر</em> بنفسك">Watch the <em>Magic</em></h2>
-          <p data-en="A glimpse of the magic, laughter and unforgettable moments."
-             data-ar="لمحة من السحر والضحك واللحظات اللي بتفضل في الذاكرة.">
-            A glimpse of the magic, laughter and unforgettable moments.
-          </p>
-        </div>
-
-        <div class="reels-grid">
-          <article class="reel-card">
-            <div class="reel-video">
-              <iframe src="https://www.instagram.com/reel/C7_cRouRvee/embed/"
-                title="Amr Samy Stage Magic" loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
-            <div class="reel-info">
-              <span class="reel-category" data-en="LIVE PERFORMANCE" data-ar="عرض مباشر">LIVE PERFORMANCE</span>
-              <h3 data-en="Stage Magic" data-ar="السحر المسرحي">Stage Magic</h3>
-              <a href="https://www.instagram.com/reel/C7_cRouRvee/" target="_blank" rel="noopener noreferrer">
-                <span data-en="Watch on Instagram" data-ar="شاهد على إنستجرام">Watch on Instagram</span>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="reel-card">
-            <div class="reel-video">
-              <iframe src="https://www.instagram.com/reel/DUFl-kVDPyz/embed/"
-                title="Amr Samy Magic Roaming" loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
-            <div class="reel-info">
-              <span class="reel-category" data-en="CLOSE-UP MAGIC" data-ar="سحر عن قرب">CLOSE-UP MAGIC</span>
-              <h3 data-en="Magic Roaming" data-ar="سحر بين الناس">Magic Roaming</h3>
-              <a href="https://www.instagram.com/reel/DUFl-kVDPyz/" target="_blank" rel="noopener noreferrer">
-                <span data-en="Watch on Instagram" data-ar="شاهد على إنستجرام">Watch on Instagram</span>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="reel-card">
-            <div class="reel-video">
-              <iframe src="https://www.instagram.com/reel/Ded6bpRgVO5/embed/"
-                title="Amr Samy Kids Magic" loading="lazy"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-            </div>
-            <div class="reel-info">
-              <span class="reel-category" data-en="FAMILY ENTERTAINMENT" data-ar="ترفيه عائلي">FAMILY ENTERTAINMENT</span>
-              <h3 data-en="Kids Magic" data-ar="عروض الأطفال">Kids Magic</h3>
-              <a href="https://www.instagram.com/reel/Ded6bpRgVO5/" target="_blank" rel="noopener noreferrer">
-                <span data-en="Watch on Instagram" data-ar="شاهد على إنستجرام">Watch on Instagram</span>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              </a>
-            </div>
-          </article>
-        </div>
-        <p class="embed-note" data-en="If a video doesn't load here, use its Instagram link to watch it."
-           data-ar="لو فيديو مش ظهر داخل الموقع، اضغط على رابط إنستجرام الموجود تحته لمشاهدته.">
-          If a video doesn't load here, use its Instagram link to watch it.
-        </p>
+      <div class="video-caption">
+        <small>03 / FAMILY ENTERTAINMENT</small>
+        <h3 data-en="Kids Magic" data-ar="عروض الأطفال">Kids Magic</h3>
+        <a href="https://www.instagram.com/reel/Ded6bpRgVO5/"
+           target="_blank" rel="noopener noreferrer"
+           data-en="Watch on Instagram ↗"
+           data-ar="شاهد على إنستجرام ↗">Watch on Instagram ↗</a>
       </div>
-    </section>
+    </article>
+  </div>
 
-    <section class="quote-section">
-      <div class="container quote-content">
-        <i class="fa-solid fa-quote-left"></i>
-        <h2 data-en="The best magic isn't just what you see — it's what you feel."
-            data-ar="أجمل سحر مش بس اللي بتشوفه... لكن الإحساس اللي بيفضل معاك.">
-          The best magic isn't just what you see — it's what you feel.
-        </h2>
-        <span>AMR SAMY — THE HAPPINESS MAKER</span>
-      </div>
-    </section>
-
-    <section class="section gallery-section">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow" data-en="MOMENTS & MEMORIES" data-ar="لحظات وذكريات">MOMENTS & MEMORIES</span>
-          <h2 data-en="A Little More <em>Wonder</em>" data-ar="المزيد من <em>الدهشة</em>">A Little More <em>Wonder</em></h2>
-        </div>
-        <div class="gallery-grid">
-          <img src="images/reel-1.jpg" alt="Amr Samy magic performance" loading="lazy">
-          <img src="images/reel-2.jpg" alt="Magic and audience reactions" loading="lazy">
-          <img src="images/reel-3.jpg" alt="Amr Samy entertainment show" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <section class="contact-section section" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-copy">
-          <span class="eyebrow" data-en="LET'S MAKE IT MAGICAL" data-ar="يلا نخليها مناسبة سحرية">LET'S MAKE IT MAGICAL</span>
-          <h2 data-en="Ready to <em>amaze</em> your guests?" data-ar="جاهز <em>تبهر</em> ضيوفك؟">Ready to <em>amaze</em> your guests?</h2>
-          <p data-en="Tell me a little about your event and let's create an experience your guests will remember."
-             data-ar="احكيلي شوية عن مناسبتك، ويلا نجهز تجربة تفضل في ذاكرة ضيوفك.">
-            Tell me a little about your event and let's create an experience your guests will remember.
-          </p>
-          <div class="contact-details">
-            <a href="mailto:amrsamydxb@gmail.com"><i class="fa-regular fa-envelope"></i> amrsamydxb@gmail.com</a>
-            <a href="https://wa.me/201115552621" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +20 111 555 2621</a>
-            <a href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> @iamamrsamy</a>
-          </div>
-        </div>
-
-        <form class="contact-form" id="bookingForm">
-          <label for="customerName" data-en="Your name" data-ar="اسمك">Your name</label>
-          <input id="customerName" name="customerName" type="text" autocomplete="name" required
-            placeholder="Your name" data-placeholder-en="Your name" data-placeholder-ar="اكتب اسمك">
-
-          <label for="eventType" data-en="Type of event" data-ar="نوع المناسبة">Type of event</label>
-          <select id="eventType" name="eventType" required>
-            <option value="" data-en="Select an event" data-ar="اختار نوع المناسبة">Select an event</option>
-            <option value="Kids Magic" data-en="Kids party" data-ar="حفلة أطفال">Kids party</option>
-            <option value="Stage Magic" data-en="Stage show" data-ar="عرض مسرحي">Stage show</option>
-            <option value="Magic Roaming" data-en="Magic roaming" data-ar="سحر بين الناس">Magic roaming</option>
-            <option value="Corporate Event" data-en="Corporate event" data-ar="فعالية شركة">Corporate event</option>
-            <option value="Other" data-en="Other" data-ar="أخرى">Other</option>
-          </select>
-
-          <label for="eventDate" data-en="Event date" data-ar="تاريخ المناسبة">Event date</label>
-          <input id="eventDate" name="eventDate" type="date">
-
-          <label for="eventMessage" data-en="Tell me more" data-ar="تفاصيل إضافية">Tell me more</label>
-          <textarea id="eventMessage" name="eventMessage" rows="4"
-            placeholder="Location, audience size, and any details..."
-            data-placeholder-en="Location, audience size, and any details..."
-            data-placeholder-ar="المكان، عدد الحضور، وأي تفاصيل إضافية..."></textarea>
-
-          <button type="submit" class="button button-primary form-submit">
-            <i class="fab fa-whatsapp"></i>
-            <span data-en="Send Booking Request" data-ar="ابعت طلب الحجز">Send Booking Request</span>
-          </button>
-          <p class="form-note" data-en="Your request will open in WhatsApp so you can send it directly."
-             data-ar="طلب الحجز هيفتح في واتساب علشان تبعته مباشرة.">
-            Your request will open in WhatsApp so you can send it directly.
-          </p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <a class="brand footer-brand" href="#home">
-        <span class="brand-mark"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-        <span class="brand-name">AMR SAMY<small>THE MAGICIAN</small></span>
-      </a>
-      <p>© <span id="currentYear">2026</span> Amr Samy. <span data-en="All rights reserved." data-ar="جميع الحقوق محفوظة.">All rights reserved.</span></p>
-      <a href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+  <div class="gallery-bottom">
+    <span data-en="More magic. More memories."
+          data-ar="سحر أكتر وذكريات أكتر.">More magic. More memories.</span>
+    <a href="https://www.instagram.com/iamamrsamy/"
+       target="_blank" rel="noopener noreferrer" class="text-link">
+      <span data-en="Follow on Instagram"
+            data-ar="تابعني على إنستجرام">Follow on Instagram</span> ↗
+    </a>
+  </div>
+</section>
