@@ -1,580 +1,670 @@
+
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
+<html lang="en" dir="ltr">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F4F0E7">
+  <meta name="description" content="Amr Samy | The Magician. Live magic, close-up performances, stage shows and event entertainment.">
+  <title>Amr Samy | The Magician</title>
 
-    <meta charset="UTF-8">
+  <style>
+    :root {
+      --bg: #F4F0E7;
+      --panel: #E9E3D6;
+      --green: #153D2B;
+      --green2: #244F39;
+      --gold: #B8955A;
+      --text: #17271D;
+      --muted: #647168;
+      --line: rgba(21,61,43,.16);
+      --white: #FFFFFF;
+      --max: 1180px;
+    }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 85% 8%, rgba(184,149,90,.12), transparent 32%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .22;
+      background-image: radial-gradient(rgba(21,61,43,.15) .6px, transparent .6px);
+      background-size: 18px 18px;
+    }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--max), 90%); margin-inline: auto; }
+    .green { color: var(--green); }
+    .gold { color: var(--gold); }
+    .muted { color: var(--muted); }
+    .section { padding: 90px 0; }
+    .eyebrow {
+      font-size: .76rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.6rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      margin: 20px 0;
+    }
+    h2 {
+      font-size: clamp(2.1rem, 5vw, 3.7rem);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+      margin: 12px 0 18px;
+    }
+    p { color: var(--muted); }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 13px 21px;
+      min-height: 48px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--green); color: white; border-color: var(--green); }
+    .btn-primary:hover { background: var(--green2); }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); }
+    .section-heading { max-width: 720px; margin-bottom: 36px; }
 
-    <title>عمرو سامي | لاعب خفة وفنان ترفيهي</title>
+    /* TOP NAVIGATION + SOCIALS */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(244,240,231,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      flex-shrink: 0;
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: .035em;
+    }
+    .brand span { display: block; color: var(--green); font-size: .7rem; letter-spacing: .14em; }
+    .nav-links { display: flex; align-items: center; gap: 20px; font-size: .86rem; }
+    .nav-links a:hover { color: var(--gold); }
 
-    <meta
-        name="description"
-        content="عمرو سامي لاعب خفة وفنان ترفيهي. أصنع لحظات من الدهشة والضحكة والفرحة للأطفال والكبار في كل مناسبة."
-    >
+    .socials { display: flex; align-items: center; gap: 7px; }
+    .social-link {
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--green);
+      transition: .2s;
+    }
+    .social-link:hover { background: var(--green); color: white; transform: translateY(-2px); }
+    .social-link svg { width: 17px; height: 17px; fill: currentColor; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .lang-btn, .menu-btn {
+      background: transparent;
+      color: var(--green);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 8px 11px;
+      cursor: pointer;
+    }
+    .menu-btn { display: none; }
 
-    <!-- Open Graph -->
-    <meta
-        property="og:title"
-        content="عمرو سامي | لاعب خفة وفنان ترفيهي"
-    >
+    /* HERO */
+    .hero {
+      min-height: 670px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 78% 45%, rgba(184,149,90,.20), transparent 45%),
+        linear-gradient(120deg, #F4F0E7 20%, #E8E1D2 100%);
+    }
+    .hero::before {
+      content: "✦";
+      position: absolute;
+      right: 8%;
+      top: 8%;
+      color: rgba(184,149,90,.35);
+      font-size: clamp(120px, 22vw, 280px);
+      line-height: 1;
+    }
+    .hero-photo {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 57%;
+      height: 100%;
+      object-position: center 28%;
+      mask-image: linear-gradient(to right, transparent 0%, black 32%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, #F4F0E7 3%, rgba(244,240,231,.95) 32%, rgba(244,240,231,.15) 75%);
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 700px; padding: 90px 0; }
+    .hero h1 span { display: block; }
+    .hero h1 .name-accent { color: var(--green); }
+    .hero-copy { max-width: 520px; font-size: 1.08rem; margin: 25px 0 28px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { margin-top: 34px; font-size: .78rem; font-weight: 800; letter-spacing: .15em; color: var(--gold); }
 
-    <meta
-        property="og:description"
-        content="سحر، ضحك، ترفيه ولحظات لا تُنسى للأطفال والكبار."
-    >
+    /* EXPERIENCE STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--green);
+      color: white;
+    }
+    .stat { text-align: center; padding: 25px 14px; }
+    .stat + .stat { border-inline-start: 1px solid rgba(255,255,255,.2); }
+    .stat strong { display: block; color: #E6D1A5; font-size: 1.8rem; }
+    .stat span { font-size: .84rem; color: rgba(255,255,255,.85); }
 
-    <meta
-        property="og:url"
-        content="https://iamamrsamy.github.io/amrsamy/"
-    >
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .service-card {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      background: var(--green);
+      border-radius: 5px;
+    }
+    .service-card img {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      opacity: .78;
+      transition: transform .5s;
+    }
+    .service-card:hover img { transform: scale(1.04); }
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(8,29,19,.96), rgba(8,29,19,.02) 100%);
+    }
+    .service-info { position: absolute; z-index: 1; bottom: 0; padding: 26px; color: white; }
+    .service-info h3 { font-size: 1.5rem; margin: 8px 0; }
+    .service-info p { color: rgba(255,255,255,.82); margin-bottom: 0; }
+    .service-info .eyebrow { color: #E6D1A5; }
 
-    <meta
-        property="og:image"
-        content="https://iamamrsamy.github.io/amrsamy/amr-samy-logo.PNG"
-    >
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+    .about-photo {
+      height: 530px;
+      background: var(--panel);
+      border-radius: 5px;
+    }
+    .about-copy p { line-height: 1.9; }
+    .check-list { padding: 0; list-style: none; margin: 24px 0; }
+    .check-list li { margin: 12px 0; }
+    .check-list li::before { content: "✦"; color: var(--gold); margin-inline-end: 12px; }
 
-    <meta
-        property="og:type"
-        content="website"
-    >
+    /* PORTFOLIO */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+    .portfolio-item {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+    .portfolio-item img { height: 100%; transition: transform .4s; }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-item::after {
+      content: "";
+      position: absolute;
+      inset: 35% 0 0;
+      background: linear-gradient(transparent, rgba(8,29,19,.94));
+    }
+    .portfolio-label { position: absolute; z-index: 1; bottom: 16px; inset-inline: 16px; color: white; }
+    .portfolio-label small { display: block; color: #E6D1A5; font-size: .72rem; letter-spacing: .1em; }
 
-    <!-- Twitter -->
-    <meta
-        name="twitter:card"
-        content="summary_large_image"
-    >
+    /* CTA */
+    .cta {
+      padding: clamp(30px, 6vw, 65px);
+      background: var(--green);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      border-radius: 5px;
+    }
+    .cta h2 { max-width: 680px; }
+    .cta p { color: rgba(255,255,255,.78); }
+    .cta .eyebrow { color: #E6D1A5; }
+    .cta .btn-primary { background: #E6D1A5; color: var(--green); border-color: #E6D1A5; }
 
-    <meta
-        name="twitter:title"
-        content="عمرو سامي | لاعب خفة وفنان ترفيهي"
-    >
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 55px; }
+    .contact-links { display: grid; gap: 12px; margin-top: 25px; }
+    .contact-link { padding: 16px; border: 1px solid var(--line); border-radius: 4px; }
+    .contact-link:hover { border-color: var(--gold); }
+    .form { display: grid; gap: 14px; }
+    .form label { display: grid; gap: 7px; font-size: .9rem; }
+    .form input, .form select, .form textarea {
+      width: 100%;
+      padding: 13px;
+      color: var(--text);
+      background: rgba(255,255,255,.5);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+    .form textarea { min-height: 115px; resize: vertical; }
+    .form input:focus, .form select:focus, .form textarea:focus {
+      outline: 1px solid var(--green);
+      border-color: var(--green);
+    }
+    .form-note { font-size: .78rem; }
 
-    <meta
-        name="twitter:description"
-        content="سحر، ضحك وترفيه لكل المناسبات."
-    >
+    footer { border-top: 1px solid var(--line); padding: 28px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: .88rem; }
 
-    <meta
-        name="twitter:image"
-        content="https://iamamrsamy.github.io/amrsamy/amr-samy-logo.PNG"
-    >
+    [dir="rtl"] body { font-family: Arial, Tahoma, sans-serif; }
+    [dir="rtl"] h1 { letter-spacing: 0; line-height: 1.15; }
+    [dir="rtl"] .eyebrow { letter-spacing: 0; }
+    [dir="rtl"] .hero-photo {
+      right: auto;
+      left: 0;
+      mask-image: linear-gradient(to left, transparent 0%, black 32%);
+    }
+    [dir="rtl"] .hero::after {
+      background: linear-gradient(270deg, #F4F0E7 3%, rgba(244,240,231,.95) 32%, rgba(244,240,231,.15) 75%);
+    }
+    [dir="rtl"] .hero::before { right: auto; left: 8%; }
 
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
-
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"
-        rel="stylesheet"
-    >
-
-
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    >
-
+    @media (max-width: 1080px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .8rem; }
+      .socials { gap: 4px; }
+      .social-link { width: 31px; height: 31px; }
+      .nav-inner { gap: 10px; }
+    }
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 78px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        padding: 20px 5%;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: inline-block; }
+      .nav-right > .btn { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .about-photo { height: 420px; }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 65px 0; }
+      .nav-inner { min-height: 72px; }
+      .brand { font-size: .83rem; }
+      .brand span { font-size: .63rem; }
+      .social-link { width: 29px; height: 29px; }
+      .social-link svg { width: 15px; height: 15px; }
+      .nav-right { gap: 6px; }
+      .lang-btn, .menu-btn { padding: 7px 8px; font-size: .8rem; }
+      .hero { min-height: 650px; }
+      .hero-photo { width: 100%; opacity: .28; mask-image: none; }
+      .hero::after { background: linear-gradient(90deg, rgba(244,240,231,.88), rgba(244,240,231,.5)); }
+      [dir="rtl"] .hero-photo { width: 100%; }
+      [dir="rtl"] .hero::after { background: linear-gradient(270deg, rgba(244,240,231,.88), rgba(244,240,231,.5)); }
+      .hero-content { padding: 70px 0; }
+      .stats { grid-template-columns: 1fr; }
+      .stat + .stat { border-inline-start: 0; border-top: 1px solid rgba(255,255,255,.2); }
+      .services-grid, .portfolio-grid { grid-template-columns: 1fr; }
+      .service-card { min-height: 300px; }
+      .portfolio-item { aspect-ratio: 5/4; }
+    }
+  </style>
 </head>
 
-
 <body>
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#home">AMR SAMY <span>THE MAGICIAN</span></a>
 
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+      <a href="#services" data-en="Experiences" data-ar="العروض">Experiences</a>
+      <a href="#about" data-en="About" data-ar="عن عمرو">About</a>
+      <a href="#portfolio" data-en="Portfolio" data-ar="الأعمال">Portfolio</a>
+      <a href="#contact" data-en="Contact" data-ar="تواصل">Contact</a>
+    </nav>
 
-    <!-- Decorative Shapes -->
+    <div class="nav-right">
+      <!-- Social profile links: update any URL that differs from your real account -->
+      <div class="socials" aria-label="Social media">
+        <a class="social-link" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2H7zm5 3.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4zm0 2.2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5.1-3.5a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.facebook.com/iamamrsamy" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M13.4 21v-8h2.7l.4-3.1h-3.1v-2c0-.9.3-1.5 1.6-1.5h1.7V3.6c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.1H7.2V13H10v8h3.4z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.youtube.com/@iamamrsamy" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.tiktok.com/@iamamrsamy" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M19.6 6.2A5.8 5.8 0 0 1 16 2.5V2h-4.1v13.7a2.5 2.5 0 1 1-2.5-2.5c.4 0 .7.1 1 .2V9.2a7 7 0 1 0 5.6 6.8V9a9.8 9.8 0 0 0 5.7 1.8V6.7c-.7 0-1.4-.2-2.1-.5z"/></svg>
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/in/iamamrsamy" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M5.2 3a2.2 2.2 0 1 1 0 4.4 2.2 2.2 0 0 1 0-4.4zM3.3 9h3.8v12H3.3V9zm6.2 0h3.6v1.6h.1a4 4 0 0 1 3.6-2c3.9 0 4.6 2.5 4.6 5.7V21h-3.8v-5.9c0-1.4 0-3.3-2-3.3s-2.3 1.6-2.3 3.2V21H9.5V9z"/></svg>
+        </a>
+      </div>
 
-    <div class="floating-shape shape1"></div>
+      <button class="lang-btn" id="langToggle" type="button">عربي</button>
+      <a class="btn btn-primary" href="#contact" data-en="Book Amr" data-ar="احجز عمرو">Book Amr</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
 
-    <div class="floating-shape shape2"></div>
-
-    <div class="floating-shape shape3"></div>
-
-
-
-    <main class="page">
-
-
-        <!-- LANGUAGE SWITCH -->
-
-        <div class="language-switch">
-
-            <a
-                href="index.html"
-                class="active"
-            >
-                🇪🇬 عربي
-            </a>
-
-            <a
-                href="en/index.html"
-            >
-                🇬🇧 English
-            </a>
-
+<main>
+  <section class="hero" id="home">
+    <img class="hero-photo" src="images/hero.jpg" alt="Amr Samy performing magic"
+         onerror="this.style.display='none'">
+    <div class="container">
+      <div class="hero-content">
+        <div class="eyebrow" data-en="Live Magic · Unforgettable Experiences" data-ar="سحر حي · تجارب لا تُنسى">Live Magic · Unforgettable Experiences</div>
+        <h1>
+          <span data-en="AMR SAMY" data-ar="عمرو سامي">AMR SAMY</span>
+          <span class="name-accent" data-en="THE MAGICIAN" data-ar="لاعب الخفة">THE MAGICIAN</span>
+        </h1>
+        <p class="hero-copy"
+           data-en="Making the impossible feel real. Discover live magic for events, families, brands and unforgettable celebrations."
+           data-ar="بخلّي المستحيل حقيقة قدام عينيك. اكتشف عروض سحر حي للمناسبات والعائلات والشركات واللحظات اللي ما تتنسيش.">
+          Making the impossible feel real. Discover live magic for events, families, brands and unforgettable celebrations.
+        </p>
+        <div class="button-row">
+          <a class="btn btn-primary" href="#contact" data-en="BOOK A SHOW ↗" data-ar="احجز عرضك ↗">BOOK A SHOW ↗</a>
+          <a class="btn btn-outline" href="#portfolio" data-en="WATCH THE MAGIC ↓" data-ar="شوف العروض ↓">WATCH THE MAGIC ↓</a>
         </div>
-
-
-
-        <!-- HERO -->
-
-        <section class="hero">
-
-
-            <!-- Amr Samy Logo -->
-
-            <div class="magic-logo">
-
-                <img
-                    src="amr-samy-logo.PNG"
-                    alt="Amr Samy The Happiness Maker"
-                >
-
-            </div>
-
-
-            <h1>
-                عمرو سامي
-            </h1>
-
-
-            <h2>
-                🎩 لاعب خفة وفنان ترفيهي
-            </h2>
-
-
-            <p>
-                أصنع لحظات من الدهشة والضحكة والفرحة
-                للأطفال والكبار في كل مناسبة ✨
-            </p>
-
-
-        </section>
-
-
-
-        <!-- CONTACT -->
-
-        <section class="section">
-
-
-            <h3>
-                📞 تواصل معي
-            </h3>
-
-
-            <div class="contact-grid">
-
-
-                <a
-                    href="tel:01115552621"
-                    class="contact-card"
-                >
-
-                    <i class="fa-solid fa-phone"></i>
-
-                    <span>
-                        اتصل بي
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="https://wa.me/201115552621"
-                    target="_blank"
-                    rel="noopener"
-                    class="contact-card whatsapp"
-                >
-
-                    <i class="fa-brands fa-whatsapp"></i>
-
-                    <span>
-                        واتساب
-                    </span>
-
-                </a>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- SOCIAL MEDIA -->
-
-        <section class="section">
-
-
-            <h3>
-                🌟 تابعني على السوشيال ميديا
-            </h3>
-
-
-            <div class="social-grid">
-
-
-                <a
-                    href="https://instagram.com/iamamrsamy"
-                    target="_blank"
-                    rel="noopener"
-                    class="social instagram"
-                >
-
-                    <i class="fa-brands fa-instagram"></i>
-
-                    <span>
-                        Instagram
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="https://tiktok.com/@iamamrsamy"
-                    target="_blank"
-                    rel="noopener"
-                    class="social tiktok"
-                >
-
-                    <i class="fa-brands fa-tiktok"></i>
-
-                    <span>
-                        TikTok
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="https://youtube.com/@iamamrsamy"
-                    target="_blank"
-                    rel="noopener"
-                    class="social youtube"
-                >
-
-                    <i class="fa-brands fa-youtube"></i>
-
-                    <span>
-                        YouTube
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="https://facebook.com/iamamrsamy"
-                    target="_blank"
-                    rel="noopener"
-                    class="social facebook"
-                >
-
-                    <i class="fa-brands fa-facebook-f"></i>
-
-                    <span>
-                        Facebook
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="https://linkedin.com/in/iamamrsamy"
-                    target="_blank"
-                    rel="noopener"
-                    class="social linkedin"
-                >
-
-                    <i class="fa-brands fa-linkedin-in"></i>
-
-                    <span>
-                        LinkedIn
-                    </span>
-
-                </a>
-
-
-
-                <a
-                    href="https://x.com/iamamrsamy"
-                    target="_blank"
-                    rel="noopener"
-                    class="social x"
-                >
-
-                    <i class="fa-brands fa-x-twitter"></i>
-
-                    <span>
-                        X
-                    </span>
-
-                </a>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- SERVICES -->
-
-        <section class="section">
-
-
-            <h3>
-                🎩 أقدر أقدم لك إيه؟
-            </h3>
-
-
-            <div class="services-grid">
-
-
-                <div class="service service-yellow">
-
-                    <span>
-                        🎩
-                    </span>
-
-                    <strong>
-                        عروض سحر
-                    </strong>
-
-                    <small>
-                        Magic Shows
-                    </small>
-
-                </div>
-
-
-
-                <div class="service service-pink">
-
-                    <span>
-                        🎈
-                    </span>
-
-                    <strong>
-                        ترفيه للأطفال
-                    </strong>
-
-                    <small>
-                        Kids Entertainment
-                    </small>
-
-                </div>
-
-
-
-                <div class="service service-blue">
-
-                    <span>
-                        🎭
-                    </span>
-
-                    <strong>
-                        عروض مسرحية
-                    </strong>
-
-                    <small>
-                        Stage Shows
-                    </small>
-
-                </div>
-
-
-
-                <div class="service service-green">
-
-                    <span>
-                        🎉
-                    </span>
-
-                    <strong>
-                        حفلات ومناسبات
-                    </strong>
-
-                    <small>
-                        Parties & Events
-                    </small>
-
-                </div>
-
-
-
-                <div class="service service-purple">
-
-                    <span>
-                        🏢
-                    </span>
-
-                    <strong>
-                        فعاليات الشركات
-                    </strong>
-
-                    <small>
-                        Corporate Events
-                    </small>
-
-                </div>
-
-
-
-                <div class="service service-orange">
-
-                    <span>
-                        ✨
-                    </span>
-
-                    <strong>
-                        عروض ترفيهية
-                    </strong>
-
-                    <small>
-                        Entertainment
-                    </small>
-
-                </div>
-
-
-            </div>
-
-
-        </section>
-
-
-
-        <!-- BOOKING -->
-
-        <section class="booking">
-
-
-            <div class="booking-icon">
-                ✨
-            </div>
-
-
-            <h3>
-                جاهز نعمل حاجة مميزة؟
-            </h3>
-
-
-            <p>
-                لو حابب تحجز عرض أو تتعاون معايا،
-                كلمني على واتساب 👇
-            </p>
-
-
-            <a
-                href="https://wa.me/201115552621?text=مرحباً%20عمرو%20سامي،%20حابب%20أحجز%20عرض"
-                target="_blank"
-                rel="noopener"
-                class="booking-button"
-            >
-
-                <i class="fa-brands fa-whatsapp"></i>
-
-                احجز عرض
-
-            </a>
-
-
-        </section>
-
-
-
-        <!-- SAVE CONTACT -->
-
-        <section class="save-section">
-
-
-            <button
-                onclick="saveContact()"
-                class="save-button"
-            >
-
-                <i class="fa-solid fa-address-card"></i>
-
-                احفظ رقمي عندك
-
-            </button>
-
-
-        </section>
-
-
-
-        <!-- EMAIL -->
-
-        <section class="email-section">
-
-
-            <a
-                href="mailto:amrsamydxb@gmail.com"
-            >
-
-                <i class="fa-solid fa-envelope"></i>
-
-                amrsamydxb@gmail.com
-
-            </a>
-
-
-        </section>
-
-
-
-        <!-- FOOTER -->
-
-        <footer>
-
-
-            <p>
-                🎩 Amr Samy
-            </p>
-
-
-            <small>
-                Magic • Entertainment • Happiness
-            </small>
-
-
-            <div class="cards">
-                ♠️ ♥️ ♦️ ♣️
-            </div>
-
-
-        </footer>
-
-
-    </main>
-
-
-
-    <!-- JavaScript -->
-
-    <script src="script.js"></script>
-
-
+        <div class="hero-note" data-en="MAKE THE IMPOSSIBLE POSSIBLE." data-ar="خلّي المستحيل ممكن.">MAKE THE IMPOSSIBLE POSSIBLE.</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Experience">
+    <div class="container stats">
+      <div class="stat"><strong>10+</strong><span data-en="Years of Professional Magic" data-ar="سنوات من الاحتراف">Years of Professional Magic</span></div>
+      <div class="stat"><strong>5,850+</strong><span data-en="Shows at SeaWorld Yas Island" data-ar="عرض في سي وورلد جزيرة ياس">Shows at SeaWorld Yas Island</span></div>
+      <div class="stat"><strong>Worldwide</strong><span data-en="International Performance Experience" data-ar="خبرات عروض دولية">International Performance Experience</span></div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow" data-en="The Experiences" data-ar="عالم التجارب">The Experiences</div>
+        <h2 data-en="Magic made for <span class='green'>your moment.</span>" data-ar="سحر يليق <span class='green'>بلحظتك.</span>">Magic made for <span class="green">your moment.</span></h2>
+        <p data-en="From impossible moments happening right in front of your eyes to full-scale stage shows, every performance is designed to surprise and connect."
+           data-ar="من لحظات سحر بتحصل قدام عينيك، لعروض مسرحية كاملة؛ كل عرض معمول عشان يدهشك ويخلق تجربة مختلفة.">
+          From impossible moments happening right in front of your eyes to full-scale stage shows, every performance is designed to surprise and connect.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <img src="images/roaming.jpg" alt="Close-up magic" loading="lazy" onerror="this.style.display='none'">
+          <div class="service-info"><div class="eyebrow">01 / LIVE INTERACTION</div><h3 data-en="Close-up & Roaming Magic" data-ar="سحر بين الجمهور">Close-up & Roaming Magic</h3><p data-en="Impossible moments, up close. Ideal for receptions, dinners and guest experiences." data-ar="لحظات مستحيلة قدام الضيوف مباشرة؛ مثالية للاستقبالات والعشاء والفعاليات.">Impossible moments, up close. Ideal for receptions, dinners and guest experiences.</p></div>
+        </article>
+        <article class="service-card">
+          <img src="images/stage.jpg" alt="Stage magic show" loading="lazy" onerror="this.style.display='none'">
+          <div class="service-info"><div class="eyebrow">02 / CENTER STAGE</div><h3 data-en="Stage Magic Shows" data-ar="عروض السحر المسرحية">Stage Magic Shows</h3><p data-en="An interactive live show that puts the audience at the heart of the magic." data-ar="عرض حي مليان دهشة وتفاعل، بيخلّي الجمهور جزء من السحر نفسه.">An interactive live show that puts the audience at the heart of the magic.</p></div>
+        </article>
+        <article class="service-card">
+          <img src="images/kids.jpg" alt="Kids and family entertainment" loading="lazy" onerror="this.style.display='none'">
+          <div class="service-info"><div class="eyebrow">03 / JOY FOR EVERY AGE</div><h3 data-en="Kids & Family Entertainment" data-ar="عروض الأطفال والعائلات">Kids & Family Entertainment</h3><p data-en="Playful, interactive magic for birthdays, schools and family celebrations." data-ar="سحر وضحك ومشاركة للأطفال والعائلات في أعياد الميلاد والمدارس والمناسبات.">Playful, interactive magic for birthdays, schools and family celebrations.</p></div>
+        </article>
+        <article class="service-card">
+          <img src="images/corporate.jpg" alt="Corporate event entertainment" loading="lazy" onerror="this.style.display='none'">
+          <div class="service-info"><div class="eyebrow">04 / PREMIUM EVENTS</div><h3 data-en="Corporate & Hospitality" data-ar="الشركات والفنادق والفعاليات">Corporate & Hospitality</h3><p data-en="Memorable entertainment for corporate events, hotels, launches and private occasions." data-ar="تجارب ترفيهية مميزة للشركات والفنادق وإطلاق المنتجات والمناسبات الخاصة.">Memorable entertainment for corporate events, hotels, launches and private occasions.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container about-grid">
+      <img class="about-photo" src="images/about.jpg" alt="Amr Samy, professional magician" loading="lazy" onerror="this.style.display='none'">
+      <div>
+        <div class="eyebrow" data-en="Meet The Performer" data-ar="اتعرف على الفنان">Meet The Performer</div>
+        <h2 data-en="More than a trick. <span class='green'>It's an experience.</span>" data-ar="مش مجرد خدعة. <span class='green'>دي تجربة كاملة.</span>">More than a trick. <span class="green">It's an experience.</span></h2>
+        <p data-en="I'm Amr Samy, a professional magician and live entertainer with over a decade of performance experience. My work brings people together through surprise, laughter and unforgettable moments."
+           data-ar="أنا عمرو سامي، لاعب خفة وفنان عروض حية بخبرة أكتر من 10 سنين. شغلي بيجمع الناس بالدهشة والضحك واللحظات اللي تفضل في الذاكرة.">
+          I'm Amr Samy, a professional magician and live entertainer with over a decade of performance experience. My work brings people together through surprise, laughter and unforgettable moments.
+        </p>
+        <p data-en="From Egypt to the UAE, Saudi Arabia and the Maldives, I've performed for audiences across different cultures and event settings."
+           data-ar="من مصر للإمارات والسعودية والمالديف، قدمت عروض لجمهور من ثقافات مختلفة وفي فعاليات متنوعة.">
+          From Egypt to the UAE, Saudi Arabia and the Maldives, I've performed for audiences across different cultures and event settings.
+        </p>
+        <ul class="check-list">
+          <li data-en="International live entertainment experience" data-ar="خبرة في العروض الحية الدولية">International live entertainment experience</li>
+          <li data-en="Shows for children, adults and corporate audiences" data-ar="عروض للأطفال والكبار وجمهور الشركات">Shows for children, adults and corporate audiences</li>
+          <li data-en="Interactive, professional and audience-focused" data-ar="تفاعل واحتراف واهتمام بتجربة الجمهور">Interactive, professional and audience-focused</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact" data-en="LET'S CREATE A MOMENT ↗" data-ar="خلّينا نصنع لحظة مميزة ↗">LET'S CREATE A MOMENT ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="portfolio">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow" data-en="Selected Moments" data-ar="لحظات من العروض">Selected Moments</div>
+        <h2 data-en="See the magic. <span class='green'>Feel the moment.</span>" data-ar="شوف السحر. <span class='green'>عيش اللحظة.</span>">See the magic. <span class="green">Feel the moment.</span></h2>
+        <p data-en="Replace these sample image filenames with your own real reel covers. Each card can link to its matching video."
+           data-ar="استخدم أغلفة الريلز الحقيقية بتاعتك بدل الصور التجريبية، واربط كل صورة بالفيديو الخاص بيها.">
+          Replace these sample image filenames with your own real reel covers. Each card can link to its matching video.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        <a class="portfolio-item" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><img src="images/reel-1.jpg" alt="Magic reel 1" loading="lazy" onerror="this.style.display='none'"><div class="portfolio-label"><small>01 / CLOSE-UP</small><span data-en="Magic Up Close" data-ar="السحر عن قرب">Magic Up Close</span></div></a>
+        <a class="portfolio-item" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><img src="images/reel-2.jpg" alt="Magic reel 2" loading="lazy" onerror="this.style.display='none'"><div class="portfolio-label"><small>02 / LIVE SHOW</small><span data-en="On Stage" data-ar="على المسرح">On Stage</span></div></a>
+        <a class="portfolio-item" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><img src="images/reel-3.jpg" alt="Magic reel 3" loading="lazy" onerror="this.style.display='none'"><div class="portfolio-label"><small>03 / FAMILY</small><span data-en="Family Moments" data-ar="لحظات عائلية">Family Moments</span></div></a>
+        <a class="portfolio-item" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><img src="images/reel-4.jpg" alt="Magic reel 4" loading="lazy" onerror="this.style.display='none'"><div class="portfolio-label"><small>04 / CORPORATE</small><span data-en="Corporate Events" data-ar="فعاليات الشركات">Corporate Events</span></div></a>
+        <a class="portfolio-item" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><img src="images/reel-5.jpg" alt="Magic reel 5" loading="lazy" onerror="this.style.display='none'"><div class="portfolio-label"><small>05 / ROAMING</small><span data-en="Surprise Every Guest" data-ar="الدهشة لكل ضيف">Surprise Every Guest</span></div></a>
+        <a class="portfolio-item" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><img src="images/reel-6.jpg" alt="Magic reel 6" loading="lazy" onerror="this.style.display='none'"><div class="portfolio-label"><small>06 / MORE MAGIC</small><span data-en="More Moments" data-ar="المزيد من اللحظات">More Moments</span></div></a>
+      </div>
+
+      <p style="margin-top:24px"><a class="btn btn-outline" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener" data-en="FOLLOW ON INSTAGRAM ↗" data-ar="تابعني على إنستجرام ↗">FOLLOW ON INSTAGRAM ↗</a></p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container cta">
+      <div>
+        <div class="eyebrow" data-en="Your Event Deserves Something Different" data-ar="مناسبتك تستحق حاجة مختلفة">Your Event Deserves Something Different</div>
+        <h2 data-en="Let's make your next event <span style='color:#E6D1A5'>unforgettable.</span>" data-ar="خلّينا نخلي مناسبتك الجاية <span style='color:#E6D1A5'>ما تتنسيش.</span>">Let's make your next event <span style="color:#E6D1A5">unforgettable.</span></h2>
+        <p data-en="Tell me about your event and the experience you have in mind." data-ar="احكيلي عن مناسبتك والتجربة اللي نفسك تقدمها.">Tell me about your event and the experience you have in mind.</p>
+      </div>
+      <a class="btn btn-primary" href="#contact" data-en="BOOK AMR ↗" data-ar="احجز عمرو ↗">BOOK AMR ↗</a>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <div class="eyebrow" data-en="Bookings & Inquiries" data-ar="الحجوزات والاستفسارات">Bookings & Inquiries</div>
+        <h2 data-en="Let's make <span class='green'>magic happen.</span>" data-ar="يلا نخلّي <span class='green'>السحر يحصل.</span>">Let's make <span class="green">magic happen.</span></h2>
+        <p data-en="Planning a private party, a corporate event, a hotel experience or a stage show? Send your details and let's discuss the right show for you."
+           data-ar="بتخطط لحفلة خاصة أو فعالية شركة أو عرض في فندق أو على المسرح؟ ابعت التفاصيل وخلّينا نختار العرض المناسب ليك.">
+          Planning a private party, a corporate event, a hotel experience or a stage show? Send your details and let's discuss the right show for you.
+        </p>
+        <div class="contact-links">
+          <a class="contact-link" href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener"><strong>Instagram</strong><br><span class="muted">@iamamrsamy ↗</span></a>
+          <a class="contact-link" id="whatsappLink" href="#"><strong>WhatsApp</strong><br><span class="muted" data-en="Chat about your event ↗" data-ar="اتكلم معايا عن مناسبتك ↗">Chat about your event ↗</span></a>
+        </div>
+      </div>
+
+      <form class="form" id="bookingForm">
+        <label><span data-en="Your name" data-ar="اسمك">Your name</span><input name="name" autocomplete="name" required></label>
+        <label><span data-en="Email or phone" data-ar="الإيميل أو رقم الموبايل">Email or phone</span><input name="contact" required></label>
+        <label>
+          <span data-en="Type of event" data-ar="نوع المناسبة">Type of event</span>
+          <select name="event" required>
+            <option value="" data-en="Choose an event" data-ar="اختار نوع المناسبة">Choose an event</option>
+            <option value="Close-up & Roaming Magic">Close-up & Roaming Magic</option>
+            <option value="Stage Show">Stage Show</option>
+            <option value="Kids & Family">Kids & Family</option>
+            <option value="Corporate / Hotel">Corporate / Hotel</option>
+            <option value="Other">Other / أخرى</option>
+          </select>
+        </label>
+        <label><span data-en="Event details" data-ar="تفاصيل المناسبة">Event details</span><textarea name="details" placeholder="Date, location, audience size..."></textarea></label>
+        <button class="btn btn-primary" type="submit" data-en="SEND BOOKING REQUEST ↗" data-ar="ابعت طلب الحجز ↗">SEND BOOKING REQUEST ↗</button>
+        <p class="form-note" data-en="Your details will be placed in a WhatsApp message for you to review and send." data-ar="تفاصيلك هتتحط في رسالة واتساب تقدر تراجعها وتبعتها.">Your details will be placed in a WhatsApp message for you to review and send.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <a class="brand" href="#home">AMR SAMY <span>THE MAGICIAN</span></a>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/iamamrsamy/" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="#services" data-en="Experiences" data-ar="العروض">Experiences</a>
+      <a href="#contact" data-en="Bookings" data-ar="الحجوزات">Bookings</a>
+    </div>
+    <small class="muted">© <span id="year"></span> Amr Samy</small>
+  </div>
+</footer>
+
+<script>
+  const WHATSAPP_NUMBER = "201XXXXXXXXX"; // Replace with your real number, digits only.
+
+  const translations = {
+    en: { lang: "en", dir: "ltr", button: "عربي" },
+    ar: { lang: "ar", dir: "rtl", button: "English" }
+  };
+
+  let currentLang = "en";
+  const langToggle = document.getElementById("langToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  function setLanguage(lang) {
+    currentLang = lang;
+    document.documentElement.lang = translations[lang].lang;
+    document.documentElement.dir = translations[lang].dir;
+    langToggle.textContent = translations[lang].button;
+
+    document.querySelectorAll("[data-en][data-ar]").forEach(el => {
+      el.innerHTML = el.dataset[lang];
+    });
+  }
+
+  langToggle.addEventListener("click", () => {
+    setLanguage(currentLang === "en" ? "ar" : "en");
+  });
+
+  document.getElementById("menuBtn").addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => navLinks.classList.remove("open"));
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const whatsappLink = document.getElementById("whatsappLink");
+  if (!WHATSAPP_NUMBER.includes("X")) {
+    whatsappLink.href = "https://wa.me/" + WHATSAPP_NUMBER;
+    whatsappLink.target = "_blank";
+    whatsappLink.rel = "noopener";
+  } else {
+    whatsappLink.addEventListener("click", event => {
+      event.preventDefault();
+      alert(currentLang === "ar"
+        ? "أضف رقم واتساب الحقيقي في الكود لتفعيل الرابط."
+        : "Add your real WhatsApp number in the code to activate this link.");
+    });
+  }
+
+  document.getElementById("bookingForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    if (WHATSAPP_NUMBER.includes("X")) {
+      alert(currentLang === "ar"
+        ? "أضف رقم واتساب الحقيقي في الكود أولًا."
+        : "Please add your real WhatsApp number in the code first.");
+      return;
+    }
+
+    const data = new FormData(event.currentTarget);
+    const labels = currentLang === "ar"
+      ? ["طلب حجز جديد", "الاسم", "التواصل", "نوع المناسبة", "التفاصيل"]
+      : ["New Booking Request", "Name", "Contact", "Event", "Details"];
+
+    const message = [
+      labels[0],
+      `${labels[1]}: ${data.get("name")}`,
+      `${labels[2]}: ${data.get("contact")}`,
+      `${labels[3]}: ${data.get("event")}`,
+      `${labels[4]}: ${data.get("details") || "-"}`
+    ].join("\n");
+
+    window.open(
+      "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message),
+      "_blank",
+      "noopener"
+    );
+  });
+
+  setLanguage("en");
+</script>
 </body>
-
 </html>
