@@ -1,116 +1,145 @@
-/* ========================================
-   SAVE CONTACT
-======================================== */
 
-function saveContact() {
+const WHATSAPP_NUMBER = "201XXXXXXXXX";
+// استبدل X برقم واتسابك الحقيقي.
+// مثال: 201012345678
+// اكتب كود الدولة والرقم فقط، من غير + أو مسافات.
 
-    const contact = `
-BEGIN:VCARD
-VERSION:3.0
-FN:Amr Samy
-ORG:Amr Samy The Magician
-TEL;TYPE=CELL:01115552621
-EMAIL:amrsamydxb@gmail.com
-URL:https://instagram.com/iamamrsamy
-NOTE:Magician & Performer
-END:VCARD
-`;
+const translations = {
+  en: {
+    lang: "en",
+    dir: "ltr",
+    button: "عربي"
+  },
+  ar: {
+    lang: "ar",
+    dir: "rtl",
+    button: "English"
+  }
+};
 
-    const blob = new Blob(
-        [contact],
-        {
-            type: "text/vcard;charset=utf-8"
-        }
-    );
+let currentLang = "en";
 
-    const url =
-        URL.createObjectURL(blob);
+const langToggle = document.getElementById("langToggle");
+const navLinks = document.getElementById("navLinks");
+const menuBtn = document.getElementById("menuBtn");
+const bookingForm = document.getElementById("bookingForm");
+const whatsappLink = document.getElementById("whatsappLink");
 
-    const link =
-        document.createElement("a");
+function setLanguage(lang) {
+  currentLang = lang;
 
-    link.href = url;
+  document.documentElement.lang = translations[lang].lang;
+  document.documentElement.dir = translations[lang].dir;
 
-    link.download =
-        "Amr-Samy.vcf";
+  langToggle.textContent = translations[lang].button;
 
-    document.body.appendChild(link);
+  document.querySelectorAll("[data-en][data-ar]").forEach(element => {
+    const translatedText = element.dataset[lang];
 
-    link.click();
+    if (translatedText !== undefined) {
+      element.innerHTML = translatedText;
+    }
+  });
 
-    document.body.removeChild(link);
+  document.querySelectorAll("[data-placeholder-en][data-placeholder-ar]").forEach(element => {
+    const translatedPlaceholder =
+      lang === "ar"
+        ? element.dataset.placeholderAr
+        : element.dataset.placeholderEn;
 
-    URL.revokeObjectURL(url);
+    if (translatedPlaceholder !== undefined) {
+      element.placeholder = translatedPlaceholder;
+    }
+  });
+
+  document.title = lang === "ar"
+    ? "عمرو سامي | الساحر"
+    : "Amr Samy | The Magician";
+
+  document.querySelector('meta[name="description"]').content =
+    lang === "ar"
+      ? "عمرو سامي، ساحر محترف يقدم عروض سحر مباشرة وعروض أطفال وفعاليات للشركات والفنادق."
+      : "Amr Samy — Professional magician creating unforgettable experiences through live magic, close-up performances, stage shows and family entertainment.";
 }
 
+langToggle.addEventListener("click", () => {
+  setLanguage(currentLang === "en" ? "ar" : "en");
+});
 
+menuBtn.addEventListener("click", () => {
+  const isOpen = navLinks.classList.toggle("open");
+  menuBtn.setAttribute("aria-expanded", String(isOpen));
+  menuBtn.textContent = isOpen ? "✕" : "☰";
+});
 
-/* ========================================
-   MAGIC CLICK EFFECT
-======================================== */
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.textContent = "☰";
+  });
+});
 
-document.addEventListener(
-    "click",
-    function (event) {
+document.getElementById("year").textContent = new Date().getFullYear();
 
-        const star =
-            document.createElement("span");
+function openWhatsApp(message = "") {
+  if (WHATSAPP_NUMBER.includes("X")) {
+    alert(
+      currentLang === "ar"
+        ? "من فضلك أضف رقم واتسابك الحقيقي في ملف script.js أولًا."
+        : "Please add your real WhatsApp number in script.js first."
+    );
+    return;
+  }
 
-        star.innerHTML = "✨";
+  const url =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    (message ? "?text=" + encodeURIComponent(message) : "");
 
-        star.style.position = "fixed";
+  window.open(url, "_blank", "noopener,noreferrer");
+}
 
-        star.style.left =
-            event.clientX + "px";
+if (whatsappLink) {
+  whatsappLink.addEventListener("click", event => {
+    event.preventDefault();
+    openWhatsApp();
+  });
+}
 
-        star.style.top =
-            event.clientY + "px";
+bookingForm.addEventListener("submit", event => {
+  event.preventDefault();
 
-        star.style.pointerEvents =
-            "none";
+  if (!bookingForm.reportValidity()) return;
 
-        star.style.zIndex =
-            "9999";
+  const data = new FormData(bookingForm);
 
-        star.style.fontSize =
-            "20px";
+  const labels = currentLang === "ar"
+    ? {
+        title: "طلب حجز جديد - عمرو سامي",
+        name: "الاسم",
+        contact: "بيانات التواصل",
+        event: "نوع المناسبة",
+        details: "تفاصيل المناسبة"
+      }
+    : {
+        title: "New Booking Request - Amr Samy",
+        name: "Name",
+        contact: "Contact",
+        event: "Event type",
+        details: "Event details"
+      };
 
-        document.body.appendChild(star);
+  const message = [
+    labels.title,
+    "",
+    `${labels.name}: ${data.get("name")}`,
+    `${labels.contact}: ${data.get("contact")}`,
+    `${labels.event}: ${data.get("event")}`,
+    `${labels.details}: ${data.get("details") || "-"}`
+  ].join("\n");
 
+  openWhatsApp(message);
+});
 
-        star.animate(
-
-            [
-                {
-                    transform: "scale(0)",
-                    opacity: 1
-                },
-
-                {
-                    transform:
-                        "scale(1.5) translateY(-35px)",
-                    opacity: 0
-                }
-            ],
-
-            {
-                duration: 700,
-
-                easing: "ease-out"
-            }
-
-        );
-
-
-        setTimeout(
-
-            () => {
-                star.remove();
-            },
-
-            700
-
-        );
-
-    }
-);
+setLanguage("en");
