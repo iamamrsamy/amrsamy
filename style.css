@@ -798,3 +798,100 @@ body[dir="rtl"] .whatsapp-float { right: auto; left: 20px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* Instagram Magic Reels */
+.magic-reels {
+  padding: 70px 6%;
+  background: #f8f6f0;
+  color: #173c32;
+  text-align: center;
+}
+
+.reels-heading {
+  margin: 0 auto 36px;
+  max-width: 700px;
+}
+
+.section-label {
+  color: #a88648;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.reels-heading h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  margin: 12px 0;
+}
+
+.reels-heading p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #656b66;
+}
+
+.reels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.reel-card {
+  min-width: 0;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #e7dfcf;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(23, 60, 50, 0.08);
+}
+
+.reel-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #e9e5dc;
+}
+
+.reel-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.reel-card h3 {
+  font-size: 21px;
+  margin: 18px 0 10px;
+}
+
+.reel-card a {
+  display: inline-block;
+  margin: 0 0 12px;
+  color: #98753b;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.reel-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .reels-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    gap: 28px;
+  }
+
+  .magic-reels {
+    padding: 50px 5%;
+  }
+}
+
