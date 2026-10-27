@@ -806,3 +806,14 @@ body[dir="rtl"] .whatsapp-float { right: auto; left: 20px; }
   height: 100%;
   object-fit: cover;
 }
+
+/* Fix video playback in the gallery */
+.gallery-item video {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  object-fit: contain;
+  pointer-events: auto;
+}
