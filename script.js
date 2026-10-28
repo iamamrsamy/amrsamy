@@ -147,5 +147,5 @@
     yearElement.textContent = new Date().getFullYear();
   }
 
-  setLanguage("en");
+  setLanguage("ar");
 })();
